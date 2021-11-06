@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <% include partials/head %>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Begin emoji-picker Stylesheets -->
+  <link href="/assets/emoji/lib/css/emoji.css" rel="stylesheet">
+  <!-- End emoji-picker Stylesheets -->
+<body>
+  <!-- ======= Header ======= -->
+  <% include partials/header %>
+  <!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  
+    <!-- ======= Hero Section ======= -->
+  
+    <section id="contact" class="contact section-bg" data-aos="fade-up"> 
+      <div class="container">
+        
+        <div class="row">
+          
+          <div class="col-sm-8 offset-sm-2">
+            <div class="section-title" data-aos="fade-up" style="padding-top: 0px;">
+              <h2>Dashboard</h2>
+             
+            </div>
+            
+              
+            
+            <div class="alert alert-info" role="alert" id="onboardflagAlert">
+              <strong>Welcome, here are the steps for feeling grateful:</strong><br/>
+              <ol style="font-size: .8em;">
+                <li>Post "What are you gratetul for?"</li>
+                <li>Select "How are you feeling today?"</li>
+                <li>Select If you would like to share this post with the public"</li>
+                <li><strong>Feel Grateful!!!</strong></li>
+                <input type="checkbox" id="onBoardFlag">&nbsp;Don't show this message again</input>
+                
+                
+              </ol>
+              
+            </div>
+          
+          <h1 class = "sub-h1" style="font-size:1.5em !important;">Hello <span class="sub-h1" id="displayname"></span>,</h1>
+          <div id = "validationErrors"></div>
+          <div id = "validationSuccess"></div>
+          <!-- <div class="white-form text-center">
+          <a href="/users/account/dashboard/">Create Post</a>&nbsp;|&nbsp<a href="/users/account/account/">Account</a>&nbsp;|&nbsp<a href="/users/account/progress/">My Progress</a>&nbsp;|&nbsp<a href="/users/account/myposts/">My Posts</a>
+       
+        </div> -->
+          <div class="white-form">
+        
+            <% include partials/submit-post %>
+            <div class="row">
+              <div class="col-sm-3">
+                <div>
+                  <input type="button" id="postMsgButton" class="btn btn-success navtoTop text-center" style="width: 100px;padding:0px !important;height: 45px;" value="Post">
+                </div>
+              </div>
+              <div class="col-sm-3" style="padding-left:0px;padding-right:15px;">
+                <a href="/users/account/account">
+                <span class="fa-stack fa-2x">
+                  <i class="fas fa-circle fa-stack-2x text-primary" style="color:#d20000!important;"></i>
+                  <i class="fas fa-users-cog fa-stack-1x fa-inverse" style="color:white;"></i>
+                </span></a>
+                <a href="/users/account/account">My Account</a>
+              </div>
+              
+              <div class="col-sm-3"style="padding-left:0px;padding-right:15px;">
+                <a href="/users/account/progress">
+                <span class="fa-stack fa-2x">
+                  <i class="fas fa-circle fa-stack-2x text-primary" style="color:#d20000!important;"></i>
+                  <i class="fas fa-chart-line fa-stack-1x fa-inverse" style="color:white;"></i>
+                  <a href="/users/account/progress">My Progress</a> 
+                </span>
+                </a>
+              </div>
+              
+              
+              <div class="col-sm-3"style="padding-left:0px;padding-right:15px;">
+                <a href="/users/account/myposts">
+                <span class="fa-stack fa-2x">
+                  <i class="fas fa-circle fa-stack-2x text-primary" style="color:#d20000!important;"></i>
+                  <i class="fas fa-key fa-stack-1x fa-inverse" style="color:white;"></i> 
+                  <a href="/users/account/progress">My Posts</a> 
+                </span>
+                </a>
+              </div>
+              
+              <!-- <div class="col-3 text-center">
+                <a href="/users/account/account"><img style="width:3.5em;" src="/assets/img/account-icon.png"/></a><a href="/users/account/account/">My Account</a>
+              </div>
+              <div class="col-3  text-center"">
+                <a href="/users/account/progress"><img style="width:3.5em;" src="/assets/img/account-icon.png"/></a><a href="/users/account/progress/">My Progress</a>
+              </div>
+              <div class="col-3  text-center"">
+                <a href="/users/account/myposts"><img style="width:3.5em;" src="/assets/img/account-icon.png"/></a><a href="/users/account/myposts/">My Posts</a>
+              </div> -->
+            </div>
+            
+            <!-- <div class="row">
+              <div class="col-12">
+                <div class="col-4">
+                  <a href="/users/account/account"><img style="width:3.5em;" src="/assets/img/account-icon.png"/></a>
+                </div>
+            </div> -->
+             
+                <!-- <div class="row">
+                  <div class="col">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="col-4">
+                          <a href="/users/account/account"><img style="width:3.5em;" src="/assets/img/account-icon.png"/></a>
+                          <br/>
+                          <a href="/users/account/account">My Account</a>
+                        
+                      </div>
+                      <div class="col-12">
+                        <div class="col-4">
+                          <a href="/users/account/account"><img style="width:3.5em;" src="/assets/img/account-icon.png"/></a>
+                          <br/>
+                          <a href="/users/account/account">My Account</a>
+                        
+                      </div>
+                      <div class="col-12">
+                        <div class="col-4">
+                          <a href="/users/account/account"><img style="width:3.5em;" src="/assets/img/account-icon.png"/></a>
+                          <br/>
+                          <a href="/users/account/account">My Account</a>
+                        
+                      </div> -->
+                   
+             
+              
+
+            </div>
+             
+            <!-- <div class="row" >
+              <div class="col-12" >
+                
+                <div class="row" style="padding-top:10px;">
+                  <br/>
+                    <div class="col-md-4 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in">
+                      <div class="text-center">
+                        <span class="fa-stack fa-4x">
+                          <i class="fas fa-circle fa-stack-2x text-primary" style="color:#d20000!important;"></i>
+                          <i class="fas fa-users-cog fa-stack-1x fa-inverse" style="color:white;"></i>
+                        </span>
+                        <h4 class="title"><a class="dashboard-link" href="/users/account/account/">My Account.</a></h4>
+                        <p class="description">Update your information, upload a new avatar photo and more.</p>
+                      </div>
+                    </div>
+            
+                    <div class="col-md-4 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="100">
+                      <div class="text-center">
+                        <span class="fa-stack fa-4x">
+                          <i class="fas fa-circle fa-stack-2x text-primary" style="color:#d20000!important;"></i>
+                          <i class="fas fa-chart-line fa-stack-1x fa-inverse" style="color:white;"></i>
+                        </span>
+                        <h4 class="title"><a class="dashboard-link" href="/users/account/progress/">My progress.</a></h4>
+                        <p class="description">See how you are progressing to you goals.</p>
+                      </div>
+                  </div>
+            
+                    <div class="col-md-4 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
+                      <div class="text-center">
+                        <span class="fa-stack fa-4x">
+                          <i class="fas fa-circle fa-stack-2x text-primary"style="color:#d20000!important;"></i>
+                          <i class="fas fa-key fa-stack-1x fa-inverse" style="color:white;"></i>
+                        </span>
+                        <h4 class="title"><a class="dashboard-link" href="/users/account/myposts/">My Jar</a></h4>
+                        <p class="description">Your space for private posts and memories.</p>
+                      </div>
+                    </div>
+                </div>
+              </div> -->
+        </div>
+         
+            
+          <!-- <input type="button" id="postMsgToggle" class="btn btn-success text-center" style="width: 50px;padding:0px !important;height: 30px;" value="Post"> -->
+            <br/>
+        
+            
+                 <!-- <div class="row">
+                  <div class="col-12">
+                    <div class="row">
+                      <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="text-center">
+                          <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"style="color:#d20000!important;"></i>
+                            <i class="fas fa-users fa-stack-1x fa-inverse" style="color:white;"></i>
+                          </span>
+                          <h4 class="title"><a class="dashboard-link" href="/users/account/publicposts/">Community.</a></h4>
+                          <p class="description">Your safe place to share gratitude with like minded others.</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="text-center">
+                          <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"style="color:#d20000!important;"></i>
+                            <i class="fas fa-atom fa-stack-1x fa-inverse" style="color:white;"></i>
+                          </span>
+                          <h4 class="title"><a class="dashboard-link" href="/users/account/publicposts/">Your Guru.</a></h4>
+                          <p class="description">Guru is your personal coach to inspiring and push you to reach your best.</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="text-center">
+                          <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"style="color:#d20000!important;"></i>
+                            <i class="fas fa-sliders-h fa-stack-1x fa-inverse" style="color:white;"></i>
+                          </span>
+                          <h4 class="title"><a class="dashboard-link" href="/users/account/publicposts/">Settings.</a></h4>
+                          <p class="description">Update your settings for all your journey.</p>
+                        </div>
+                      </div>
+     
+                </div> -->
+            </div>
+        </div>
+        
+       
+
+  <% include partials/cookie-msg %>
+  
+  <% include partials/scripts %>
+   <!-- Begin emoji-picker JavaScript -->
+   <script src="/assets/emoji/lib/js/config.js"></script>
+   <script src="/assets/emoji/lib/js/util.js"></script>
+   <script src="/assets/emoji/lib/js/jquery.emojiarea.js"></script>
+   <script src="/assets/emoji/lib/js/emoji-picker.js"></script>
+   <!-- End emoji-picker JavaScript -->
+<!-- Post Scripts -->
+<script src="/assets/js/postFunctions.js"></script>
+  <script src="/assets/js/jquery-custom.js"></script>
+   <script>
+     $(function() {
+       // Initializes and creates emoji set from sprite sheet
+       window.emojiPicker = new EmojiPicker({
+         emojiable_selector: '[data-emojiable=true]',
+         assetsPath: '/assets/emoji/lib/img/',
+         popupButtonClasses: 'fa fa-smile-o'
+       });
+       // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
+       // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
+       // It can be called as many times as necessary; previously converted input fields will not be converted again
+       window.emojiPicker.discover();
+     });
+   </script>
+  
+  <script>
+    $(document).ready(function() {
+        $.ajax({
+            url: '/users/auth/getDisplayOnBoard/',
+            type : "GET",
+            data: {},
+            success : function(user) {
+              //display box if set to false
+             
+              if(user){
+                //show box (true)
+                $("#onboardflagAlert").show();
+              }else{
+                //hide box (false)
+                $("#onboardflagAlert").hide();
+              }
+            }
+           
+         });
+      
+   });
+
+  $( "#onBoardFlag").on( "click", function() {
+    $("#onboardflagAlert").hide();
+    $.ajax({
+      url: "/users/auth/disableOnBoard/",
+      type: "POST",
+      data:{},
+      success : function(user) {
+                //display box if set to false
+               
+                if(user)
+                  //hide box (false)
+                  $("#onboardflagAlert").show();
+                else
+                  //show box (true)
+                  $("#onboardflagAlert").hide();
+              }
+            
+    
+    });
+});
+getData();
+var selectRadio = null;
+    $("input[name='optradio']").click(function() {
+      selectRadio = this.value;
+      $("#happinessId").val(selectRadio);
+        
+    });
+    $( "#btn-skip-journey").click(function() {
+          window.location.assign("/users/account/create/");
+         
+});
+</script>
+</body>
+
+
+</html>

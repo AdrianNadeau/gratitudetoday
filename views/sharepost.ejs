@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <% include partials/head %>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Begin emoji-picker Stylesheets -->
+  <link href="/assets/emoji/lib/css/emoji.css" rel="stylesheet">
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e742c1a85cb6d9e"></script>  
+
+  
+  <!-- End emoji-picker Stylesheets -->
+<body>
+  <!-- ======= Header ======= -->
+  <% include partials/header %>
+  <!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  
+    <!-- ======= Hero Section ======= -->
+  
+    <section id="contact" class="contact section-bg" data-aos="fade-up"> 
+      <div class="container">
+        
+        <div class="row">
+          
+          <div class="col-sm-8 offset-sm-2">
+            <div class="section-title" data-aos="fade-up" style="padding-top: 0px;">
+              <h2>Share Post</h2>
+             
+            </div>
+            
+              <div id = "validationErrors"></div>
+              <div id = "validationSuccess"></div>
+              <img class="tex-center" src="/assets/img/thank-you.png" style="width:50%;height:50%"/>
+          <h1 class = "sub-h1" style="font-size:1.5em !important;">Hello <span class="sub-h1" id="displayname"></span>,</h1>
+          <div class="white-form">
+        
+            <div id="msg-area">
+                <strong>What are you gratetul for?</strong>
+             
+             
+                   <div class="controls">
+                     <form>
+                       <input type="hidden" id="id" value=""></input>
+                       <!-- <textarea style="padding-bottom:10px;font-family: 'Raleway', sans-serif !important;"  data-emojiable="true" class="form-control custom-input-width" rows="2" type="text" id="postMsg" maxlength="200"></textarea> -->
+                       <p class="lead emoji-picker-container">
+                         <span id="postMsg"></span>                       
+                        </p>
+                       <p></p>
+                       <strong>How are you feeling today?</strong>
+                       <div>
+                        
+                           <input type="radio" value="1" name="optradio">&nbsp;Down
+                           <input type="radio" value="2" name="optradio">&nbsp;Not Great
+                           <input type="radio" value="3" checked name="optradio">&nbsp;Okay
+                           <input type="radio" value="4" name="optradio">&nbsp;Good
+                           <input type="radio" value="5" name="optradio">&nbsp;Great
+                         </div>
+                         <br/>
+                         Share with Public:<span id="publicYn"></span>
+                      
+                       
+                       
+                   </form>
+                  
+                 </div>
+                 
+                  
+              </div>
+              
+            <div class="row" >
+              <div class="col-12" >
+                
+              
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_inline_share_toolbox"></div>
+                <!-- <a class="addthis_button_compact">
+                  <img src="http://s7.addthis.com/static/btn/sm-plus.gif" width="16" height="16" border="0" alt="Share" />
+                </a> -->
+                
+                
+        </div>
+    
+<% include partials/cookie-msg %>
+<% include partials/scripts %>
+<script src="/assets/js/getParams.js"></script>
+<!-- Begin emoji-picker JavaScript -->
+<script src="/assets/emoji/lib/js/config.js"></script>
+<script src="/assets/emoji/lib/js/util.js"></script>
+<script src="/assets/emoji/lib/js/jquery.emojiarea.js"></script>
+<script src="/assets/emoji/lib/js/emoji-picker.js"></script>
+<!-- End emoji-picker JavaScript -->
+<script>
+$(document).ready(function() {
+  
+  getData(); 
+   
+});
+
+  $(function() {
+    // Initializes and creates emoji set from sprite sheet
+    window.emojiPicker = new EmojiPicker({
+      emojiable_selector: '[data-emojiable=true]',
+      assetsPath: '/assets/emoji/lib/img/',
+      popupButtonClasses: 'fa fa-smile-o'
+    });
+    // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
+    // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
+    // It can be called as many times as necessary; previously converted input fields will not be converted again
+    window.emojiPicker.discover();
+  });
+</script>
+
+<script>
+    const postid=$.urlParam('id');
+    //console.log("post: "+postid);
+    //http://localhost:3508/users/account/getpostdetails/60ccdc13cd056f4b10b6ac96/
+    const url = '/users/account/getpostdetails/'+postid;
+    //console.log(url);
+    $.ajax({
+            url: url,
+            type : "GET",
+            data: { },
+            success : function(post) {
+                //postMsgValue= JSON.stringify(post.postMsg)
+                
+                $("#postMsg").val(post.postMsg);
+                $("#postMsg").html(post.postMsg);
+                //have to set this for some reason
+                
+                
+                //var textarea = document.getElementById('c4d981e9a2c98b0483252333_input');
+               // postMsg.value= 'hi';
+              // postMsg.value = 'hi';
+                //$("#postMsg").val(post.postMsg);
+              
+                //$("#postMsg").val(post.postMsg);
+                
+                
+            },
+            error : function(error) {
+             
+                alert("Error getting post");
+            }
+           
+});
+</script>
+

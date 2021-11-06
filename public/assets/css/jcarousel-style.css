@@ -1,0 +1,23 @@
+/* custom changes in this file */
+
+#mainNav {
+   
+    background-color: #d20000 !important ;
+}
+
+#mainNav .navbar-brand {
+    color:white;
+    font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
+}
+#mainNav .navbar-brand.active, #mainNav .navbar-brand:active, #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
+    color: black;
+}
+#mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
+    color:black;
+}
+header.masthead {
+    background-image: none;
+}
+.text-primary {
+    color:#479c18 !important;
+}

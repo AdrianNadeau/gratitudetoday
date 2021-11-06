@@ -1,0 +1,59 @@
+<!-- Bootstrap core JavaScript -->
+ <!-- Vendor JS Files -->
+ <script src="/assets/vendor/jquery/jquery.min.js"></script>
+ <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+ <script src="/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+ <script src="/assets/vendor/php-email-form/validate.js"></script>
+ <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+ <script src="/assets/vendor/venobox/venobox.min.js"></script>
+ <script src="/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+ <script src="/assets/vendor/aos/aos.js"></script>
+ <!-- <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script> -->
+
+ <!-- Template Main JS File --> 
+ <script src="/assets/js/main.js"></script>
+
+ <!-- Template Custom JavaScript File -->
+<script src="/assets/js/jquery-custom.js"></script>
+<script src="/assets/js/getParams.js"></script>
+<script src="/assets/js/getUserScript.js"></script>
+<!-- <script src="/assets/js/authentication-scripts.js"></script> -->
+<!-- <script src="/assets/js/login-scripts.js"></script> -->
+
+<script src="/assets/js/account-scripts.js"></script>
+<script src="/assets/js/moment.js"></script>
+<script src="/assets/js/moment-range.js"></script>
+<!-- <script src="/assets/js/moment-range.js.map"></script> -->
+<!-- <script src="/assets/js/postFunctions.js"></script> -->
+<script src="/assets/js/chart-progress.js"></script>
+<script src="/assets/js/getUserData.js"></script>
+<!-- <script src="/assets/firebase/authentication-scripts.js"></script>
+<script src="/assets/firebase/account-scripts.js"></script> -->
+
+
+
+
+<script>
+$("#loader").fadeOut("slow", function() {
+    // will fade out the whole DIV that covers the website.
+    $("#preloader").delay(300).fadeOut("slow");
+}); 
+$('.navtoTop').click(function(){
+    $("html, body").animate({ 
+            scrollTop: 0 
+        }, "slow");
+        
+});
+firebase.auth().signOut().then(function() {
+  // Sign-out successful.
+}).catch(function(error) {
+  // An error happened.
+});
+</script>
+
+<script>
+$( "#btn_dash" ).click(function() {
+    window.location.replace('/users/account/dashboard/');
+});
+</script>
+

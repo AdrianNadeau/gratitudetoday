@@ -1,0 +1,23 @@
+[{
+  "_id": {
+    "$oid": "60e75331ffec7a348134e4f7"
+  },
+  "public": false,
+  "emailVerified": false,
+  "location": "",
+  "bio": "",
+  "providers": [],
+  "posts": [],
+  "activated": true,
+  "journey_id": 1,
+  "happiness": 3,
+  "exp_id": 0,
+  "accessToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjhmNDMyMDRhMTc5MTVlOGJlN2NjZDdjYjI2NGRmNmVhMzgzYzQ5YWIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZ3JhdGl0dWRldG9kYXktMmU2MzAiLCJhdWQiOiJncmF0aXR1ZGV0b2RheS0yZTYzMCIsImF1dGhfdGltZSI6MTYyNTc3Mjg0NywidXNlcl9pZCI6IjFHaWRXVTJ6YWRnV0hGc3BTTlpQalBDMmFWcDIiLCJzdWIiOiIxR2lkV1UyemFkZ1dIRnNwU05aUGpQQzJhVnAyIiwiaWF0IjoxNjI1NzcyODQ3LCJleHAiOjE2MjU3NzY0NDcsImVtYWlsIjoiYWRyaWFuQGFkcmlhbm5hZGVhdS5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiYWRyaWFuQGFkcmlhbm5hZGVhdS5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.SbNiAbOnqew0S1n_rA4uJgQ7cm2ZVC6cpkDgA68y2pOBCC8geKpeEkClHeL4lwC4yZZ5XvmfDueMdscdhfZj3s5yeb2EtUwCsr9AbIfyqgXJNRUvOt7mxWltlNAB_e_mOV8hWrlxZhc_uPklZuOhJVj-VNkQlDvs6erO_bBSqnS_XoxU4YUM7wON7hWEbfafR9HOmDTLa8uD3-xV6NS9nFQ7_qk6M_2N9HQDkeoMVXwir2tJG6IxOCpknJfUxMl5xpOFyEfG9WZw0lGmtWIiqfeO6Z3hkuh4qdrISW5hZ6cuenOMcW7fLZgKagfXDJ0AAsRLdC89GxKxFvV09BVQsA",
+  "displayName": "Adrian Nadeau",
+  "email": "adrian@adriannadeau.com",
+  "photoURL": "",
+  "createDate": {
+    "$date": "2021-07-08T19:34:09.113Z"
+  },
+  "__v": 0
+}]

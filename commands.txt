@@ -1,0 +1,62 @@
+db.users.update({},{ $set: {"recieveEmail": true} },false,true)
+set DEBUG=myapp:* & npm start
+npm config set proxy http://ez17974:!Asialouie1234@fastweb.int.bell.ca:8083
+npm config set https-proxy http://ez17974:!Asialouie1234@fastweb.int.bell.ca:8083
+
+proxy.aliant.icn
+npm config rm proxy
+npm uninstall <name>
+
+Heroku
+set HTTP_PROXY=http://fastweb.int.bell.ca:8083
+export HTTPS_PROXY=https://fastweb.int.bell.ca:8083
+
+//start redis server (move into project start)
+C:\Users\ez17974\Downloads\tools\redis-2.4.5-win32-win64\64bit\redis-server.exe
+
+
+sudo kill -9 `sudo lsof -t -i:3508`
+fuser -n tcp -k 3508 
+
+
+
+Free Sandbox Account:
+DB user: GratitudeToday
+DB Pass: GratitudeToday123
+
+Connection
+mongodb+srv://GratitudeToday35:GratitudeToday123@gratitudetoday-2yxie.mongodb.net/gratitude-apps-dev?retryWrites=true&w=majority
+
+Compass
+mongodb+srv://GratitudeToday35:GratitudeToday123@gratitudetoday-2yxie.mongodb.net/gratitude-apps-dev
+
+//promises async
+const timeOutPromise = (str) => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(str);
+    }, 200)
+  })
+}
+(async () => {
+  try {
+    let val;
+    val = await timeOutPromise('foo');
+    console.log(val);
+    val = await timeOutPromise('bar');
+    console.log(val);
+    val = await timeOutPromise('baz');
+    console.log(val);
+  } catch (err) {
+    console.error(err);
+  }
+})();
+
+ssh anadeau@172.105.98.187 
+GratitudeToday!123
+
+cloudinary
+==============================================
+585674857763237
+4cUa0oqQeraDyv5mpopL3fGmQlM
+CLOUDINARY_URL=cloudinary://585674857763237:4cUa0oqQeraDyv5mpopL3fGmQlM@adrian-nadeau

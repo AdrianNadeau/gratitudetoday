@@ -1,0 +1,19 @@
+{
+  "name": "gratitudetoday",
+  "version": "1.0.0",
+  "description": "Gratitude App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdrianNadeau/gratitudetoday.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdrianNadeau/gratitudetoday/issues"
+  },
+  "homepage": "https://github.com/AdrianNadeau/gratitudetoday#readme"
+}

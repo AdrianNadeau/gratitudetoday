@@ -12,7 +12,7 @@
      //register user
      
         var signInProvider, profileId, profileDisplay, profileEmail, profilePhoto, accessToken;
-            user.providerData.forEach(function (profile) {
+          profile = user.providerData;       
             signInProvider= profile.providerId;
             profileId= profile.uid;
             
@@ -58,7 +58,7 @@
               }); 
             });
             
-        });
+        // });
        
      
     }, function(error) {

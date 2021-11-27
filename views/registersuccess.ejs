@@ -10,30 +10,20 @@
     
     firebase.auth().onAuthStateChanged(function(user) {
      //register user
-     
-        var signInProvider, profileId, profileDisplay, profileEmail, profilePhoto, accessToken;
-            user.providerData.forEach(function (profile) {
-            signInProvider= profile.providerId;
-            profileId= profile.uid;
-            
-            profileDisplay= profile.displayName;
-            signInProvider= profile.providerId;
-            
-            profileEmail = profile.email;
-            profilePhoto = profile.photoURL;
-            profileEmailVerfied = profile.profileEmailVerfied;
-            user.getIdToken().then(function(accessToken) {
+      alert("user: "+user.displayName)
+        
+        user.getIdToken().then(function(accessToken) {
               
               //insert document ajax
               $.ajax({
                 dataType: "json",
                 type: "POST",
                 data: {
-                  firebase_uid: profileId,
-                  displayName:profileDisplay,
-                  email: profileEmail,
+                  firebase_uid: user.uid,
+                  displayName:user.displayName,
+                  email: user.email,
                   accessToken: accessToken,
-                  photoURL: profilePhoto
+                  photoURL: user.photoURL
                   //providerData:providerData
                 
                 },
@@ -63,7 +53,7 @@
      
     }, function(error) {
       console.log(error);
-    });
+    //});
   };
 
   window.addEventListener('load', function() {

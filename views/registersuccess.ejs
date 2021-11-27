@@ -10,7 +10,7 @@
     
     firebase.auth().onAuthStateChanged(function(user) {
      //register user
-      alert("user: "+user.displayName)
+      
         
         user.getIdToken().then(function(accessToken) {
               

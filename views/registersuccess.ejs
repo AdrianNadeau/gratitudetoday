@@ -10,9 +10,21 @@
     
     firebase.auth().onAuthStateChanged(function(user) {
      //register user
-      
-        
-        user.getIdToken().then(function(accessToken) {
+
+     
+        var signInProvider, profileId, profileDisplay, profileEmail, profilePhoto, accessToken;
+          profile = user.providerData;       
+            signInProvider= profile.providerId;
+            profileId= profile.uid;
+            
+            profileDisplay= profile.displayName;
+            signInProvider= profile.providerId;
+            
+            profileEmail = profile.email;
+            profilePhoto = profile.photoURL;
+            profileEmailVerfied = profile.profileEmailVerfied;
+            user.getIdToken().then(function(accessToken) {
+
               
               //insert document ajax
               $.ajax({
@@ -48,7 +60,7 @@
               }); 
             });
             
-        });
+        // });
        
      
     }, function(error) {

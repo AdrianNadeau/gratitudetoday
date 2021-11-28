@@ -7,7 +7,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-     <!-- Fav and touch icons -->
+
 <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/apple-icon-72x72.png">
@@ -81,7 +81,9 @@
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.1/firebase-ui-auth.css" />
   <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase.js"></script>
   
-  <script>
+
+  <!-- <script>
+
         
     // Your web app's Firebase configuration
     var firebaseConfig = {
@@ -130,8 +132,62 @@
   var ui = new firebaseui.auth.AuthUI(firebase.auth());
   // The start method will wait until the DOM is loaded.
   ui.start('#firebaseui-auth-container', uiConfig);
+
+
+</script> -->
+<script>
+        
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCMP6_4RzRbqsHlMZVmZEtK_UkypLECXBY",
+    authDomain: "gratitudetoday-2e630.firebaseapp.com",
+    projectId: "gratitudetoday-2e630",
+    storageBucket: "gratitudetoday-2e630.appspot.com",
+    messagingSenderId: "957156185108",
+    appId: "1:957156185108:web:2c7f59c145cfcce9f14301",
+    measurementId: "G-8EPH5NWCK8"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script type="text/javascript">
+// FirebaseUI config.
+console.log("go to success");
+ var uiConfig = {
+  
+  // Url to redirect to after a successful sign-in.
+  //ajax call to enter MongoDB data
+  signInSuccessUrl: '/users/auth/registersuccess',
+  signInOptions: [
+    // Leave the lines as is for the providers you want to offer your users.
+    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+    firebase.auth.TwitterAuthProvider.PROVIDER_ID
+    //firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
+  ],
   
 
+  // tosUrl and privacyPolicyUrl accept either url string or a callback
+  // function.
+  // Terms of service url/callback.
+  tosUrl: '/terms',
+  // Privacy policy url/callback.
+  privacyPolicyUrl: function() {
+    window.location.assign("/");
+    
+  }
+};
+
+// Initialize the FirebaseUI Widget using Firebase.
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+// The start method will wait until the DOM is loaded.
+ui.start('#firebaseui-auth-container', uiConfig);
+
+
 </script>
-<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5d9ce6e69e31940012e51b4a&product=inline-share-buttons' async='async'></script>
+
+
 </head>
+>>>>>>> 1b00a43ac529a7823d6daaee620e3a03cb651c13

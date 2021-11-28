@@ -75,7 +75,7 @@ app.use(session({ secret: SESSION_SEACRET,
      cookie: { maxAge: 1800000 }})) 
 
 
-logger.info("DB Running server on from port::::::" + DB_PORT);
+logger.info("DB Running server on from port::::::" + "4000");
 mongoose.set('useFindAndModify', false);
 
 // view engine setup

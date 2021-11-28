@@ -70,7 +70,7 @@ router.post('/', async function(req, res) {
               let errMessage= error.message;
               logger.error(errMessage);
               if(errMessage.includes("E11000")){
-                logger.debug("inside E11000");
+                logger.debug("CURRENT USER");
                 console.log("error: "+email);
                 admin.auth().getUserByEmail(email)
                   .then(function(userRecord) {
@@ -99,6 +99,7 @@ router.post('/', async function(req, res) {
                   // var url = 'http://' + HOST + ':'+NODE_PORT+'/users/auth/activateAccount/?id=' + user._id ;
                   // logger.debug(url);
                   // console.log("url: "+url);
+                  
                   sess = req.session;
                   sess.userid = user._id;
                   res.send(user);

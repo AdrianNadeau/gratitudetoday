@@ -66,6 +66,9 @@
     "type": "git",
     "url": "git+https://github.com/AdrianNadeau/gratitudetoday.git"
   },
+  "optionalDependencies": {
+    "fsevents": "^2.0.7"
+  }, 
   "bugs": {
     "url": "https://github.com/AdrianNadeau/gratitudetoday/issues"
   },

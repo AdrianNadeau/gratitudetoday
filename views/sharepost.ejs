@@ -7,7 +7,7 @@
   <!-- Begin emoji-picker Stylesheets -->
   <link href="/assets/emoji/lib/css/emoji.css" rel="stylesheet">
   <!-- Go to www.addthis.com/dashboard to customize your tools -->
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e742c1a85cb6d9e"></script>  
+  
 
   
   <!-- End emoji-picker Stylesheets -->
@@ -31,9 +31,8 @@
              
             </div>
             
-              <div id = "validationErrors"></div>
-              <div id = "validationSuccess"></div>
-              <img class="tex-center" src="/assets/img/thank-you.png" style="width:50%;height:50%"/>
+              
+            
           <h1 class = "sub-h1" style="font-size:1.5em !important;">Hello <span class="sub-h1" id="displayname"></span>,</h1>
           <div class="white-form">
         
@@ -59,7 +58,7 @@
                            <input type="radio" value="5" name="optradio">&nbsp;Great
                          </div>
                          <br/>
-                         Share with Public:<span id="publicYn"></span>
+                         
                       
                        
                        
@@ -71,16 +70,18 @@
               </div>
               
             <div class="row" >
-              <div class="col-12" >
+              <div class="col-12 text-center">
                 
-              
-                <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                <div class="addthis_inline_share_toolbox"></div>
-                <!-- <a class="addthis_button_compact">
-                  <img src="http://s7.addthis.com/static/btn/sm-plus.gif" width="16" height="16" border="0" alt="Share" />
-                </a> -->
+                <div class="">
+                  <!-- ShareThis BEGIN -->
+                  <div class="sharethis-inline-share-buttons"></div>
+                  <!-- ShareThis END -->
+                </div>
                 
-                
+        </div>
+        <br/>
+        <div class="text-center">
+          <img class="tex-center" src="/assets/img/thank-you.png" style="width:50%"/>
         </div>
     
 <% include partials/cookie-msg %>

@@ -9,7 +9,7 @@ bcrypt = require('bcryptjs');
 fs = require('fs');
 path = require('path');
 var randomstring = require("randomstring");
-const Resize = require('../Resize');
+// const Resize = require('../Resize');
 // const sharp = require('sharp');
 require("firebase/auth");
 

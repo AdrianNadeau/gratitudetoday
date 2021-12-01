@@ -10,18 +10,19 @@
     
     firebase.auth().onAuthStateChanged(function(user) {
      //register user
+     console.log("user: "+user);
      
         var signInProvider, profileId, profileDisplay, profileEmail, profilePhoto, accessToken;
-            user.providerData.forEach(function (profile) {
-            signInProvider= profile.providerId;
-            profileId= profile.uid;
+            // user.providerData.forEach(function (profile) {
+            signInProvider= user.profile.providerId;
+            profileId= user.profile.uid;
             
-            profileDisplay= profile.displayName;
-            signInProvider= profile.providerId;
+            profileDisplay= user.profile.displayName;
+            // signInProvider= user.profile.providerId;
             
-            profileEmail = profile.email;
-            profilePhoto = profile.photoURL;
-            profileEmailVerfied = profile.profileEmailVerfied;
+            profileEmail = user.profile.email;
+            profilePhoto = user.profile.photoURL;
+            profileEmailVerfied = user.profile.profileEmailVerfied;
             user.getIdToken().then(function(accessToken) {
               
               //insert document ajax
@@ -56,7 +57,7 @@
                  
                 }
               }); 
-            });
+            // });
             
         });
        

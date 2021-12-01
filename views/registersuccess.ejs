@@ -10,6 +10,7 @@
     
     firebase.auth().onAuthStateChanged(function(user) {
      //register user
+     console.log("user: "+user);
      
         var signInProvider, profileId, profileDisplay, profileEmail, profilePhoto, accessToken;
             // user.providerData.forEach(function (profile) {

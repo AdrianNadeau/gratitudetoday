@@ -14,15 +14,15 @@
      
         var signInProvider, profileId, profileDisplay, profileEmail, profilePhoto, accessToken;
             // user.providerData.forEach(function (profile) {
-            signInProvider= user.profile.providerId;
-            profileId= user.profile.uid;
+            signInProvider= user.providerId;
+            profileId= user.uid;
             
-            profileDisplay= user.profile.displayName;
+            profileDisplay= user.displayName;
             // signInProvider= user.profile.providerId;
             
-            profileEmail = user.profile.email;
-            profilePhoto = user.profile.photoURL;
-            profileEmailVerfied = user.profile.profileEmailVerfied;
+            profileEmail = user.email;
+            profilePhoto = user.photoURL;
+            profileEmailVerfied = user.profileEmailVerfied;
             user.getIdToken().then(function(accessToken) {
               
               //insert document ajax

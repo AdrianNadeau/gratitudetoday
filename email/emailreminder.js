@@ -1,41 +1,51 @@
-logger = require('../logger/logger')
-const sgMail = require('@sendgrid/mail')
+"use strict";
+const nodemailer = require("nodemailer");
+// logger = require('../logger/logger')
 const { SENDGRID_API_KEY,HOST, NODE_PORT  } = require('../config.js');
 
-var EmailReminder = function() {};
 
-EmailReminder.prototype.sendReminderEmail = function(emailTo, firstName) {
-   logger.debug(emailTo);
-   logger.debug(firstName);
-   
-  
-   
-    sgMail.setApiKey(SENDGRID_API_KEY);
-    const msg = {
-      to: emailTo,
-      from: 'gratitudetoday@adriannadeau.com',
-      subject: 'GratitudeToday Progress Update',
-      html: '<strong>Hello '+firstName+'</strong><br><br>'+
-      'We hope you are enjoying the community and are progressing to your goals!<br><br>'+
-      'Here is an update on your progress<br><br> (progress)<br><br>'+
-      'Do not forget to keep up with your posts. Even small posts🚀<br>'+
-      'Here is the gratitude today quote:'+
-      '"This is the quote\"I am happy because I’m grateful. I choose to be grateful. That gratitude allows me to be happy. Will Arnett”'+
-      '<br/> ~ The GratitudeToday Community.'
-      ,
-    
-    };
-    logger.debug('send reminder mail...');
-    sgMail.send(msg, function (err, email) {
-    if (err) {
-        logger.error("Mail issue (proxy)");
-        return 1;
-    }
-    else {
-        return 0;
+
+// async..await is not allowed in global scope, must use a wrapper
+async function main() {
+
+  //get all users who want to recevie the
+  // Generate test SMTP service account from ethereal.email
+  // Only needed if you don't have a real mail account for testing
+  let testAccount = await nodemailer.createTestAccount();
+
+  // var transport = nodemailer.createTransport({
+  //   host: "smtp.mailtrap.io",
+  //   port: 2525,
+  //   auth: {
+  //     user: "68ee7d6592accd",
+  //     pass: "65feada484ae68"
+  //   }
+  // });
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+    host: "smtp.mailtrap.io",
+    port: 2525,
+    auth: {
+      user: "68ee7d6592accd",
+      pass: "65feada484ae68"
     }
   });
-			      
-};
 
-module.exports = new EmailReminder();
+  // send mail with defined transport object
+  let info = await transporter.sendMail({
+    from: 'gratitudetoday@adriannadeau.com', // sender address
+    to: "adrian@adriannadeau.com , adrian@adriannadeau.com", // list of receivers
+    subject: "Hello ✔", // Subject line
+    text: "Hello world?", // plain text body
+    html: "<b>Hello world?</b>", // html body
+  });
+
+  console.log("Message sent: %s", info.messageId);
+  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+
+  // Preview only available when sending through an Ethereal account
+  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+  // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+}
+
+main().catch(console.error);

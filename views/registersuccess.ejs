@@ -5,13 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
 <script type="text/javascript">
+   $("#validationErrors").hide();
+    $("#validationSuccess").hide();
 //firebase.initializeApp(firebaseConfig);
   initApp = function() {
     
     firebase.auth().onAuthStateChanged(function(user) {
      //register user
      console.log("user: "+user);
-     
+     if(user==null){
+      $("#validationSuccess").hide();
+      $("#validationError").hide();
+      $("#validationError").html("<div class='alert alert-error text-center'><i class='fa-times-circle'></i>&nbsp;Sorry, there was an error logging in.<br/><a href=\"/contact\">Click here to contact us to resolve the issue</a><br/><br/><center></div>");
+      // $("#validationError").show();
+
+     }else{
         var signInProvider, profileId, profileDisplay, profileEmail, profilePhoto, accessToken;
             // user.providerData.forEach(function (profile) {
             signInProvider= user.providerId;
@@ -54,13 +62,14 @@
                 error: function (error) {
                   
                   console.log(error.message);
+                  $("#validationError").show();
                  
                 }
               }); 
             // });
             
         });
-       
+      }
      
     }, function(error) {
       console.log(error);
@@ -127,6 +136,7 @@
   <script>
 function forwardpage(userid){
     window.setTimeout(function() {
+      $("#validationError").hide();
       $("#validationSuccess").html("<div class='alert alert-success text-center'><i class='fas fa-check'></i>&nbsp;Registered Succesfully!<br/><a href=\"/users/auth/activateAccount/?id="+userid+"\">Click here to begin your journey.</a><br/><br/><center></div>");
        
       $("#loading-page").hide();

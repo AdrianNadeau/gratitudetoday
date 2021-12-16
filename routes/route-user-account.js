@@ -223,7 +223,7 @@ router.get('/getpostdetails/:postid',  function(req, res) {
           }
           else{
             //send back post as json
-            
+            logger.debug("we have the post to share")
             res.send(post)
           }
       });

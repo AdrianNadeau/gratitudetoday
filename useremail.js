@@ -12,7 +12,7 @@ mongoose=require('mongoose');
 sgMail.setApiKey(SENDGRID_API_KEY)
 const msg = {
   to: 'adrian@adriannadeau.com', // Change to your recipient
-  from: 'gratitudetoday@adriannadeau.com', // Change to your verified sender
+  from: 'Gratitude Today <gratitudetoday@adriannadeau.com>', // Change to your verified sender
   subject: 'Be Grateful Today!',
   text: 'and easy to do anywhere, even with Node.js',
   html: '<strong>and easy to do anywhere, even with Node.js</strong>',

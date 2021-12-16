@@ -71,7 +71,7 @@ router.post('/', async function(req, res) {
               logger.error(errMessage);
               if(errMessage.includes("E11000")){
                 logger.debug("CURRENT USER");
-                console.log("error: "+email);
+                
                 admin.auth().getUserByEmail(email)
                   .then(function(userRecord) {
                     User.find({ email: userRecord.email}, function (err, docs) {

@@ -159,7 +159,7 @@ router.get('/sharepost', function(req, res) {
 
 
 router.post('/updateAccount/', async function(req,res){
-  logger.debug('update account');
+  
   if (!req.session.userid) {
      
       const error = new Error('Session Expired');
@@ -212,27 +212,25 @@ router.get('/getOnboardFlag',  function(req, res) {
 });
   //get selected post - move to post router later?
 router.get('/getpostdetails/:postid',  function(req, res) {
-    try{
-      
+  try{
       const post = Post.findById(req.params.postid, function (err, post) {
-      
-          if(err){
+      if(err){
             //return error page
-            
             logger.error(err);
-          }
-          else{
+      }
+      else{
             //send back post as json
-            logger.debug("we have the post to share")
             res.send(post)
           }
       });
-      //res.send(JSON.stringify(post))
-      
+    
       
     } catch(error){
       logger.error("ERROR: "+error);
       }
+   
+  
+ 
   });
 ////////////////////
 ////UPDATE JOURNEY////

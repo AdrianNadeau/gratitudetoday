@@ -18,22 +18,6 @@ require("firebase/auth");
 var admin = require("firebase-admin");
 var serviceAccount = require('./gratitudetoday-2e630-firebase-adminsdk-sx0pq-b907b6e239.json');
 
-// Your web app's Firebase configuration
-// var firebaseConfig = {
-//   apiKey: "AIzaSyCMP6_4RzRbqsHlMZVmZEtK_UkypLECXBY",
-//   authDomain: "gratitudetoday-2e630.firebaseapp.com",
-//   projectId: "gratitudetoday-2e630",
-//   storageBucket: "gratitudetoday-2e630.appspot.com",
-//   messagingSenderId: "957156185108",
-//   appId: "1:957156185108:web:2c7f59c145cfcce9f14301",
-//   measurementId: "G-8EPH5NWCK8"
-// };
-// // Initialize Firebase
-
-// firebase.initializeApp(firebaseConfig);
-
-// console.log(firebaseConfig.apiKey);  // true
-// firebase.analytics();
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://gratitudetoday-2e630.firebaseapp.com"//CALLBACK URLS https://gratitudetoday-2e630.firebaseapp.com
@@ -44,7 +28,7 @@ const indexRouter = require('./routes/index.js');
 const userAccountRouter = require('./routes/route-user-account.js');
 const postsRouter = require('./routes/posts.js');
 const authRouter = require('./routes/route-authentication');
-// const sessionRouter = require('./routes/route-session.js');
+
 
 
 var app = express();

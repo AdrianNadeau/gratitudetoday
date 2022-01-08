@@ -53,9 +53,9 @@
                 }
               });
             })
-          // } else {
-          //    // User is signed out
-          //    alert("IN ELSE")
+          } else {
+              // User is signed out
+              window.location.replace("/users/auth/activateAccount/?id="+data._id);
             
           }
         }, function(error) {

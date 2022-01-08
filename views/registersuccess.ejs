@@ -7,74 +7,61 @@
 <script type="text/javascript">
    $("#validationErrors").hide();
     $("#validationSuccess").hide();
-//firebase.initializeApp(firebaseConfig);
-  initApp = function() {
-    
-    firebase.auth().onAuthStateChanged(function(user) {
-     //register user
-     console.log("user: "+user);
-     if(user==null){
-      $("#validationSuccess").hide();
-      $("#validationError").hide();
-      $("#validationError").html("<div class='alert alert-error text-center'><i class='fa-times-circle'></i>&nbsp;Sorry, there was an error logging in.<br/><a href=\"/contact\">Click here to contact us to resolve the issue</a><br/><br/><center></div>");
-      // $("#validationError").show();
-
-     }else{
-        var signInProvider, profileId, profileDisplay, profileEmail, profilePhoto, accessToken;
-            // user.providerData.forEach(function (profile) {
-            signInProvider= user.providerId;
-            profileId= user.uid; 
-            
-            profileDisplay= user.displayName;
-            // signInProvider= user.profile.providerId;
-            
-            profileEmail = user.email;
-            profilePhoto = user.photoURL;
-            profileEmailVerfied = user.profileEmailVerfied;
+    initApp = function() {
+        firebase.auth().onAuthStateChanged(function(user) {
+          
+          if (user) {
+            // User is signed in.
+            var displayName = user.displayName;
+            var email = user.email;
+            var emailVerified = user.emailVerified;
+            var photoURL = user.photoURL;
+            var uid = user.uid;
+            var phoneNumber = user.phoneNumber;
+            var providerData = user.providerData;
             user.getIdToken().then(function(accessToken) {
-              
-              //insert document ajax
+             //insert/check document ajax
               $.ajax({
                 dataType: "json",
                 type: "POST",
                 data: {
-                  firebase_uid: profileId,
-                  displayName:profileDisplay,
-                  email: profileEmail,
+                  firebase_uid: user.uid,
+                  displayName:user.displayName,
+                  email: user.email,
                   accessToken: accessToken,
-                  photoURL: profilePhoto
-                  //providerData:providerData
+                  photoURL: user.photoURL,
+                  providerData:providerData
                 
                 },
                 url: "/users/auth/",
                 success: function (data) {
                   
-
                   if(data=="LOGIN_USER")
                     //login user in
                     window.location.assign("/users/account/dashboard/");
                   else
+                    //send to journey
                     
-                    forwardpage(data._id)
+                    window.location.assign("/users/auth/activateAccount/?id="+data._id);
                     
               
                  },
                 error: function (error) {
                   
                   console.log(error.message);
-                  $("#validationError").show();
                  
                 }
-              }); 
-            // });
+              });
+            })
+          // } else {
+          //    // User is signed out
+          //    alert("IN ELSE")
             
+          }
+        }, function(error) {
+          console.log(error);
         });
-      }
-     
-    }, function(error) {
-      console.log(error);
-    });
-  };
+      };
 
   window.addEventListener('load', function() {
     initApp()
@@ -90,59 +77,40 @@
 
   <!-- ======= Hero Section ======= -->
   
-    <section id="contact" class="contact section-bg" data-aos="fade-up"> 
+  <!-- ======= Hero Section ======= -->
+  <section id="sub-hero">
+         
     <div class="container">
-      
+     
       <div class="row">
-        
-        <div class="col-sm-5 offset-sm-3">
-          <div class="section-title" data-aos="fade-up">
-            <h2 id="auth-title"></h2>
-            
-          </div>
-          <div class="container white-form">
+        <div class="col-2">&nbsp;</div>
+        <div class="col-8">
+         
+         
+<section class="features">
+ 
+  <div class="container white-form">
     
     
-            <div class="row">
-              <div class="col-12 text-center" id="loading-page">
-                <p>We are working hard to get things setup for you...</p>
-                
-                
-                       <img style="width:150px; height:150px" src="/assets/img/heart.gif"></img><br/>
-                       
-                  <div class="col-2">&nbsp;</div>
-                
-                
-            </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1 id="text1">Taking you on your Journey...
+        </h1>
         
-              
-          </div>
-          <div id = "validationError"></div>
-          <div id = "validationSuccess"></div>
-            
-            <pre id="account-details"></pre>
+        
+               <img style="width:10%;" src="/assets/img/loading.gif"></img><br/>
                
-        </div>
+          <div class="col-2">&nbsp;</div>
         
-      </div>
-       
-
+        
+    </div>
+  </form> 
+  </div>
   <% include partials/cookie-msg %>
   
   <% include partials/scripts %>
 </body>
 
 
-  <script>
-function forwardpage(userid){
-    window.setTimeout(function() {
-      $("#validationError").hide();
-      $("#validationSuccess").html("<div class='alert alert-success text-center'><i class='fas fa-check'></i>&nbsp;Registered Succesfully!<br/><a href=\"/users/auth/activateAccount/?id="+userid+"\">Click here to begin your journey.</a><br/><br/><center></div>");
-       
-      $("#loading-page").hide();
-     
-      
-    }, 3000);
-  }
 </script>
 </html>

@@ -207,7 +207,9 @@ function loadPosts() {
                 if(totalPts>299){
                   msgs="<img src='/assets/img/medals/bronze-tier.png'>";
                   msgs+="&nbsp;Challenge 1: Get a total of 300 Gratipoints to move to level.";
-                  
+                  //set image to bronze icon //$(this).attr("src", "images/card-front.jpg");
+                  // $("#badge-status").src("/assets/img/medals/silver-tier.png");
+                  $("#badge-status").attr("src", "/img/medals/bronze-tier.png");
                   $("#memberlevel").html("Bronze");
                   
                 }
@@ -220,6 +222,7 @@ function loadPosts() {
                   msgs="<img src='/assets/img/medals/silver-tier.png'>";
                   msgs+="&nbsp;Challenge 2 Get a total of 1000 Gratipoints to move to level.";
                   $("#memberlevel").html("Silver");
+                  $("#badge-status").attr("src", "/assets/img/medals/silver-tier.png");
                   
                 }
                 else{
@@ -231,6 +234,7 @@ function loadPosts() {
                   msgs="<img src='/assets/img/medals/gold-tier.png'>";
                   msgs+="&nbsp;Challenge 3 Get a total of 3000 Gratipoints to move to level.";
                   $("#memberlevel").html("Gold");
+                  $("#badge-status").attr("src", "/assets/img/medals/gold-tier.png");
                   
                 }
                 else{

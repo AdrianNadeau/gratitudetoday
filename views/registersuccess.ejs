@@ -55,7 +55,7 @@
             })
           } else {
               // User is signed out
-              window.location.replace("/users/account/dashboard/");
+              window.location.replace("/users/auth/activateAccount/?id="+data._id);
             
           }
         }, function(error) {

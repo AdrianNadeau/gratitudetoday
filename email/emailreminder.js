@@ -33,7 +33,7 @@ async function main() {
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: 'gratitudetoday@adriannadeau.com', // sender address
+    from: 'info@gratitudetoday.org', // sender address, change to .env
     to: "adrian@adriannadeau.com , adrian@adriannadeau.com", // list of receivers
     subject: "Hello ✔", // Subject line
     text: "Hello world?", // plain text body

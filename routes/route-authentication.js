@@ -2,8 +2,7 @@ var express = require('express'),
 
 router = express.Router();
 User = require("../models/UserModel");
-var logger = require('../logger/logger'),
-emailhelper = require('../email/emailhelper');
+var logger = require('../logger/logger');
 const { HOST, NODE_PORT}  = require('../config.js');
 
 const saltRounds = 10;
@@ -95,11 +94,7 @@ router.post('/', async function(req, res) {
               }
             }
             else{
-                  
-                  // var url = 'http://' + HOST + ':'+NODE_PORT+'/users/auth/activateAccount/?id=' + user._id ;
-                  // logger.debug(url);
-                  // console.log("url: "+url);
-                  
+                  //send template email confirm
                   sess = req.session;
                   sess.userid = user._id;
                   res.send(user);

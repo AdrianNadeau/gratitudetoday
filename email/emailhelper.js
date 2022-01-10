@@ -16,7 +16,7 @@ EmailHelper.prototype.sendActivateEmail = function(emailTo, emailFrom, templateI
     sgMail.setApiKey(SENDGRID_API_KEY);
     const msg = {
       to: emailTo,
-      from: 'gratitudetoday@adriannadeau.com',
+      from: 'info@gratitudetoday.org',
       subject: 'GratitudeToday Activate Account',
       html: '<strong>Welcome aboard '+firstName+'</strong><br><br>'+
       'Thanks for signing up! Our mission here is simple...<br><br>'+

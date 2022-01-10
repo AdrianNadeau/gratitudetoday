@@ -1,5 +1,3 @@
-
-
 var express = require('express');
 const logger = require('../logger/logger');
 const User = require('../models/UserModel');
@@ -50,7 +48,10 @@ router.get('/logout', function(req, res) {
     res.render('logout', { 'url': 'home' });
   }
 });
-
+router.get('/emailconfirm', function(req, res, next) {
+   
+  res.render('emailconfirmed',{'url': 'home'});
+});
 router.get('/admin', function(req, res) {
   res.render('admin',{'url': 'home'});
 });
@@ -71,7 +72,7 @@ router.get('/sendreminders', function(req, res) {
     sgMail.setApiKey(SENDGRID_API_KEY)
     const msg = {
         to: 'adrian@adriannadeau.com', // Change to your recipient
-        from: 'Gratitude Today <gratitudetoday@adriannadeau.com>', // Change to your verified sender
+        from: 'Gratitude Today <info@gratitudetoday.org>', // Change to your verified sender
         subject: 'Be Grateful Today!',
         text: 'and easy to do anywhere, even with Node.js',
         html: '<strong>and easy to do anywhere, even with Node.js</strong>',

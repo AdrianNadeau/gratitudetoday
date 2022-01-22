@@ -29,7 +29,7 @@
           <div id = "validationSuccess"></div>
               
             
-            <div class="alert alert-info" role="alert" id="onboardflagAlert">
+            <!-- <div class="alert alert-info" role="alert" id="onboardflagAlert">
               <strong>Welcome, here are the steps for feeling grateful:</strong><br/>
               <ol style="font-size: .8em;">
                 <li>Post "What are you gratetul for?"</li>
@@ -41,7 +41,7 @@
                 
               </ol>
               
-            </div>
+            </div> -->
           
           <h1 class = "sub-h1" style="font-size:1.5em !important;">Hello <span class="sub-h1" id="displayname"></span>,</h1>
           
@@ -248,23 +248,24 @@
   
   <script>
     $(document).ready(function() {
-        $.ajax({
-            url: '/users/auth/getDisplayOnBoard/',
-            type : "GET",
-            data: {},
-            success : function(user) {
-              //display box if set to false
+      $("#onboardflagAlert").hide();
+        // $.ajax({
+        //     url: '/users/auth/getDisplayOnBoard/',
+        //     type : "GET",
+        //     data: {},
+        //     success : function(user) {
+        //       //display box if set to false
              
-              if(user){
-                //show box (true)
-                $("#onboardflagAlert").show();
-              }else{
-                //hide box (false)
-                $("#onboardflagAlert").hide();
-              }
-            }
+        //       if(user){
+        //         //show box (true)
+        //         $("#onboardflagAlert").show();
+        //       }else{
+        //         //hide box (false)
+        //         $("#onboardflagAlert").hide();
+        //       }
+        //     }
            
-         });
+        //  });
       
    });
 

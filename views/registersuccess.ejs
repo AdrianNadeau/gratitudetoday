@@ -20,7 +20,7 @@
             var phoneNumber = user.phoneNumber;
             var providerData = user.providerData;
             user.getIdToken().then(function(accessToken) {
-              alert(accessToken);
+              
              //insert/check document ajax
               $.ajax({
                 dataType: "json",
@@ -56,7 +56,7 @@
             })
           } else {
               // User is signed out
-              alert("login failed?")
+              
               window.location.replace("/loginfailed/");
               // window.location
             

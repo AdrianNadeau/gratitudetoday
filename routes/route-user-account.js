@@ -95,6 +95,9 @@ router.get('/notifications', function(req, res) {
 router.get('/sharepost', function(req, res) {
   res.render('sharepost',{'url': 'accounts'});
 });
+router.get('/viewpost', function(req, res) {
+  res.render('viewpost',{'url': 'accounts'});
+});
 
 // var randomFileName = randomstring.generate();
 // var ext;
@@ -210,7 +213,7 @@ router.get('/getOnboardFlag',  function(req, res) {
     logger.error("ERROR: "+error);
     }
 });
-  //get selected post - move to post router later?
+//get selected post - move to post router later?
 router.get('/getpostdetails/:postid',  function(req, res) {
   try{
       const post = Post.findById(req.params.postid, function (err, post) {
@@ -232,6 +235,41 @@ router.get('/getpostdetails/:postid',  function(req, res) {
   
  
   });
+  
+router.get('/getnonsecuredetails/:postid',  function(req, res) {
+  //remove session for social sharing
+  logger.debug("get data for : "+req.params.postid);
+  req.session.destroy(function(err) {
+    // cannot access session here
+    try{
+      
+
+      const post = Post.findById(req.params.postid, function (err, post) {
+      if(err){
+            //return error page
+            logger.error(err);
+      }
+      else{
+            //send back post as json
+            // res.send(post)
+            logger.debug("send post to view")
+            //send to view post page
+            
+            res.redirect('/viewpost/'+req.params.postid);
+          }
+      });
+    
+      
+    } catch(error){
+      logger.error("ERROR: "+error);
+      }
+   
+  
+ 
+  })
+  
+  });
+
 ////////////////////
 ////UPDATE JOURNEY////
 ////////////////////

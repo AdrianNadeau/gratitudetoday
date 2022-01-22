@@ -3,6 +3,7 @@ var express = require('express'),
 router = express.Router();
 User = require("../models/UserModel");
 var logger = require('../logger/logger');
+var emailHelper = require('../email/emailhelper');
 const { HOST, NODE_PORT}  = require('../config.js');
 
 const saltRounds = 10;
@@ -95,6 +96,9 @@ router.post('/', async function(req, res) {
             }
             else{
                   //send template email confirm
+                  //emailTo, emailFrom, templateId, url, first,Name, template_id
+                  let emailReturn=emailHelper.sendActivateEmail(email,"info@gratitudetoday.org", "d-cfac2481e5274fd7bf44d72063d3986f","https://www.gratitudetoday.org/emailconfirm",displayName)
+                  
                   sess = req.session;
                   sess.userid = user._id;
                   res.send(user);

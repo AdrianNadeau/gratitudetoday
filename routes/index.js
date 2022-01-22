@@ -38,6 +38,14 @@ router.get('/privacy', function(req, res) {
 router.get('/coffee', function(req, res) {
   res.render('coffee',{'url': 'home'});
 });
+router.get('/loginfailed', function(req, res) {
+  
+  if (req.session) {
+    req.session.destroy();
+    
+    res.render('loginfailed', { 'url': 'home' });
+  }
+});
 
 router.get('/logout', function(req, res) {
   

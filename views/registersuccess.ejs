@@ -20,6 +20,7 @@
             var phoneNumber = user.phoneNumber;
             var providerData = user.providerData;
             user.getIdToken().then(function(accessToken) {
+              alert(accessToken);
              //insert/check document ajax
               $.ajax({
                 dataType: "json",
@@ -55,7 +56,9 @@
             })
           } else {
               // User is signed out
-              window.location.replace("/users/auth/activateAccount/?id="+data._id);
+              alert("login failed?")
+              window.location.replace("/loginfailed/");
+              // window.location
             
           }
         }, function(error) {
@@ -101,7 +104,7 @@
                <img style="width:10%;" src="/assets/img/loading.gif"></img><br/>
                
           <div class="col-2">&nbsp;</div>
-        
+          
         
     </div>
   </form> 
@@ -109,6 +112,7 @@
   <% include partials/cookie-msg %>
   
   <% include partials/scripts %>
+  
 </body>
 
 

@@ -27,13 +27,13 @@
           
           <div class="col-sm-8 offset-sm-2">
             <div class="section-title" data-aos="fade-up" style="padding-top: 0px;">
-              <h2>Share Post</h2>
+              <h2>View Post</h2>
              
             </div>
             
               
             
-          <h1 class = "sub-h1" style="font-size:1.5em !important;">Hello <span class="sub-h1" id="displayname"></span>,</h1>
+          <h1 class = "sub-h1" style="font-size:1.5em !important;">Hey, check out my post! </span></h1>
           <div class="white-form">
         
             <div id="msg-area">
@@ -48,7 +48,7 @@
                          <span id="postMsg"></span>                       
                         </p>
                        <p></p>
-                       <strong>How are you feeling today?</strong>
+                       <!-- <strong>How are you feeling today?</strong>
                        <div>
                         
                            <input type="radio" value="1" name="optradio">&nbsp;Down
@@ -59,7 +59,7 @@
                          </div>
                          <br/>
                          
-                      
+                       -->
                        
                        
                    </form>
@@ -72,11 +72,10 @@
             <div class="row" >
               <div class="col-12 text-center">
                 
-                <div class="">
-                 <!-- ShareThis BEGIN -->
-                  <div class="sharethis-inline-share-buttons"></div>
-                <!-- ShareThis END -->
-                </div>
+                <!-- <div class="">
+                    
+                     <div class="sharethis-inline-share-buttons"></div>
+                </div> -->
                 
         </div>
         <br/>
@@ -115,11 +114,12 @@ $(document).ready(function() {
 </script>
 
 <script>
+    alert("on page");
     const postid=$.urlParam('id');
     //console.log("post: "+postid);
     //http://localhost:3508/users/account/getpostdetails/60ccdc13cd056f4b10b6ac96/
-    const url = '/users/account/getpostdetails/'+postid;
-    //console.log(url);
+    const url = '/users/account/getnonsecuredetails/'+postid;
+    
     $.ajax({
             url: url,
             type : "GET",

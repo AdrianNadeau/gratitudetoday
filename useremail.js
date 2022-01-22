@@ -17,8 +17,8 @@ const msg = {
   // text: 'and easy to do anywhere, even with Node.js',
   // html: '<strong>and easy to do anywhere, even with Node.js</strong>',
   template_id: 'd-cfac2481e5274fd7bf44d72063d3986f',
-  name : 'Adrian',
-  url : 'http://www.gratitudetoday.org/emailconfirm'
+  // name : 'Adrian',
+  // url : 'http://www.gratitudetoday.org/emailconfirm'
 }
 sgMail
   .send(msg)

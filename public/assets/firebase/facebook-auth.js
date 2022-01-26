@@ -110,6 +110,7 @@ function checkLoginState(response) {
   } else {
     // User is signed-out of Facebook.
     firebase.auth().signOut();
+    console.log('OUUUUT4')
   }
 }
 // [END auth_facebook_callback]

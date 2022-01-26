@@ -11,6 +11,7 @@
   <script>
   // [START auth_sign_out]
   firebase.auth().signOut().then(() => {
+    console.log('OUUUUT2')
     // Sign-out successful.
     logger.debug("success")
   }).catch((error) => {

@@ -44,62 +44,140 @@ router.get('/registersuccess', function (req, res) {
 });
 
   
+// //////////////////////////////////////
+// ///         SIGNUP                  //
+// //////////////////////////////////////
+// router.post('/', async function(req, res) {
+  
+//   const { SENDGRID_API_KEY } = require('../config.js');
+//     const {displayName, email, photoURL, accessToken} = req.body;
+//     let dataReturned;
+//     logger.debug("email: "+email);
+//     //see if email address already in Mongodb:
+//     user = User.findOne({ email: email}, function (err, users) {
+//       if(users){ 
+//         // logger.debug("Login user: "+users);
+//         dataReturned="log";
+//         User.find({ email: email}, function (err, docs) {
+//           if(!docs){
+//             //something wrong for login  
+            
+//           }
+//           else{
+//             //have our user return 
+//             sess = req.session;
+//             sess.userid = docs[0]._id;
+//             res.send(JSON.stringify("log"));     
+//           }
+                    
+//         });
+        
+//       }
+//       else{
+//         logger.debug("Register user");
+//         dataReturned="reg";
+//              var user = new User({
+//               firebase_uid: user.uid,
+//                       accessToken: accessToken,
+//                       displayName:displayName,
+//                       email: email,
+//                       photoURL: photoURL,       
+//                       displayOnBoard: true,
+//                   });
+//                   user.save().
+//                   then(user => {
+//                     //registered
+                    
+//                     logger.debug("SAVED :"+email)
+//                     //send on journey
+//                     // res.send(user);
+//                     res.send(JSON.stringify("reg"));   
+                    
+//                   }).catch((error) => {
+//                     logger.error(error);
+                  
+//                 });
+//             }
+               
+        
+//   });
+  
+// })
+
 //////////////////////////////////////
 ///         SIGNUP                  //
 //////////////////////////////////////
 router.post('/', async function(req, res) {
   
   const { SENDGRID_API_KEY } = require('../config.js');
-    const {displayName, email, photoURL, accessToken} = req.body;
-    let dataReturned;
-    logger.debug("email: "+email);
-    //see if email address already in Mongodb:
-    User.findOne({ email: email}, function (err, users) {
-      if(users){
-        // logger.debug("Login user: "+users);
-        dataReturned="log";
-        User.find({ email: email}, function (err, docs) {
-          if(!docs){
-            //something wrong for login  
-            
-          }
-          else{
-            //have our user return 
-            sess = req.session;
-            sess.userid = docs[0]._id;
-            res.send(JSON.stringify('LOGIN_USER'));     
-          }
-                    
-        });
-        
-      }
-      else{
-        logger.debug("Register user");
-        dataReturned="reg";
-             var user = new User({
-                      accessToken: accessToken,
-                      displayName:displayName,
-                      email: email,
-                      photoURL: photoURL,       
-                      displayOnBoard: true,
-                  });
-                  user.save().
-                  then(user => {
-                    //registered
-                    
-                    logger.debug("SAVED :"+email)
-                    //send on journey
-                    res.send(user);
-                    
-                  }).catch((error) => {
-                    logger.error(error);
-                  
-                });
-            }
-        
-  });
+ 
+  const {displayName, email, photoURL, accessToken} = req.body;
+  console.log("email: "+email);
   
-})
+      try{ 
+        var user = new User({
+            
+            accessToken: accessToken,
+            displayName:displayName,
+            email: email,
+            photoURL: photoURL,       
+            displayOnBoard: true,
+        });
+         user.save(function (error, user) {
+          console.log("save: "+email);
+            
+            if (error) {
+              let errMessage= error.message;
+              logger.error(errMessage);
+              if(errMessage.includes("E11000")){
+                logger.debug("CURRENT USER");
+                
+                admin.auth().getUserByEmail(email)
+                  .then(function(userRecord) {
+                    User.find({ email: userRecord.email}, function (err, docs) {
+                      
+                      if(docs){
+                        
+                        sess = req.session;
+                        sess.userid = docs[0]._id;
+                        res.send(JSON.stringify('LOGIN_USER'));
+                        
+                      }
+                      
+                    });
+                  });
+                    
+                
+              }
+              else{
+                const error = new Error('Error Logging in, please try again or contact us.');
+                return res.send(JSON.stringify(error.message));
+              }
+            }
+            else{
+                  
+                  // var url = 'http://' + HOST + ':'+NODE_PORT+'/users/auth/activateAccount/?id=' + user._id ;
+                  // logger.debug(url);
+                  // console.log("url: "+url);
+                  
+                  sess = req.session;
+                  sess.userid = user._id;
+                  res.send(user);
+                
+                  
+            }
+          });
+        
+    
+    } catch (error) {
+    
+        //forward to error page
+        logger.error(error);
+        console.log("error: "+error);
+        
+    }     
+    
+});
     
     
     

@@ -44,15 +44,16 @@
                 url: "/users/auth/",
                 success: function (data) {
                  
-                  alert(data);
                   
-                  if(data=="reg"){
-                      //send to journey
+                  
+                  if(data=="LOGIN_USER"){
+                      //login user
+                      window.location.assign("/users/account/dashboard/");
                       
-                      window.location.replace("/users/auth/activateAccount/?id="+data._id);
                   }
                   else{ 
-                    window.location.replace("/users/auth/dashboard");
+                    //send to journey page
+                    window.location.replace("/users/auth/activateAccount/?id="+data._id);
                   }
                     
               
@@ -101,7 +102,7 @@
 <section class="features">
  
   <div class="container white-form">
-    NEW REGISTERS PAGE
+    
     
     <div class="row">
       <div class="col-12 text-center">

@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <% include partials/head %>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Begin emoji-picker Stylesheets -->
+  <link href="/assets/emoji/lib/css/emoji.css" rel="stylesheet">
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e742c1a85cb6d9e"></script>  
+  <!-- End emoji-picker Stylesheets -->
+<body>
+  <!-- ======= Header ======= -->
+  <% include partials/header %>
+  <!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  
+    <!-- ======= Hero Section ======= -->
+  
+    <section id="contact" class="contact section-bg" data-aos="fade-up"> 
+      <div class="container">
+        
+        <div class="row">
+          
+          <div class="col-sm-8 offset-sm-2">
+            <div class="section-title" data-aos="fade-up" style="padding-top: 0px;">
+              <h2>Delete Post</h2>
+             
+            </div>
+            
+              <div id = "validationErrors"></div>
+              <div id = "validationSuccess"></div>
+              
+          <h1 class = "sub-h1" style="font-size:1.5em !important;">Hello <span class="sub-h1" id="displayname"></span>,</h1>
+          <div class="white-form">
+        
+            <div id="msg-area">
+                <strong>Are you sure you would like to remove your post?</strong><br/>
+                <span id="postMsg"></span>     
+                <input type="hidden" id="id" value=""></input>
+                  
+            </div>
+            
+         </div>
+     </div>
+     </div>
+     <div>
+          <br/>
+        <div class="col-sm-8 offset-sm-2">
+            <input type="button" id="deletePostButton" class="btn btn-success navtoTop text-center" style="width: 100px;padding:0px !important;height: 45px;" value="Delete"> <input type="button" id="btn-skip-dashboard" onclick="window.history.back();" class="btn btn-secondary navtoTop" value="Cancel">
+        </div>
+    </div>
+           
+        
+    
+<% include partials/cookie-msg %>
+<% include partials/scripts %>
+<script src="/assets/js/getParams.js"></script>
+<!-- Begin emoji-picker JavaScript -->
+<script src="/assets/emoji/lib/js/config.js"></script>
+<script src="/assets/emoji/lib/js/util.js"></script>
+<script src="/assets/emoji/lib/js/jquery.emojiarea.js"></script>
+<script src="/assets/emoji/lib/js/emoji-picker.js"></script>
+<!-- End emoji-picker JavaScript -->
+<script>
+$(document).ready(function() {
+  
+  getData(); 
+   
+});
+
+$( "#deletePostButton" ).click(function() {
+    const postid=$.urlParam('id');
+   
+    const url = '/users/account/deletePost/'+postid;
+    $.ajax({
+            url: url,
+            type : "GET",
+            data: { },
+            success : function(post) {
+               
+                window.location.assign("/users/account/myposts/");
+               
+                
+            },
+            error : function(error) {
+             
+                alert("Error removing post");
+            }
+           
+});
+});
+
+</script>
+ 
+
+<script>
+    const postid=$.urlParam('id');
+    const url = '/users/account/getpostdetails/'+postid;
+   
+    $.ajax({
+            url: url,
+            type : "GET",
+            data: { },
+            success : function(post) {
+                
+                $("#postMsg").html(post.postMsg);
+                $("#id").html(post._id);
+               
+                
+            },
+            error : function(error) {
+             
+                alert("Error getting post");
+            }
+           
+});
+</script>
+

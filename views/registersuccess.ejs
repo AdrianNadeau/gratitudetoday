@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <% include partials/head %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<script type="text/javascript">
+//firebase.initializeApp(firebaseConfig);
+  initApp = function() {
+    
+    firebase.auth().onAuthStateChanged(function(user) {
+     //register user
+
+     
+        var signInProvider, profileId, profileDisplay, profileEmail, profilePhoto, accessToken;
+          profile = user.providerData;       
+            signInProvider= profile.providerId;
+            profileId= profile.uid;
+            
+            profileDisplay= profile.displayName;
+            signInProvider= profile.providerId;
+            
+            profileEmail = profile.email;
+            profilePhoto = profile.photoURL;
+            profileEmailVerfied = profile.profileEmailVerfied;
+            user.getIdToken().then(function(accessToken) {
+
+              
+              //insert document ajax
+              $.ajax({
+                dataType: "json",
+                type: "POST",
+                data: {
+                  firebase_uid: user.uid,
+                  displayName:user.displayName,
+                  email: user.email,
+                  accessToken: accessToken,
+                  photoURL: user.photoURL
+                  //providerData:providerData
+                
+                },
+                url: "/users/auth/",
+                success: function (data) {
+                  
+
+                  if(data=="LOGIN_USER")
+                    //login user in
+                    window.location.assign("/users/account/dashboard/");
+                  else
+                    
+                    forwardpage(data._id)
+                    
+              
+                 },
+                error: function (error) {
+                  
+                  console.log(error.message);
+                  window.location.assign("/users/account/dashboard/");
+                 
+                }
+              }); 
+            });
+            
+         });
+       
+     
+    }, function(error) {
+      console.log(error);
+    //});
+  };
+
+  window.addEventListener('load', function() {
+    initApp()
+  });
+</script></head>
+
+<body>
+  
+  <!-- ======= Header ======= -->
+  <% include partials/header %>
+ 
+  <!-- End Header --> 
+
+  <!-- ======= Hero Section ======= -->
+  
+    <section id="contact" class="contact section-bg" data-aos="fade-up"> 
+    <div class="container">
+      
+      <div class="row">
+        
+        <div class="col-sm-5 offset-sm-3">
+          <div class="section-title" data-aos="fade-up">
+            <h2 id="auth-title"></h2>
+            
+          </div>
+          <div class="container white-form">
+    
+    
+            <div class="row">
+              <div class="col-12 text-center" id="loading-page">
+                <p>We are working hard to get things setup for you...</p>
+                
+                
+                       <img style="width:150px; height:150px" src="/assets/img/loading."></img><br/>
+                       
+                  <div class="col-2">&nbsp;</div>
+                
+                
+            </div>
+        
+              
+          </div>
+          <div id = "validationError"></div>
+          <div id = "validationSuccess"></div>
+            
+            <pre id="account-details"></pre>
+               
+        </div>
+        
+      </div>
+       
+
+  <% include partials/cookie-msg %>
+  
+  <% include partials/scripts %>
+</body>
+
+
+  <script>
+function forwardpage(userid){
+    window.setTimeout(function() {
+      // $("#validationSuccess").html("<div class='alert alert-success text-center'><i class='fas fa-check'></i>&nbsp;Registered Succesfully!<br/><a href=\"/users/auth/activateAccount/?id="+userid+"\">Click here to begin your journey.</a><br/><br/><center></div>");
+       
+      $("#loading-page").hide();
+      window.location.assign("/users/auth/activateAccount/?id="+userid);
+      
+      
+    }, 3000);
+  }
+</script>
+</html>

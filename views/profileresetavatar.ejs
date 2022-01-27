@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+		<% include partials/profilehead %>
+  </head>
+
+<body>
+
+     <!-- ==============================================
+     Navigation Section
+     =============================================== -->  
+     <body id="page-top">
+		<% include partials/pre-loader %>
+		 <!-- Navigation -->
+		 <% include partials/profile-nav %>
+		   <% include partials/profile-left %> <!--/ col-lg-3 -->
+	    <div class="col-lg-7">
+	
+			
+         <div class="cardbox">
+		 
+          <div class="cardbox-heading">
+						<p class="m-0" style="padding-left:15px;">Upload New Profile Image</p>
+				</div>
+        
+        
+           
+          </div><!--/ cardbox-heading -->
+          <div style="padding-left:15px">
+                  
+                                
+                            <a href="#" id="account-link" class="account-link">Back to Account</a>&nbsp;|&nbsp; <a href="/resetAvatarForm/?id=5dd7edf1a6721237f4109736" class="avatar-link">Profile Home</a>
+                            
+                            <div class="alert alert-password-danger text-center" role="alert"></div>
+                            <div class="alert alert-password-success text-center" role="alert"></div>
+                            <form class="form-horizontal" action="/users/upload" method="post" enctype="multipart/form-data" >
+                              <input type="hidden" id="id-hidden" value=""></input>
+                              <input type="file" name="avatar" />
+                              <input type="submit" value="upload">
+                              
+                              
+								  
+								              <!-- <div class="controls">
+                                        <br/>
+                                        <input type="submit" class="btn btn-success navtoTop" id ="updateProfile" value="Reset Password">
+                                    
+                                      <input type="button" class="btn btn-default" id="btn-cancel" value="Cancel">
+                                      
+								          	</div> -->
+							        </form>
+								
+							  
+                
+                  
+                        
+            </div><!--/ cardbox -->	
+           </div> 
+     
+		
+      
+		
+     
+		
+		</div><!--/ col-lg-6 -->
+	
+	   </div><!--/ row -->
+	  </div><!--/ container -->
+	 
+	 
+      <!-- ==============================================
+	 Scripts
+	 =============================================== -->
+	 <% include partials/scripts %>
+  <script src="/assets/js/sign-in.js"></script>
+  <script src="/assets/js/postFunctions.js"></script>
+  <script src="/assets/js/jquery-custom.js"></script>
+
+  <script>
+  $(document).ready(function() {
+    $('#info-email').attr('readonly', true);
+		getData();
+        
+  });
+  
+  
+  </script>
+
+
+  </body>
+</html>
+

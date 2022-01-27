@@ -5,28 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
 <script type="text/javascript">
-//firebase.initializeApp(firebaseConfig);
-  initApp = function() {
-    
-    firebase.auth().onAuthStateChanged(function(user) {
-     //register user
-
-     
-        var signInProvider, profileId, profileDisplay, profileEmail, profilePhoto, accessToken;
-          profile = user.providerData;       
-            signInProvider= profile.providerId;
-            profileId= profile.uid;
+   $("#validationErrors").hide();
+    $("#validationSuccess").hide();
+    initApp = function() {
+        firebase.auth().onAuthStateChanged(function(user) {
+          console.log('USER')
+          console.log(user)
+          
+          if (user) {
+            // User is is valid
             
-            profileDisplay= profile.displayName;
-            signInProvider= profile.providerId;
-            
-            profileEmail = profile.email;
-            profilePhoto = profile.photoURL;
-            profileEmailVerfied = profile.profileEmailVerfied;
-            user.getIdToken().then(function(accessToken) {
-
-              
-              //insert document ajax
+            console.log('USER 2')
+            console.log(user)  
+            var displayName = user.displayName;
+            var email = user.email;
+            var emailVerified = user.emailVerified;
+            var photoURL = user.photoURL;
+            var uid = user.uid;
+            var phoneNumber = user.phoneNumber;
+            var providerData = user.providerData;
+            user.getIdToken().then((accessToken) => {
+              console.log('USER 3')
+              console.log(providerData)
+              console.log(user)
+             //insert/check document ajax
               $.ajax({
                 dataType: "json",
                 type: "POST",
@@ -35,39 +37,42 @@
                   displayName:user.displayName,
                   email: user.email,
                   accessToken: accessToken,
-                  photoURL: user.photoURL
-                  //providerData:providerData
+                  photoURL: user.photoURL,
+                  providerData:providerData
                 
                 },
                 url: "/users/auth/",
                 success: function (data) {
+                 
+                  alert(data);
                   
-
-                  if(data=="LOGIN_USER")
-                    //login user in
-                    window.location.assign("/users/account/dashboard/");
-                  else
-                    
-                    forwardpage(data._id)
+                  if(data=="reg"){
+                      //send to journey
+                      
+                      window.location.replace("/users/auth/activateAccount/?id="+data._id);
+                  }
+                  else{ 
+                    window.location.replace("/users/auth/dashboard");
+                  }
                     
               
                  },
                 error: function (error) {
                   
                   console.log(error.message);
-                  window.location.assign("/users/account/dashboard/");
                  
                 }
-              }); 
-            });
+              });
+            })
+          } else {
+             //not sure what to do here...
+             alert('in else');
             
-         });
-       
-     
-    }, function(error) {
-      console.log(error);
-    //});
-  };
+          }
+        }, function(error) {
+          console.log(error);
+        });
+      };
 
   window.addEventListener('load', function() {
     initApp()
@@ -83,59 +88,41 @@
 
   <!-- ======= Hero Section ======= -->
   
-    <section id="contact" class="contact section-bg" data-aos="fade-up"> 
+  <!-- ======= Hero Section ======= -->
+  <section id="sub-hero">
+         
     <div class="container">
-      
+     
       <div class="row">
-        
-        <div class="col-sm-5 offset-sm-3">
-          <div class="section-title" data-aos="fade-up">
-            <h2 id="auth-title"></h2>
-            
-          </div>
-          <div class="container white-form">
+        <div class="col-2">&nbsp;</div>
+        <div class="col-8">
+         
+         
+<section class="features">
+ 
+  <div class="container white-form">
+    NEW REGISTERS PAGE
     
-    
-            <div class="row">
-              <div class="col-12 text-center" id="loading-page">
-                <p>We are working hard to get things setup for you...</p>
-                
-                
-                       <img style="width:150px; height:150px" src="/assets/img/loading."></img><br/>
-                       
-                  <div class="col-2">&nbsp;</div>
-                
-                
-            </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1 id="text1">Taking you on your Journey...
+        </h1>
         
-              
-          </div>
-          <div id = "validationError"></div>
-          <div id = "validationSuccess"></div>
-            
-            <pre id="account-details"></pre>
+        
+               <img style="width:10%;" src="/assets/img/loading.gif"></img><br/>
                
-        </div>
+          <div class="col-2">&nbsp;</div>
+          
         
-      </div>
-       
-
+    </div>
+  </form> 
+  </div>
   <% include partials/cookie-msg %>
   
   <% include partials/scripts %>
+  
 </body>
 
 
-  <script>
-function forwardpage(userid){
-    window.setTimeout(function() {
-      // $("#validationSuccess").html("<div class='alert alert-success text-center'><i class='fas fa-check'></i>&nbsp;Registered Succesfully!<br/><a href=\"/users/auth/activateAccount/?id="+userid+"\">Click here to begin your journey.</a><br/><br/><center></div>");
-       
-      $("#loading-page").hide();
-      window.location.assign("/users/auth/activateAccount/?id="+userid);
-      
-      
-    }, 3000);
-  }
 </script>
 </html>

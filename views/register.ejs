@@ -2,8 +2,9 @@
 <html lang="en">
 
   <% include partials/head %>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
   <script>
          
     // Your web app's Firebase configuration
@@ -20,22 +21,24 @@
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
   </script>
-  <!--
+  -->
   <script>
-        
+         
     // Your web app's Firebase configuration
-    const firebaseConfig = {
-  apiKey: "AIzaSyAdMHL7LaaQDW2jsyCb1eotnvA8dntcPPU",
+    var firebaseConfig = {
+      apiKey: "AIzaSyAdMHL7LaaQDW2jsyCb1eotnvA8dntcPPU",
   authDomain: "gratiudetoday---dev.firebaseapp.com",
   projectId: "gratiudetoday---dev",
   storageBucket: "gratiudetoday---dev.appspot.com",
   messagingSenderId: "600629301413",
   appId: "1:600629301413:web:bcb7472161a6b01d09fd4c"
-};
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-</script>
- -->
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    
+  </script>
+
+ 
   
   <script type="text/javascript">
     // FirebaseUI config.
@@ -93,7 +96,7 @@ const app = initializeApp(firebaseConfig);
         
         <div class="col-sm-5 offset-sm-3">
           <div class="section-title" data-aos="fade-up">
-            
+            NEW REGISTER PAGE
             <h2>Login</h2>
           <br/>
           Add info@gratitudetoday.org to your safe senders list to ensure you receive emails.

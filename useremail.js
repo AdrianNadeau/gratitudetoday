@@ -16,7 +16,7 @@ const msg = {
   subject: 'Be Grateful Today!',
   // text: 'and easy to do anywhere, even with Node.js',
   // html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-  template_id: 'd-cfac2481e5274fd7bf44d72063d3986f',
+  template_id: 'd-da08810607304f5c8f0d0c3aef86b45c',
   // name : 'Adrian',
   // url : 'http://www.gratitudetoday.org/emailconfirm'
 }
@@ -28,3 +28,8 @@ sgMail
   .catch((error) => {
     console.error(error)
   })
+
+  // //confirm
+  // d-109324885eb14ad7ac2a09a0d24898a1
+  // //reminder
+  // d-da08810607304f5c8f0d0c3aef86b45c 

@@ -44,8 +44,6 @@ const userAccountRouter = require("./routes/route-user-account.js");
 const postsRouter = require("./routes/posts.js");
 const authRouter = require("./routes/route-authentication");
 
-const unless = require("./utils/unless");
-
 // By default cookies are disabled, switch it on
 var request = r.defaults({ jar: true });
 console.log("");

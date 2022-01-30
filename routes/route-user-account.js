@@ -72,7 +72,8 @@ router.get("/getpost", function (req, res) {
   res.render("editpost", { url: "accounts" });
 });
 router.get("/getsharepost", function (req, res) {
-  res.render("sharepost", { url: "accounts", userId: req.session.userid });
+  const userId = req.session.userid;
+  res.render("sharepost", { url: userId ? "accounts" : "", userId });
 });
 
 router.get("/publicposts", function (req, res) {

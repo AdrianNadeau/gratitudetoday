@@ -31,14 +31,11 @@
              
             </div>
             
-              
-            
           <h1 class = "sub-h1" style="font-size:1.5em !important;">Hello <span class="sub-h1" id="displayname"></span>,</h1>
           <div class="white-form">
         
             <div id="msg-area">
                 <strong>What are you gratetul for?</strong>
-             
              
                    <div class="controls">
                      <form>
@@ -50,7 +47,6 @@
                        <p></p>
                        <strong>How are you feeling today?</strong>
                        <div>
-                        
                            <input type="radio" value="1" name="optradio">&nbsp;Down
                            <input type="radio" value="2" name="optradio">&nbsp;Not Great
                            <input type="radio" value="3" checked name="optradio">&nbsp;Okay
@@ -58,10 +54,6 @@
                            <input type="radio" value="5" name="optradio">&nbsp;Great
                          </div>
                          <br/>
-                         
-                      
-                       
-                       
                    </form>
                   
                  </div>
@@ -94,10 +86,12 @@
 <script src="/assets/emoji/lib/js/emoji-picker.js"></script>
 <!-- End emoji-picker JavaScript -->
 <script>
-$(document).ready(function() {
   
-  getData(); 
-   
+$(document).ready(function() {
+  const userId = '<%= userId %>'
+  if(userId) {
+    getData(); 
+  }   
 });
 
   $(function() {

@@ -89,9 +89,6 @@ router.get("/accountfriends", function (req, res) {
 router.get("/notifications", function (req, res) {
   res.render("notifications", { url: "accounts" });
 });
-router.get("/sharepost", function (req, res) {
-  res.render("sharepost", { url: "accounts" });
-});
 router.get("/viewpost", function (req, res) {
   res.render("viewpost", { url: "accounts" });
 });

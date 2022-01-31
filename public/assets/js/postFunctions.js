@@ -181,7 +181,7 @@ function loadPosts() {
                           
                          //http://localhost:3508/users/account/getpost/post/60ccb0ccd1183b21d0b9c55c
                           "<a href='/users/account/getpost/?id="+value._id+"'>Edit</a>&nbsp;|&nbsp;"+
-                          // "<a href='/users/account/getsharepost/?id="+value._id+"'>Share</a>&nbsp;|&nbsp;"+
+                          "<a href='/users/account/getsharepost/?id="+value._id+"'>Share</a>&nbsp;|&nbsp;"+
                           "<a href='/users/account/deletepost/?id="+value._id+"'>Delete</a><br/>"+
                           
                           // <a href='/users/account/getpost/+value._id+'>Edit</a>&nbsp;|&nbsp;<a href='/doors/getPost/?=s'>Share</a><br/>"+

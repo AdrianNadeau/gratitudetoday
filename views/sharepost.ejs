@@ -1,12 +1,12 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
+ 
   <% include partials/head %>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-  <!-- Begin emoji-picker Stylesheets -->
-  <link href="/assets/emoji/lib/css/emoji.css" rel="stylesheet">
-  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+
+ 
+
+
   
 
   
@@ -75,7 +75,12 @@
         <div class="text-center">
           <img class="tex-center" src="/assets/img/thank-you.png" style="width:50%"/>
         </div>
-    
+ 
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Begin emoji-picker Stylesheets -->
+  <link href="/assets/emoji/lib/css/emoji.css" rel="stylesheet">
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <% include partials/cookie-msg %>
 <% include partials/scripts %>
 <script src="/assets/js/getParams.js"></script>
@@ -90,9 +95,9 @@
 $(document).ready(function() {
   const userId = '<%= userId %>'
   if(userId) {
-    getData(); 
-  }   
-});
+      getData(); 
+    }   
+  });
 
   $(function() {
     // Initializes and creates emoji set from sprite sheet
@@ -121,6 +126,10 @@ $(document).ready(function() {
             success : function(post) {
                 $("#postMsg").val(post.postMsg);
                 $("#postMsg").html(post.postMsg);
+                //update meta tags
+                
+                document.title=post.postMsg;
+                
             },
             error : function(error) {
               alert("Error getting post");
@@ -128,4 +137,7 @@ $(document).ready(function() {
            
 });
 </script>
+
+
+
 

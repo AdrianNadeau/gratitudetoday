@@ -11,6 +11,7 @@ function getData(){
                 $("#id").val(user._id);
                 $("#email").val(user.email);
                 $("#email").html(user.email);
+                
                 $("#displayname").html(user.displayName);
                 $("#displayname").val(user.displayName);
                 

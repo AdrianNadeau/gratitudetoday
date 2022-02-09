@@ -8,8 +8,7 @@ var express = require("express"),
   (bcrypt = require("bcryptjs"));
 fs = require("fs");
 path = require("path");
-var randomstring = require("randomstring");
-// const sharp = require('sharp');
+
 require("firebase/auth");
 
 var admin = require("firebase-admin");
@@ -39,10 +38,7 @@ router.get("/updateError", function (req, res) {
 
 router.get("/exp", function (req, res) {
   res.render("experience", { url: "accounts" });
-}); //schedule
-// router.get('/schedule', function(req, res) {
-//   res.render('schedule',{'url': 'accounts'});
-// });
+}); 
 router.get("/create", function (req, res) {
   res.render("createjourney", { url: "accounts" });
 });

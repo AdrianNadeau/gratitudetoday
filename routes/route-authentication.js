@@ -155,11 +155,15 @@ router.post('/', async function(req, res) {
               }
             }
             else{
+                try{  
+                  var url = 'http://' + HOST + ':'+NODE_PORT+'/users/auth/activateAccount/?id=' + user._id ;
                   
-                  // var url = 'http://' + HOST + ':'+NODE_PORT+'/users/auth/activateAccount/?id=' + user._id ;
-                  // logger.debug(url);
-                  // console.log("url: "+url);
-                  
+                  emailHelper.sendActivateEmail(url,user.email, "info@gratitudetoday.org","d-109324885eb14ad7ac2a09a0d24898a1",url, user.displayName);
+                }
+                catch(error){
+                  logger.error(error);
+                  //ignore so user is still registered
+                }
                   sess = req.session;
                   sess.userid = user._id;
                   res.send(user);
@@ -191,7 +195,7 @@ router.post('/activateAccount/:id',async function(req, res) {
   
   const filter = { _id: mongoose.Types.ObjectId(req.params.id)};
   const update = { activated: true };
-  console.log("id: "+req.params.id);
+  
   
   User.findOneAndUpdate(filter, update).then(user => {
       sess = req.session;

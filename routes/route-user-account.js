@@ -6,7 +6,7 @@ var express = require("express"),
   (Post = require("../models/PostModel")),
   (mongoose = require("mongoose")),
   (bcrypt = require("bcryptjs"));
-fs = require("fs");
+
 path = require("path");
 
 require("firebase/auth");
@@ -28,13 +28,7 @@ router.get("/passwordupdated", function (req, res) {
   res.render("passwordupdated", { url: "accounts" });
 });
 
-router.get("/updateAvatar", function (req, res) {
-  res.render("avatarform", { url: "accounts" });
-});
 
-router.get("/updateError", function (req, res) {
-  res.render("avatarError", { url: "accounts" });
-});
 
 router.get("/exp", function (req, res) {
   res.render("experience", { url: "accounts" });
@@ -88,7 +82,75 @@ router.get("/notifications", function (req, res) {
 router.get("/viewpost", function (req, res) {
   res.render("viewpost", { url: "accounts" });
 });
+// const fs = require('fs');
+// const AWS = require('aws-sdk');
+// const s3 = new AWS.S3({
+//   accessKeyId: process.env.AWS_ACCESS_KEY,
+//   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+// });
 
+
+// // router.post('/', upload.array('photos', 3), function(req, res, next) {
+// //   res.send('Successfully uploaded ' + req.files.length + ' files!')
+// // })
+
+// router.post("/updateAvatar", function (req, res) {
+//   logger.debug("uploadAvatar");
+//   l
+//   // res.render("confirmdelete", { url: "accounts" });
+//   // signup(req, res) {
+//     aws.config.setPromisesDependency();
+//     aws.config.update({
+//       accessKeyId: process.env.AWS_ACCESS_KEY,
+//       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+//       region: process.env.REGION
+//     });
+//     logger.debug("aws config set")
+//     const s3 = new aws.S3();
+//     var params = {
+//       ACL: 'public-read',
+//       Bucket: process.env.BUCKET_NAME,
+//       Body: fs.createReadStream(req.file.path),
+//       Key: `/public/userAvatar/${req.file.originalname}`
+//     };
+//     logger.debug("ready for upload");
+//     s3.upload(params, (err, data) => {
+//       if (err) {
+//         console.log('Error occured while trying to upload to S3 bucket', err);
+//       }
+
+//       if (data) {
+//         fs.unlinkSync(req.file.path); // Empty temp folder
+//         const locationUrl = data.Location;
+//         logger.debug("location: "+locationUrl)
+//         // let newUser = new Users({ ...req.body, avatar: locationUrl });
+//         // newUser
+//         //   .save()
+//         //   .then(user => {
+//         //     res.json({ message: 'User created successfully', user });
+//         //   })
+//         //   .catch(err => {
+//         //     console.log('Error occured while trying to save to DB');
+//         //   });
+//       }
+// });
+  // }
+//   logger.debug("upload the avatar")
+//   const fileName = 'contacts.csv';
+//   fs.readFile(fileName, (err, data) => {
+//     if (err) throw err;
+//     const params = {
+//         Bucket: 'cloud-cube-us2', // pass your bucket name
+//         Key: 'contacts.csv', // file will be saved as cloud-cube-us2/contacts.csv
+//         Body: JSON.stringify(data, null, 2)
+//     };
+//     s3.upload(params, function(s3Err, data) {
+//         if (s3Err) throw s3Err
+//         console.log(`File uploaded successfully at ${data.Location}`)
+//     });
+//  });
+  
+// });
 // var randomFileName = randomstring.generate();
 // var ext;
 

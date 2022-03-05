@@ -1,4 +1,3 @@
-require("custom-env").env();
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const logger = require("./logger/logger");
@@ -8,22 +7,15 @@ const session = require("express-session");
 const bodyParser = require("body-parser");
 const MongoStore = require("connect-mongo")(session);
 const r = require("request");
+require("custom-env").env();
 
 const app = express();
 
 const {
-  APP_ENV,
-  NODE_PORT,
-  DB_PORT,
+ 
   DATABASE,
   SESSION_SEACRET,
-  FIREBASE_API_KEY,
-  FIREBASE_AUTH_DOMAIN,
-  FIREBASE_STORAGE_BUCKET,
-  FIREBASE_MESSAGING_SENDER_ID,
-  FIREBASE_APP_ID,
-  FIREBASE_DATABASE_URL,
-  FIREBASE_PROJECT_ID,
+  
 } = require("./config.js");
 
 // Firebase App (the core Firebase SDK) is always required and
@@ -42,7 +34,8 @@ admin.initializeApp({
 const indexRouter = require("./routes/index.js");
 const userAccountRouter = require("./routes/route-user-account.js");
 const postsRouter = require("./routes/posts.js");
-const authRouter = require("./routes/route-authentication");
+const authRouter = require("./routes/route-authentication.js");
+const uploadRouter = require("./routes/route-upload");
 
 // By default cookies are disabled, switch it on
 var request = r.defaults({ jar: true });
@@ -95,9 +88,11 @@ app.use("/", indexRouter);
 app.use("/posts", postsRouter);
 app.use("/users/account", userAccountRouter);
 app.use("/users/auth", authRouter);
+app.use("/users/upload", uploadRouter);
+
 
 app.use(function (req, res, next) {
-  console.log("req.session.userid", req.session);
+  // console.log("req.session.userid", req.session);
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
@@ -144,3 +139,4 @@ console.log(
 );
 console.log("");
 module.exports = app;
+

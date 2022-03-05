@@ -156,9 +156,29 @@ router.post('/', async function(req, res) {
             }
             else{
                 try{  
-                  var url = 'http://' + HOST + ':'+NODE_PORT+'/users/auth/activateAccount/?id=' + user._id ;
+
+                  //send confirm email
+                  const sgMail = require('@sendgrid/mail')
+                  sgMail.setApiKey(SENDGRID_API_KEY)
+                  const msg = {
+                    to: 'adrian@adriannadeau.com', // Change to your recipient
+                    from: 'info@gratitudetoday.org', // Change to your verified sender
+                    subject: 'Sending with SendGrid is Fun',
+                    text: 'and easy to do anywhere, even with Node.js',
+                    template_id: "d-109324885eb14ad7ac2a09a0d24898a1",
+                    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+                  }
+                  sgMail
+                    .send(msg)
+                    .then(() => {
+                      console.log('Email sent')
+                    })
+                    .catch((error) => {
+                      console.error(error)
+                    })
+                  // var url = 'http://' + HOST + ':'+NODE_PORT+'/users/auth/activateAccount/?id=' + user._id ;
                   
-                  emailHelper.sendActivateEmail(url,user.email, "info@gratitudetoday.org","d-109324885eb14ad7ac2a09a0d24898a1",url, user.displayName);
+                  // emailHelper.sendActivateEmail(url,user.email, "info@gratitudetoday.org","d-109324885eb14ad7ac2a09a0d24898a1",url, user.displayName);
                 }
                 catch(error){
                   logger.error(error);

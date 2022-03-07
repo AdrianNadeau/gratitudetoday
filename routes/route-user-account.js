@@ -447,4 +447,17 @@ router.get("/deletePost/:postid", async function (req, res) {
   }
 });
 
+  router.get("/sendReminders", async function (req, res) {
+    const queryAllUsers = () => {
+      //Where User is you mongoose user model
+      User.find({} , (err, users) => {
+          if(err) //do something...
+  
+          users.map(user => {
+              //send daily reminder
+          })
+      })
+  }
+  });
+ 
 module.exports = router;

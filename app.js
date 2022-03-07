@@ -1,6 +1,7 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const logger = require("./logger/logger");
+var sender = require('./email/mailer');
 const path = require("path");
 const mongoose = require("mongoose");
 const session = require("express-session");
@@ -8,8 +9,10 @@ const bodyParser = require("body-parser");
 const MongoStore = require("connect-mongo")(session);
 const r = require("request");
 require("custom-env").env();
+var cors = require('cors')
 
 const app = express();
+app.use(cors());
 
 const {
  

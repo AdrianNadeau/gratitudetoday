@@ -1,8 +1,12 @@
+logger = require('../logger/logger')
+const { SENDGRID_API_KEY } = require('../config.js');
+
 const sgMail = require("@sendgrid/mail");
-sgMail.setApiKey("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");
+sgMail.setApiKey(SENDGRID_API_KEY);
+
 templates = {
-  account_confirm:  "d-a02ad738dfc8404c8da016b46a754805",
-  daily_reminder:   "d-da08810607304f5c8f0d0c3aef86b45c ",
+  account_confirm:  "d-109324885eb14ad7ac2a09a0d24898a1",
+  daily_reminder:   "d-b6b62f190a2f4412881c97f1d70f8afa",
   
 };
 
@@ -14,10 +18,10 @@ function sendEmail(data) {
       templateId: templates[data.templateName],
       //extract the custom fields 
       dynamic_template_data: {
-         name: data.name,
-         confirm_account_url:  data.confirm_account__url,
-         reset_password_url: data.reset_password_url
-      }
+        name: data.name,
+        confirm_account_url:  data.confirm_account__url,
+        reset_password_url: data.reset_password_url
+     }
     };
     //send the email
     sgMail.send(msg, (error, result) => {

@@ -100,10 +100,10 @@ router.get("/sendReminders", async function (req, res) {
                 //progress data
              };
              //pass the data object to send the email
-            logger.debug("template to: "+data.templateName);
-            logger.debug("send email to: "+data.receiver);
-            logger.debug("send sender: "+data.sender);
-            logger.debug("send sender: "+data.name);
+            // logger.debug("template to: "+data.templateName);
+            // logger.debug("send email to: "+data.receiver);
+            // logger.debug("send sender: "+data.sender);
+            // logger.debug("send sender: "+data.name);
             mailer.sendEmail(data);
       
             }

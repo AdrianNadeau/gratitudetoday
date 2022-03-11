@@ -2,9 +2,9 @@ version = 0.1
 [default]
 [default.deploy]
 [default.deploy.parameters]
-stack_name = "GratitudeTodayStack"
-s3_bucket = "gratitudetoday"
-s3_prefix = ""
+stack_name = "GratitudeStack"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-m52pzb1y9m6o"
+s3_prefix = "GratitudeStack"
 region = "us-east-1"
 capabilities = "CAPABILITY_IAM"
 image_repositories = []

@@ -2,6 +2,7 @@ var express = require('express');
 const logger = require('../logger/logger');
 var mailer = require('../email/mailer');
 const User = require('../models/UserModel');
+const Quote = require('../models/QuoteModel');
 var router = express.Router();
 
 // Ping to keep Heroku dyno up
@@ -78,50 +79,66 @@ router.get('/adminlogin', function(req, res) {
 });
 
 router.get("/sendReminders", async function (req, res) {
-  
-    logger.debug("--------------- Send Reminder Emails ------------------")
-    //Where User is you mongoose user model
-    User.find({} , (err, users) => {
+  var random = Math.floor(Math.random() * 99);
+  const quote = await Quote.findOne({}).skip(random);
+  console.log(quote.quote);
+  console.log(quote.author);
+  User.find({} , (err, users) => {
+    if(err) //do something...
+    logger.error("Error: "+err);
+        User.find({} , (err, users) => {
         if(err) //do something...
-          logger.error("Error: "+err);
-          
-          
-            users.map(user => {
-            //send daily reminder
-            logger.debug("email to:"+user.email)
-            try{  
-
-              //send confirm email
-              var data = {
-                templateName: "daily_reminder",
-                sender: "info@gratitudetoday.org",
-                receiver: user.email,   
-                name:user.displayName,
-                //progress data
-             };
-             //pass the data object to send the email
-            // logger.debug("template to: "+data.templateName);
-            // logger.debug("send email to: "+data.receiver);
-            // logger.debug("send sender: "+data.sender);
-            // logger.debug("send sender: "+data.name);
-            mailer.sendEmail(data);
-      
-            }
-            catch(error){
-              logger.error(error);
-              //ignore so user is still registered
-            }
-              // sess = req.session;
-              // sess.userid = user._id;
-              // res.send(user);
+        logger.error("Error: "+err);
+        
+        
+          users.map(user => {
+          //send daily reminder
+           
+          try{  
+           
+            //send confirm email
+            var data = {
+              templateName: "daily_reminder",
+              sender: "info@gratitudetoday.org",
+              receiver: 'adrian@adriannadeau.com',   
+              name:user.displayName,
+              //progress data
+              quote:quote.quote,
+              author:quote.author
+           };
+           //pass the data object to send the email
+          logger.debug("template to: "+data.templateName);
+          logger.debug("send email to: "+data.receiver);
+          logger.debug("send sender: "+data.sender);
+          logger.debug("send sender: "+data.name);
+          logger.debug("quote: "+quote.quote);
+          logger.debug("author: "+quote.author);
+          mailer.sendEmail(data);
+    
+          }
+          catch(error){
+            logger.error(error);
             
-              
-        });
-    })
-  
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Reminders email Successfully');
+          }
+      
+          
+      });
+         
+  })
 
+  });       
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Reminders email Successfully');
 });
+  
+  //   logger.debug("--------------- Send Reminder Emails ------------------")
+
+ 
+  
+
+    
+
+    
+
 module.exports = router;

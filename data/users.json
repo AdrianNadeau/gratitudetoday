@@ -1,23 +1,398 @@
-[{
-  "_id": {
-    "$oid": "60ccaf96f73a8f44bc1c55d5"
-  },
-  "public": false,
-  "emailVerified": false,
-  "location": "",
-  "bio": "",
-  "providers": [],
-  "posts": [],
-  "activated": true,
-  "journey_id": 1,
-  "happiness": 3,
-  "exp_id": 0,
-  "accessToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImRjNGQwMGJjM2NiZWE4YjU0NTMzMWQxZjFjOTZmZDRlNjdjNTFlODkiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZ3JhdGl0dWRldG9kYXktMmU2MzAiLCJhdWQiOiJncmF0aXR1ZGV0b2RheS0yZTYzMCIsImF1dGhfdGltZSI6MTYyNDAyNzAyNywidXNlcl9pZCI6IjZocnhpZHRXV0paRDFWN2NTYWtDNXZ1R1NhczEiLCJzdWIiOiI2aHJ4aWR0V1dKWkQxVjdjU2FrQzV2dUdTYXMxIiwiaWF0IjoxNjI0MDI3MDI3LCJleHAiOjE2MjQwMzA2MjcsImVtYWlsIjoiYWRyaWFuQGFkcmlhbm5hZGVhdS5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiYWRyaWFuQGFkcmlhbm5hZGVhdS5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.f7V07hhJu9Pl4wSDpNIwJk1Lrg6aDK4OSUYtxweCXSUAHsyHGiXGwBlOpP6A8wOP71g0lWve8i6c936r6SiwyKEhK5yqyiASUvX2_uT6GC8XWJdpl06GGLPQcmLN552JSEq6TKeKqw_rn5GwpOXZSfU1euBjsInfIT35236MMWKXfJJ_mjGRHkhvdgTtsIUNSddfqI-1FKbVFRQHH-Z72_aGLbDX0SD22L9TtaCzqn6fvQVZi2wMC7wUIg2jYogtQ3STtU-soiv9g19JjLM0JcQN1TcavDfbMLJKmP2s5fw6RZT9UI5sCu-uNYrkb7PfJDIVGJ8i6UCpYoQhSSDKkg",
-  "displayName": "Adrian Nadeau",
-  "email": "adrian@adriannadeau.com",
-  "photoURL": "",
-  "createDate": {
-    "$date": "2021-06-18T14:37:10.498Z"
-  },
-  "__v": 0
-}]
+[
+ {
+   "quote": "Act with kindness, but do not expect gratitude.",
+   "FIELD2": "Proverb"
+ },
+ {
+   "quote": "A man's indebtedness is not virtue; his repayment is. Virtue begins when he dedicates himself actively� to the job of gratitude.",
+   "author": "Ruth Benedict"
+ },
+ {
+   "quote": "Ambition breaks the ties of blood, and forgets the obligations of gratitude.",
+   "author": "Sallust"
+ },
+ {
+   "quote": "Appreciation can make a day, even change a life. Your willingness to put it into words is all that is necessary.",
+   "author": "Margaret Cousins"
+ },
+ {
+   "quote": "As we express our gratitude, we must never forget that the highest appreciation is not to utter words, but to live by them.",
+   "author": "John F. Kennedy"
+ },
+ {
+   "quote": "Develop an attitude of gratitude, and give thanks for everything that happens to you, knowing that every step forward is a step toward achieving something bigger and better than your current situation.",
+   "author": "Brian Tracy"
+ },
+ {
+   "quote": "Don't pray when it rains if you don't pray when the sun shines.",
+   "author": "Satchell Paige"
+ },
+ {
+   "quote": "Every professional athlete owes a debt of gratitude to the fans and management, and pays an installment every time he plays. He should never miss a payment.",
+   "author": "Bobby Hull"
+ },
+ {
+   "quote": "Friendship based solely upon gratitude is like a photograph; with time it fades.",
+   "author": "Carmen Sylva"
+ },
+ {
+   "quote": "Gratefulness is the key to a happy life that we hold in our hands, because if we are not grateful, then no matter how much we have we will not be happy  because we will always want to have something else or something more.",
+   "author": "David Steindl-Rast"
+ },
+ {
+   "quote": "Gratitude bestows reverence, allowing us to encounter everyday epiphanies, those transcendent moments of awe that change forever how we experience life and the world.",
+   "author": "John Milton"
+ },
+ {
+   "quote": "Gratitude changes the pangs of memory into a tranquil joy.",
+   "author": "Dietrich Bonhoeffer"
+ },
+ {
+   "quote": "Gratitude helps you to grow and expand; gratitude brings joy and laughter into your life and into the lives of all those around you.",
+   "author": "Eileen Caddy"
+ },
+ {
+   "quote": "Gratitude is a burden upon our imperfect nature, and we are but too willing to ease ourselves of it, or at least to lighten it as much as we can.",
+   "author": "Philip Stanhope"
+ },
+ {
+   "quote": "Gratitude is a duty which ought to be paid, but which none have a right to expect.",
+   "author": "Jean-Jacques Rousseau"
+ },
+ {
+   "quote": "Gratitude is one of those things that cannot be bought. It must be born with men, or else all the obligations in the world will not create it.",
+   "author": "Edward F. Halifax"
+ },
+ {
+   "quote": "Gratitude is the fairest blossom which springs from the soul.",
+   "author": "Henry Ward Beecher"
+ },
+ {
+   "quote": "Gratitude is the inward feeling of kindness received. Thankfulness is the natural impulse to express that feeling. Thanksgiving is the following of that impulse.",
+   "author": "Henry Van Dyke"
+ },
+ {
+   "quote": "Gratitude is the most exquisite form of courtesy.",
+   "author": "Jacques Maritain"
+ },
+ {
+   "quote": "Gratitude is the sign of noble souls.",
+   "author": "Aesop"
+ },
+ {
+   "quote": "Gratitude is when memory is stored in the heart and not in the mind.",
+   "author": "�Lionel Hampton"
+ },
+ {
+   "quote": "Gratitude isn't a burdening emotion.",
+   "author": " Loretta Young"
+ },
+ {
+   "quote": "Gratitude makes sense of our past, brings peace for today, and creates a vision for tomorrow.",
+   "author": " Melody Beattie"
+ },
+ {
+   "quote": "Gratitude to gratitude always gives birth.",
+   "author": " Sophocles"
+ },
+ {
+   "quote": "Gratitude unlocks the fullness of life. It turns what we have into enough, and more. It turns denial into acceptance, chaos to order, confusion to clarity. It can turn a meal into a feast, a house into a home, a stranger into a friend.",
+   "author": " Melody Beattie"
+ },
+ {
+   "quote": "Happiness cannot be traveled to, owned, earned, worn or consumed. Happiness is the spiritual experience of living every minute with love, grace, and gratitude.",
+   "author": " Denis Waitley"
+ },
+ {
+   "quote": "Happiness is itself a kind of gratitude.",
+   "author": " Joseph Wood Krutch"
+ },
+ {
+   "quote": "If the only prayer you said in your whole life was,  thank you,' that would suffice.",
+   "author": " Meister Eckhart"
+ },
+ {
+   "quote": "It's a sign of mediocrity when you demonstrate gratitude with moderation.",
+   "author": " Roberto Benigni"
+ },
+ {
+   "quote": "Joy is a heart full and a mind purified by gratitude.",
+   "author": "Marietta McCarty"
+ },
+ {
+   "quote": "Joy is the simplest form of gratitude.",
+   "author": "Karl Barth"
+ },
+ {
+   "quote": "Kindness trumps greed: it asks for sharing. Kindness trumps fear: it calls forth gratefulness and love. Kindness trumps even stupidity, for with sharing and love, one learns.",
+   "author": " Marc Estrin"
+ },
+ {
+   "quote": "Let us be grateful to people who make us happy; they are the charming gardeners who make our souls blossom.",
+   "author": " Marcel Proust"
+ },
+ {
+   "quote": "Maybe the only thing worse than having to give gratitude constantly is having to accept it.",
+   "author": " William Faulkner"
+ },
+ {
+   "quote": "Next to ingratitude the most painful thing to bear is gratitude.",
+   "author": " Henry Ward Beecher"
+ },
+ {
+   "quote": "No one who achieves success does so without acknowledging the help of others. The wise and confident acknowledge this help with gratitude.",
+   "author": " Alfred North Whitehead"
+ },
+ {
+   "quote": "One can never pay in gratitude: one can only pay  in kind' somewhere else in life.",
+   "author": " Anne Morrow Lindbergh"
+ },
+ {
+   "quote": "One looks back with appreciation to the brilliant teachers, but with gratitude to those who touched our human feelings. The curriculum is so much necessary raw material, but warmth is the vital element for the growing plant and for the soul of the child.",
+   "author": " Carl Jung"
+ },
+ {
+   "quote": "One of the surest evidences of friendship that one individual can display to another is telling him gently of a fault. If any other can excel it, it is listening to such a disclosure with gratitude, and amending the error.",
+   "author": " Edward G. Bulwer-Lytton"
+ },
+ {
+   "quote": "Thankfulness is the beginning of gratitude. Gratitude is the completion of thankfulness. Thankfulness may consist merely of words. Gratitude is shown in acts.",
+   "author": " Henri Frederic Amiel"
+ },
+ {
+   "quote": "The debt of gratitude we owe our mother and father goes forward, not backward. What we owe our parents is the bill presented to us by our children.",
+   "author": " Nancy Friday"
+ },
+ {
+   "quote": "The deepest craving of human nature is the need to be appreciated.",
+   "author": " William James"
+ },
+ {
+   "quote": "The essence of all beautiful art, all great art, is gratitude.",
+   "author": " Friedrich Nietzsche"
+ },
+ {
+   "quote": "The hardest arithmetic to master is that which enables us to count our blessings.",
+   "author": " Eric Hoffer"
+ },
+ {
+   "quote": "There is as much greatness of mind in acknowledging a good turn, as in doing it.",
+   "author": " Seneca"
+ },
+ {
+   "quote": "To educate yourself for the feeling of gratitude means to take nothing for granted, but to always seek out and value the kind that will stand behind the action. Nothing that is done for you is a matter of course. Everything originates in a will for the good, which is directed at you. Train yourself never to put off the word or action for the expression of gratitude.",
+   "author": " Albert Schweitzer"
+ },
+ {
+   "quote": "We are told that people stay in love because of chemistry, or because they remain intrigued with each other, because of many kindnesses, because of luck. But part of it has got to be forgiveness and gratefulness. ",
+   "author": " Ellen Goodman"
+ },
+ {
+   "quote": "When you are grateful fear disappears and abundance appears.",
+   "author": " Tony Robbins"
+ },
+ {
+   "quote": "You say grace before meals. All right. But I say grace before the concert and the opera, and grace before the play and pantomime, and grace before I open a book, and grace before sketching, painting, swimming, fencing, boxing, walking, playing, dancing and grace before I dip the pen in the ink.",
+   "author": " G. K. Chesterton"
+ },
+ {
+   "quote": "At times, our own light goes out and is rekindled by a spark from another person. Each of us has cause to think with deep gratitude of those who have lighted the flame within us. ",
+   "author": ""
+ },
+ {
+   "quote": "Gratitude is the fairest blossom which springs from the soul. ",
+   "author": " Henry Ward Beecher"
+ },
+ {
+   "quote": "Gratitude turns what we have into enough. ",
+   "author": " Anonymous"
+ },
+ {
+   "quote": "Gratitude is a powerful catalyst for happiness. It's the spark that lights a fire of joy in your soul. ",
+   "author": " Amy Collette"
+ },
+ {
+   "quote": "Gratitude makes sense of our past, brings peace for today, and creates a vision for tomorrow. ",
+   "author": " Melody Beattie"
+ },
+ {
+   "quote": "Thankfulness is the beginning of gratitude. Gratitude is the completion of thankfulness. Thankfulness may consist merely of words. Gratitude is shown in acts. ",
+   "author": " Henri Frederic Amiel"
+ },
+ {
+   "quote": "Happiness cannot be traveled to owned, earned, worn or consumed. Happiness is the spiritual experience of living every minute with love, grace, and gratitude. ",
+   "author": " Denis Waitley"
+ },
+ {
+   "quote": "Joy is the simplest form of gratitude. ",
+   "author": " Karl Barth"
+ },
+ {
+   "quote": "No one who achieves success does so without the help of others. The wise and confident acknowledge this help with gratitude.  Alfred North Whitehead",
+   "author": "  Alfred North Whitehead"
+ },
+ {
+   "quote": "In ordinary life, we hardly realize that we receive a great deal more than we give, and that it is only with gratitude that life becomes rich. ",
+   "author": " Dietrich Bonhoeffer"
+ },
+ {
+   "quote": "Gratitude is when memory is stored in the heart and not in the mind. ",
+   "author": " Lionel Hampton"
+ },
+ {
+   "quote": "Gratitude is not only the greatest of virtues but the parent of all others. ",
+   "author": " Marcus Tullius Cicero"
+ },
+ {
+   "quote": "We often take for granted the very things that most deserve our gratitude.",
+   "author": "  Cynthia Ozick"
+ },
+ {
+   "quote": "You cannot do a kindness too soon because you never know how soon it will be too late.",
+   "author": " Ralph Waldo Emerson"
+ },
+ {
+   "quote": "I would maintain that thanks are the highest form of thought, and that gratitude is happiness doubled by wonder. ",
+   "author": " Gilbert C. Chesterton"
+ },
+ {
+   "quote": "Gratitude will shift you to a higher frequency, and you will attract much better things.",
+   "author": "  Rhonda Byrne"
+ },
+ {
+   "quote": "When I started counting my blessings, my whole life turned around. ",
+   "author": " Willie Nelson"
+ },
+ {
+   "quote": "Let us rise up and be thankful, for if we didn't learn a lot today, at least we learned a little, and if we didn't learn a little, at least we didn't get sick, and if we got sick, at least we didn't die; so, let us all be thankful. ",
+   "author": " Buddha"
+ },
+ {
+   "quote": "Gratitude helps you to grow and expand; gratitude brings joy and laughter into your life and into the lives of all those around you. ",
+   "author": " Eileen Caddy"
+ },
+ {
+   "quote": "Two kinds of gratitude: The sudden kind we feel for what we take; the larger kind we feel for what we give. ",
+   "author": " Edwin Arlington Robinson"
+ },
+ {
+   "quote": "Gratitude is the sweetest thing in a seekers life  in all human life. If there is gratitude in your heart, then there will be tremendous sweetness in your eyes.",
+   "author": "Sri Chinmoy"
+ },
+ {
+   "quote": "As with all commandments, gratitude is a description of a successful mode of living. The thankful heart opens our eyes to a multitude of blessings that continually surround us. ",
+   "author": " James E. Faust"
+ },
+ {
+   "quote": "The more grateful I am, the more beauty I see.",
+   "author": "  Mary Davis"
+ },
+ {
+   "quote": "The deepest craving of human nature is the need to be appreciated",
+   "author": " William James"
+ },
+ {
+   "quote": "There is a calmness to a life lived in gratitude, a quiet joy.",
+   "author": "  Ralph H. Blum"
+ },
+ {
+   "quote": "Gratitude is the most exquisite form of courtesy. ",
+   "author": " Jacques Maritain"
+ },
+ {
+   "quote": "The root of joy is gratefulness. ",
+   "author": "David Steindl-Rast"
+ },
+ {
+   "quote": "I've had a remarkable life. I seem to be in such good places at the right time. You know, if you were to ask me to sum my life up in one word, gratitude. ",
+   "author": " Dietrich Bonhoeffer"
+ },
+ {
+   "quote": "He is a wise man who does not grieve for the things which he has not, but rejoices for those which he has. ",
+   "author": " Epictetus"
+ },
+ {
+   "quote": "Gratitude unlocks the fullness of life. It turns what we have into enough, and more. It turns denial into acceptance, chaos to order, confusion to clarity. It can turn a meal into a feast, a house into a home, a stranger into a friend.",
+   "author": "  Melody Beattie"
+ },
+ {
+   "quote": "Being thankful is not always experienced as a natural state of existence, we must work at it, akin to a type of strength training for the heart.",
+   "author": "  Larissa Gomez"
+ },
+ {
+   "quote": "Today I choose to live with gratitude for the love that fills my heart, the peace that rests within my spirit, and the voice of hope that says all things are possible. ",
+   "author": "  Anonymous"
+ },
+ {
+   "quote": "We can only be said to be alive in those moments when our hearts are conscious of our treasures. ",
+   "author": " Thornton Wilder"
+ },
+ {
+   "quote": "If you concentrate on finding whatever is good in every situation, you will discover that your life will suddenly be filled with gratitude, a feeling that nurtures the soul. ",
+   "author": " Rabbi Harold Kushner"
+ },
+ {
+   "quote": "Be thankful for what you have; you'll end up having more. If you concentrate on what you don't have, you will never, ever have enough.",
+   "author": " Oprah Winfrey"
+ },
+ {
+   "quote": "As we express our gratitude, we must never forget that the highest appreciation is not to utter words, but to live by them. ",
+   "author": " John F. Kennedy"
+ },
+ {
+   "quote": "I looked around and thought about my life. I felt grateful. I noticed every detail. That is the key to time travel. You can only move if you are actually in the moment. You have to be where you are to get where you need to go. ",
+   "author": " Amy Poehler"
+ },
+ {
+   "quote": "Gratitude for the present moment and the fullness of life now is the true prosperity.",
+   "author": "  Eckhart Tolle"
+ },
+ {
+   "quote": "Gratitude is the sign of noble souls. ",
+   "author": " Aesop"
+ },
+ {
+   "quote": "Feeling gratitude and not expressing it is like wrapping a present and not giving it.",
+   "author": "  William Arthur Ward"
+ },
+ {
+   "quote": "Develop an attitude of gratitude, and give thanks for everything that happens to you, knowing that every step forward is a step toward achieving something bigger and better than your current situation.",
+   "author": "  Brian Tracy"
+ },
+ {
+   "quote": "Opening your eyes to more of the world around you can deeply enhance your gratitude practice. ",
+   "author": " Derrick Carpenter"
+ },
+ {
+   "quote": "Nothing is more honorable than a grateful heart. ",
+   "author": " Lucius Annaeus Seneca"
+ },
+ {
+   "quote": "Be grateful for what you already have while you pursue your goals. If you aren't grateful for what you already have, what makes you think you would be happy with more. ",
+   "author": " Roy T. Bennett"
+ },
+ {
+   "quote": "Train yourself never to put off the word or action for the expression of gratitude. ",
+   "author": " Albert Schweitzer"
+ },
+ {
+   "quote": "Gratitude is riches. Complaint is poverty.",
+   "author": "  Doris Day"
+ },
+ {
+   "quote": "Gratitude is an antidote to negative emotions, a neutralizer of envy, hostility, worry, and irritation. It is savoring; it is not taking things for granted; it is present-oriented. ",
+   "author": " Sonja Lyubomirsky"
+ },
+ {
+   "quote": "When you are grateful, fear disappears and abundance appears. ",
+   "author": " Anthony Robbins"
+ },
+ {
+   "quote": "What separates privilege from entitlement is gratitude. ",
+   "author": " Brene Brown"
+ },
+ {
+   "quote": "When it comes to life the critical thing is whether you take things for granted or take them with gratitude. ",
+   "author": " G.K. Chesterton"
+ }
+]

@@ -25,10 +25,10 @@ DB user: GratitudeToday
 DB Pass: GratitudeToday123
 
 Connection
-mongodb+srv://GratitudeToday35:GratitudeToday123@gratitudetoday-2yxie.mongodb.net/gratitude-apps-dev?retryWrites=true&w=majority
+mongodb+srv://GratitudeToday35:GratitudeToday123@gratitudetoday-2yxie.mongodb.net/gratitudetoday?retryWrites=true&w=majority
 
 Compass
-mongodb+srv://GratitudeToday35:GratitudeToday123@gratitudetoday-2yxie.mongodb.net/gratitude-apps-dev
+mongodb+srv://GratitudeToday35:GratitudeToday123@gratitudetoday-2yxie.mongodb.net/gratitudetoday
 
 //promises async
 const timeOutPromise = (str) => {

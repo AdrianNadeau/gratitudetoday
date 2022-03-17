@@ -81,8 +81,8 @@ router.get('/adminlogin', function(req, res) {
 router.get("/sendReminders", async function (req, res) {
   var random = Math.floor(Math.random() * 99);
   const quote = await Quote.findOne({}).skip(random);
-  console.log(quote.quote);
-  console.log(quote.author);
+  // console.log(quote.quote);
+  // console.log(quote.author);
   User.find({} , (err, users) => {
     if(err) //do something...
     logger.error("Error: "+err);
@@ -100,7 +100,7 @@ router.get("/sendReminders", async function (req, res) {
             var data = {
               templateName: "daily_reminder",
               sender: "info@gratitudetoday.org",
-              receiver: 'adrian@adriannadeau.com',   
+              receiver: user.email,   
               name:user.displayName,
               //progress data
               quote:quote.quote,

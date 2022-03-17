@@ -103,16 +103,16 @@ router.get("/sendReminders", async function (req, res) {
               receiver: user.email,   
               name:user.displayName,
               //progress data
-              // quote:quote.quote,
-              // author:quote.author
+              quote:quote.quote,
+              author:quote.author
            };
            //pass the data object to send the email
           logger.debug("template to: "+data.templateName);
           logger.debug("send email to: "+data.receiver);
           logger.debug("send sender: "+data.sender);
           logger.debug("send sender: "+data.name);
-          // logger.debug("quote: "+quote.quote);
-          // logger.debug("author: "+quote.author);
+          logger.debug("quote: "+quote.quote);
+          logger.debug("author: "+quote.author);
           mailer.sendEmail(data);
     
           }

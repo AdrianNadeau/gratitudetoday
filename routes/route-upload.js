@@ -1,22 +1,11 @@
-/**
- * we are going to upload file to s3 via node js by using
- * aws-sdk - required
- * busboy -  required
- * uuid - optional - for image renaming purpose
- * with this library you can upload any kind of file to s3 via node js.
- */
- var express = require("express"),
- router = express.Router(),
- logger = require("../logger/logger"),
- multer = require("multer");
+var express = require("express"),
+  router = express.Router(),
+  logger = require("../logger/logger"),
+  multer = require("multer");
 (User = require("../models/UserModel")),
- (Post = require("../models/PostModel")),
- (mongoose = require("mongoose")),
- (bcrypt = require("bcryptjs"));
- const AWS = require('aws-sdk');
- const UUID = require('uuid/v4');
-const S3 = new AWS.S3();
- 
+  (Post = require("../models/PostModel")),
+  (mongoose = require("mongoose")),
+  (bcrypt = require("bcryptjs"));
  /**
   * route where we get multipart form data
   * capture file and upload files to s3
@@ -29,13 +18,40 @@ const S3 = new AWS.S3();
   router.get("/updateError", function (req, res) {
     res.render("avatarError", { url: "accounts" });
   });
- router.post("/upload", (req, res) => {
-   logger.debug("UPLOAD");
-  var params = {Bucket: 'gratitudetoday', Key: 'key', Body: stream};
-  s3.upload(params, function(err, data) {
-    console.log(err, data);
-  });
-  console.log("data:"+data)
+ router.post("/upload", async (req, res) => {
+  var file = req.files.file;
+  const fileContent = fs.readFileSync(fileName)
+  
+  const params = {
+    Bucket: process.env.AWS_BUCKET_NAME,
+    Key: `${filename}.jpg`,
+    Body: fileContent
+  }
+  
+  s3.upload(params, (err, data) => {
+    if (err) {
+      reject(err)
+    }
+    resolve(data.Location)
+  })
+  // var file = req.files.form-control-file;
+  // logger.debug("file :"+file);
+  // fs.readFile(file.path, function (err, data) {
+  //     if (err) 
+  //       logger.error(err);
+      
+  //     else
+  //       logger.debug(data);
+  // });
+  
+  // var params = {Bucket: 'gratitudetodayuploader-s3uploadbucket-1rk0adqwq7xiz', Key: 'key', Body: stream,ACL: 'public-read'};
+  // logger.debug("parmas: "+params)
+  // await s3.upload(params, function(err, data) {
+  //   if(err)
+  //     logger.error(err);
+  //     console.log("data:"+data)
+  // });
+  
   //  logger.debug("upload image:"+req.params.userId);
   // var buf = Buffer.from(req.body.imageBinary.replace(/^data:image\/\w+;base64,/, ""),'base64')
   // logger.debug('buf: '+buf);

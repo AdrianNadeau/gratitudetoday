@@ -11,15 +11,20 @@ templates = {
 };
 
 function sendEmail(data) {
+  // logger.debug("DATA: "+JSON.stringify(data));
+  
    const msg = {
       //extract the email details
       to: data.receiver,
       from: data.sender,
+      subject: "Your daily update!",
       templateId: templates[data.templateName],
       //extract the custom fields 
       dynamic_template_data: {
         name: data.name,
-        confirm_account_url:  data.confirm_account__url,
+        quote: data.quote,
+        author: data.author,
+        confirm_account_url:  data.confirm_account_url,
         reset_password_url: data.reset_password_url
      }
     };

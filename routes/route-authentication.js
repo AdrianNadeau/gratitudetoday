@@ -1,19 +1,13 @@
 var express = require('express'),
-
 router = express.Router();
 User = require("../models/UserModel");
 var logger = require('../logger/logger');
 var mailer = require('../email/mailer');
-const { HOST, NODE_PORT}  = require('../config.js');
+var nodemailer=require("nodemailer");
 
-const saltRounds = 10;
-
-
-//Firebase Auth UI
-// var firebase = require('firebase');
-require("firebase/auth");
-
+var auth = require("firebase/auth");
 var admin = require("firebase-admin");
+
 User = require("../models/UserModel"),
 mongoose = require('mongoose');
 
@@ -43,67 +37,6 @@ router.get('/registersuccess', function (req, res) {
 
 });
 
-  
-// //////////////////////////////////////
-// ///         SIGNUP                  //
-// //////////////////////////////////////
-// router.post('/', async function(req, res) {
-  
-//   const { SENDGRID_API_KEY } = require('../config.js');
-//     const {displayName, email, photoURL, accessToken} = req.body;
-//     let dataReturned;
-//     logger.debug("email: "+email);
-//     //see if email address already in Mongodb:
-//     user = User.findOne({ email: email}, function (err, users) {
-//       if(users){ 
-//         // logger.debug("Login user: "+users);
-//         dataReturned="log";
-//         User.find({ email: email}, function (err, docs) {
-//           if(!docs){
-//             //something wrong for login  
-            
-//           }
-//           else{
-//             //have our user return 
-//             sess = req.session;
-//             sess.userid = docs[0]._id;
-//             res.send(JSON.stringify("log"));     
-//           }
-                    
-//         });
-        
-//       }
-//       else{
-//         logger.debug("Register user");
-//         dataReturned="reg";
-//              var user = new User({
-//               firebase_uid: user.uid,
-//                       accessToken: accessToken,
-//                       displayName:displayName,
-//                       email: email,
-//                       photoURL: photoURL,       
-//                       displayOnBoard: true,
-//                   });
-//                   user.save().
-//                   then(user => {
-//                     //registered
-                    
-//                     logger.debug("SAVED :"+email)
-//                     //send on journey
-//                     // res.send(user);
-//                     res.send(JSON.stringify("reg"));   
-                    
-//                   }).catch((error) => {
-//                     logger.error(error);
-                  
-//                 });
-//             }
-               
-        
-//   });
-  
-// })
-
 //////////////////////////////////////
 ///         SIGNUP                  //
 //////////////////////////////////////
@@ -120,7 +53,8 @@ router.post('/', async function(req, res) {
             accessToken: accessToken,
             displayName:displayName,
             email: email,
-            photoURL: photoURL,       
+            photoURL: photoURL,
+
             displayOnBoard: true,
         });
          user.save(function (error, user) {
@@ -128,9 +62,9 @@ router.post('/', async function(req, res) {
             
             if (error) {
               let errMessage= error.message;
-              logger.error(errMessage);
+              
               if(errMessage.includes("E11000")){
-                logger.debug("CURRENT USER");
+                logger.debug("current user.... login")
                 
                 admin.auth().getUserByEmail(email)
                   .then(function(userRecord) {
@@ -150,8 +84,7 @@ router.post('/', async function(req, res) {
                 
               }
               else{
-                const error = new Error('Error Logging in, please try again or contact us.');
-                return res.send(JSON.stringify(error.message));
+               //ignore and let user in
               }
             }
             else{
@@ -160,9 +93,12 @@ router.post('/', async function(req, res) {
                   //send confirm email
                   var data = {
                     templateName: "account_confirm",
-                    sender: "info@gratitudetoday.org",
+                   
                     receiver: email,   
                     name:displayName,
+                    
+                    
+                    
                  };
                  //pass the data object to send the email
                 //  logger.debug("template to: "+data.templateName);
@@ -194,7 +130,61 @@ router.post('/', async function(req, res) {
     }     
     
 });
+//////////////////////////////////////
+///         SEND PASSWORD RESET EMAIL                  //
+//////////////////////////////////////
+router.post('/sendResetEmail', async function(req, res) {
     
+    const {email} = req.body;
+    console.log("email: "+email);
+      // Replace this URL with the URL where the user will complete sign-in.
+      const actionCodeSettings = {
+        url: 'https://www.gratitudetoday.org/auth/',
+        handleCodeInApp: true
+      }
+ 
+  // Admin SDK API to generate the password reset link.
+  logger.debug("reset to : "+email);
+  admin.auth()
+    .generatePasswordResetLink(email, actionCodeSettings)
+    .then((link) => {
+      
+      // Construct password reset email template, embed the link and send
+     logger.debug(link);
+      var data = {
+        templateName: "reset_password",
+        
+        receiver: email,   
+        name:"Adrian",
+        returnURL:link,
+     };
+     //pass the data object to send the email
+    //  logger.debug("template to: "+data.templateName);
+    //  logger.debug("send email to: "+data.receiver);
+    //  logger.debug("send sender: "+data.sender);
+    //  logger.debug("send sender: "+data.name);
+     mailer.sendEmail(data);
+        var data = {
+          templateName: "reset_password",
+          // sender: "Gratitude Today <info@gratitudetoday.org>",
+          receiver: email,   
+          name:"Adrian",
+          resetURL: link,
+      };
+      //pass the data object to send the email
+      //  logger.debug("template to: "+data.templateName);
+      //  logger.debug("send email to: "+data.receiver);
+      //  logger.debug("send sender: "+data.sender);
+      //  logger.debug("send sender: "+data.name);
+      //  logger.debug("send resetURL: "+data.resetURL);
+      mailer.sendEmail(data);
+        
+    })
+    .catch((error) => {
+      // Some error occurred.
+      logger.error("ERROR: "+error)
+    });
+}); 
     
     
  

@@ -40,6 +40,10 @@ router.get('/privacy', function(req, res) {
 router.get('/coffee', function(req, res) {
   res.render('coffee',{'url': 'home'});
 });
+router.get('/resetpassword', function(req, res) {
+  res.render('resetpassword',{'url': 'home'});
+});
+
 router.get('/loginfailed', function(req, res) {
   
   if (req.session) {
@@ -94,17 +98,19 @@ router.get("/sendReminders", async function (req, res) {
           //send daily reminder
          
           try{  
-           
-            //send confirm email
+             
+            logger.debug("quote: "+quote.quote);
+            logger.debug("author: "+quote.author);
+            //send daily email
             var data = {
               templateName: "daily_reminder",
-              sender: "info@gratitudetoday.org",
+              
               receiver: user.email,   
               name:user.displayName,
               //progress data
               quote:quote.quote,
               author:quote.author,
-              subject: "Your daily update for March 19th",
+            
             
            };
            //pass the data object to send the email

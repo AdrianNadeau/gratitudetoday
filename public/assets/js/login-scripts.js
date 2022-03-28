@@ -131,7 +131,7 @@ async function loginUser(){
                 _id: _id,
                 password : $("#password").val(),
                 confirmpassword : $("#confirmpassword").val()},
-                url : "/users/login/resetPassword/"+ _id,
+                url : "/users/auth/resetPassword/"+ _id,
                 success : function(customer) {
                     
                     $("#validationSuccess").html("<div class='alert alert-success text-center'><i class='fas fa-check'></i>&nbsp;Password updated successfully.<a href=\"/users/login/\">Login</a></div>");

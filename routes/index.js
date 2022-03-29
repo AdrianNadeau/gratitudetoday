@@ -85,22 +85,22 @@ router.get('/adminlogin', function(req, res) {
 router.get("/sendReminders", async function (req, res) {
   var random = Math.floor(Math.random() * 99);
   const quote = await Quote.findOne({}).skip(random);
+  logger.debug("SEND REMINDERS")
   
   User.find({} , (err, users) => {
     if(err)
     logger.error("Error: "+err);
         User.find({} , (err, users) => {
         if(err) 
-        logger.error("Error: "+err);
+          logger.error("Error: "+err);
         
         
           users.map(user => {
           //send daily reminder
-         
+          logger.debug(user);
           try{  
              
-            logger.debug("quote: "+quote.quote);
-            logger.debug("author: "+quote.author);
+            
             //send daily email
             var data = {
               templateName: "daily_reminder",
@@ -110,8 +110,6 @@ router.get("/sendReminders", async function (req, res) {
               //progress data
               quote:quote.quote,
               author:quote.author,
-            
-            
            };
            //pass the data object to send the email
           // logger.debug("template to: "+data.templateName);
@@ -120,6 +118,7 @@ router.get("/sendReminders", async function (req, res) {
           // logger.debug("send sender: "+data.name);
           // logger.debug("quote: "+quote.quote);
           // logger.debug("author: "+quote.author);
+          logger.debug("DATA: "+data);
           mailer.sendEmail(data);
     
           }

@@ -139,7 +139,7 @@ router.post('/sendResetEmail', async function(req, res) {
     console.log("email: "+email);
       // Replace this URL with the URL where the user will complete sign-in.
       const actionCodeSettings = {
-        url: 'https://www.gratitudetoday.org/auth/',
+        url: 'https://www.gratitudetoday.org/users/auth/',
         handleCodeInApp: true
       }
  
@@ -153,9 +153,7 @@ router.post('/sendResetEmail', async function(req, res) {
      logger.debug(link);
       var data = {
         templateName: "reset_password",
-        
         receiver: email,   
-        name:"Adrian",
         returnURL:link,
      };
      //pass the data object to send the email
@@ -168,7 +166,7 @@ router.post('/sendResetEmail', async function(req, res) {
           templateName: "reset_password",
           // sender: "Gratitude Today <info@gratitudetoday.org>",
           receiver: email,   
-          name:"Adrian",
+          // name:"Adrian",
           resetURL: link,
       };
       //pass the data object to send the email

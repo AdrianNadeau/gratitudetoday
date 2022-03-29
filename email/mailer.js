@@ -1,6 +1,5 @@
 logger = require('../logger/logger')
 const { SENDGRID_API_KEY } = require('../config.js');
-const {fromEmail} = "Gratitude Today <info@gratitudetoday.org>"
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(SENDGRID_API_KEY);
 
@@ -14,12 +13,13 @@ templates = {
 function sendEmail(data) {
   let msg;
   logger.debug(data.templateName);
+  
   if(data.templateName=="account_confirm"){
     //////////SEND CONFIRM EMAIL///////////////
     msg = {
         //extract the email details
         to: data.receiver,
-        from: fromEmail,
+        from: "info@gratitudetoday.org",
         // subject: "Your daily update!",
         templateId: templates[data.templateName],
         //extract the custom fields 
@@ -34,15 +34,16 @@ function sendEmail(data) {
   }
   else if(data.templateName=="reset_password"){
     //////////SEND RESET PASSWORD EMAIL///////////////
+    
     msg = {
       //extract the email details
       to: data.receiver,
-      from: fromEmail,
+      from: "info@gratitudetoday.org",
     
       templateId: templates[data.templateName],
       //extract the custom fields 
       dynamic_template_data: {
-        name: "Ade",
+        // name: "Ade",
         resetURL: data.returnURL,
         confirm_account_url:  data.confirm_account_url,
         reset_password_url: data.reset_password_url
@@ -56,7 +57,7 @@ function sendEmail(data) {
     msg = {
       //extract the email details
       to: data.receiver,
-      from: fromEmail,
+      from: "info@gratitudetoday.org",
     
       templateId: templates[data.templateName],
       //extract the custom fields 
@@ -75,7 +76,7 @@ function sendEmail(data) {
     //send the email
     sgMail.send(msg, (error, result) => {
       if (error) {
-          console.log(error);
+          logger.error(error);
       } else {
           console.log("That's wassup!");
       }

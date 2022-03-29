@@ -406,21 +406,21 @@ router.get("/userInfo", function (req, res) {
     });
   }
 });
-router.post("/resetPassword/", async function (req, res) {
-  //update Firebase record
-  logger.debug("START GENERATE");
-  const auth = getAuth();
-  const user = firebase.auth().currentUser;
-  sendPasswordResetEmail(auth, email)
-    .then(() => {
-      // Password reset email sent!
-      logger.debug("sent to: " + email);
-    })
-    .catch((error) => {
-      logger.error(error.code);
-      logger.error(error.message);
-    });
-});
+// router.post("/resetPassword/", async function (req, res) {
+//   //update Firebase record
+//   logger.debug("START GENERATE");
+//   const auth = getAuth();
+//   const user = firebase.auth().currentUser;
+//   sendPasswordResetEmail(auth, email)
+//     .then(() => {
+//       // Password reset email sent!
+//       logger.debug("sent to: " + email);
+//     })
+//     .catch((error) => {
+//       logger.error(error.code);
+//       logger.error(error.message);
+//     });
+// });
 
 ////////////////////
 //// DELETE POST ////

@@ -134,9 +134,11 @@ router.post('/', async function(req, res) {
 ///         SEND PASSWORD RESET EMAIL                  //
 //////////////////////////////////////
 router.post('/sendResetEmail', async function(req, res) {
+ 
+  
     
     const {email} = req.body;
-    console.log("email: "+email);
+    
       // Replace this URL with the URL where the user will complete sign-in.
       const actionCodeSettings = {
         url: 'https://www.gratitudetoday.org/users/auth/',
@@ -145,7 +147,7 @@ router.post('/sendResetEmail', async function(req, res) {
  
   // Admin SDK API to generate the password reset link.
   logger.debug("reset to : "+email);
-  admin.auth()
+  await admin.auth()
     .generatePasswordResetLink(email, actionCodeSettings)
     .then((link) => {
       
@@ -157,31 +159,23 @@ router.post('/sendResetEmail', async function(req, res) {
         returnURL:link,
      };
      //pass the data object to send the email
-    //  logger.debug("template to: "+data.templateName);
-    //  logger.debug("send email to: "+data.receiver);
-    //  logger.debug("send sender: "+data.sender);
-    //  logger.debug("send sender: "+data.name);
-     mailer.sendEmail(data);
-        var data = {
-          templateName: "reset_password",
-          // sender: "Gratitude Today <info@gratitudetoday.org>",
-          receiver: email,   
-          // name:"Adrian",
-          resetURL: link,
-      };
-      //pass the data object to send the email
-      //  logger.debug("template to: "+data.templateName);
-      //  logger.debug("send email to: "+data.receiver);
-      //  logger.debug("send sender: "+data.sender);
-      //  logger.debug("send sender: "+data.name);
-      //  logger.debug("send resetURL: "+data.resetURL);
-      mailer.sendEmail(data);
-        
+    
+    //  mailer.sendEmail(data);
+    //     var data = {
+    //       templateName: "reset_password",
+          
+    //       receiver: email,   
+    //       // name:"Adrian",
+    //       resetURL: link,
+    //   };
+    
+     logger.debug("in then");
     })
     .catch((error) => {
       // Some error occurred.
       logger.error("ERROR: "+error)
     });
+  
 }); 
     
     

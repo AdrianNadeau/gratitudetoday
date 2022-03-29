@@ -43,6 +43,9 @@ router.get('/coffee', function(req, res) {
 router.get('/resetpassword', function(req, res) {
   res.render('resetpassword',{'url': 'home'});
 });
+router.get('/passwordupdated', function(req, res) {
+  res.render('passwordupdated',{'url': 'home'});
+});
 
 router.get('/loginfailed', function(req, res) {
   
@@ -85,7 +88,7 @@ router.get('/adminlogin', function(req, res) {
 router.get("/sendReminders", async function (req, res) {
   var random = Math.floor(Math.random() * 99);
   const quote = await Quote.findOne({}).skip(random);
-  logger.debug("SEND REMINDERS")
+  
   
   User.find({} , (err, users) => {
     if(err)
@@ -97,7 +100,7 @@ router.get("/sendReminders", async function (req, res) {
         
           users.map(user => {
           //send daily reminder
-          logger.debug(user);
+         
           try{  
              
             
@@ -118,9 +121,10 @@ router.get("/sendReminders", async function (req, res) {
           // logger.debug("send sender: "+data.name);
           // logger.debug("quote: "+quote.quote);
           // logger.debug("author: "+quote.author);
-          logger.debug("DATA: "+data);
-          mailer.sendEmail(data);
-    
+          
+            mailer.sendEmail(data);
+           
+          
           }
           catch(error){
             logger.error(error);

@@ -77,6 +77,7 @@ function sendEmail(data) {
     sgMail.send(msg, (error, result) => {
       if (error) {
           logger.error(error);
+          //use another method if error thrown (probably over max per day)
       } else {
           console.log("That's wassup!");
       }

@@ -62,7 +62,7 @@ function sendEmail(data) {
       templateId: templates[data.templateName],
       //extract the custom fields 
       dynamic_template_data: {
-        name:data.displayName,
+        name:data.name,
         quote:data.quote,
         author:data.author,
         confirm_account_url:  data.confirm_account_url,

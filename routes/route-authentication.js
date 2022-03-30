@@ -160,14 +160,13 @@ router.post('/sendResetEmail', async function(req, res) {
      };
      //pass the data object to send the email
     
-    //  mailer.sendEmail(data);
-    //     var data = {
-    //       templateName: "reset_password",
-          
-    //       receiver: email,   
-    //       // name:"Adrian",
-    //       resetURL: link,
-    //   };
+    mailer.sendEmail(data);
+    var data = {
+      templateName: "reset_password",
+      receiver: email,   
+    
+      resetURL: link,
+     };
     
      logger.debug("in then");
     })

@@ -69,12 +69,33 @@ router.post('/', async function(req, res) {
                 admin.auth().getUserByEmail(email)
                   .then(function(userRecord) {
                     User.find({ email: userRecord.email}, function (err, docs) {
-                      
+                      logger.debug("email: "+userRecord.email)
                       if(docs){
+                        try{
+                          let date_ob = new Date();
+                          const filter = { email: email };
+                          const update = { lastloggedInDate: date_ob };
+                         
+                          
+                          let user = User.findOneAndUpdate(filter, update).then((err, docs) => {
+                            // if(err)
+                            //   logger.error("err: "+err.errMessage); 
+                            
+                            
+                              
+                          });
+                          logger.debug("updated last login for : "+email);
+                          sess = req.session;
+                          sess.userid = docs[0]._id;
+                          res.send(JSON.stringify('LOGIN_USER'));
+                          
+                          
+                        }
+                        catch(error){
+                          // logger.error("error: "+error);
+                          //we don't care login the user
+                        }
                         
-                        sess = req.session;
-                        sess.userid = docs[0]._id;
-                        res.send(JSON.stringify('LOGIN_USER'));
                         
                       }
                       
@@ -158,17 +179,10 @@ router.post('/sendResetEmail', async function(req, res) {
         receiver: email,   
         returnURL:link,
      };
-     //pass the data object to send the email
-    
-    mailer.sendEmail(data);
-    var data = {
-      templateName: "reset_password",
-      receiver: email,   
-    
-      resetURL: link,
-     };
-    
-     logger.debug("in then");
+  
+    logger.debug("send to update page");
+     res.send(email);
+        
     })
     .catch((error) => {
       // Some error occurred.
@@ -176,8 +190,6 @@ router.post('/sendResetEmail', async function(req, res) {
     });
   
 }); 
-    
-    
  
 ///////////////////////////////////////
 ////        ACTIVATE USER            //

@@ -6,7 +6,8 @@ sgMail.setApiKey(SENDGRID_API_KEY);
 templates = {
   account_confirm:  "d-109324885eb14ad7ac2a09a0d24898a1",
   daily_reminder:   "d-b6b62f190a2f4412881c97f1d70f8afa",
-  reset_password: "d-8827b3f78bd54a248550e0212eb31f65"
+  reset_password: "d-8827b3f78bd54a248550e0212eb31f65",
+  last_login: "d-17442af016b444ba96933f0b96df4883"
   
 };
 
@@ -69,6 +70,28 @@ function sendEmail(data) {
         reset_password_url: data.reset_password_url
       }
     };//
+
+
+  }
+  else if(data.templateName=="last_login"){
+    //////////SEND Weekly last login EMAIL///////////////
+    
+    logger.debug(JSON.stringify(data));
+    msg = {
+      //extract the email details
+      to: data.receiver,
+      from: "info@gratitudetoday.org",
+    
+      templateId: templates[data.templateName],
+      //extract the custom fields 
+      dynamic_template_data: {
+        name:data.name,
+        
+        confirm_account_url:  data.confirm_account_url,
+        reset_password_url: data.reset_password_url,
+        last_login: data.last_login
+      }
+    };
 
 
   }

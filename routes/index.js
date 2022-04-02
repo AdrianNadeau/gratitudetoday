@@ -3,6 +3,7 @@ const logger = require('../logger/logger');
 var mailer = require('../email/mailer');
 const User = require('../models/UserModel');
 const Quote = require('../models/QuoteModel');
+const moment = require('moment');
 var router = express.Router();
 
 // Ping to keep Heroku dyno up
@@ -141,14 +142,57 @@ router.get("/sendReminders", async function (req, res) {
   res.setHeader('Content-Type', 'text/plain');
   res.end('Reminders email Successfully');
 });
+   
+router.get("/getLastLogins", async function (req, res) {
   
-  //   logger.debug("--------------- Send Reminder Emails ------------------")
-
+  const today = moment();
+  const startdate = today.subtract(14, "days");
+  
+  // moment('2010-10-20').isAfter('2009-12-31', 'year'); // true
+   
+  // const lastLoginCheck =new Date(today.getDate() - 14);//myPastDate is now 14 days in the past
+  await User.find({}, function (err, users) {
+    if(err)
+      logger.error(err);
+        
+      users.map(user => {
+        //check last login + 14 days. If true send email
+        if (moment(user.lastloggedInDate).isBefore(startdate))
+        try{  
+             
+            
+          //send daily email
+          var data = {
+            templateName: "last_login",
+            
+            receiver: user.email,   
+            name:user.displayName,
+      
+         };
+         //pass the data object to send the email
+        // logger.debug("template to: "+data.templateName);
+        // logger.debug("send email to: "+data.receiver);
+        // logger.debug("send sender: "+data.sender);
+        // logger.debug("send sender: "+data.name);
+        // logger.debug("quote: "+quote.quote);
+        // logger.debug("author: "+quote.author);
+        
+          mailer.sendEmail(data);
+         
+        
+        }
+        catch(error){
+          logger.error(error);
+          
+        }
+      })
+  });
  
-  
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Last Login emails sent Successfully');
+});  
 
-    
 
-    
 
 module.exports = router;

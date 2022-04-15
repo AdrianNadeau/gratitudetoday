@@ -18,7 +18,12 @@ C:\Users\ez17974\Downloads\tools\redis-2.4.5-win32-win64\64bit\redis-server.exe
 sudo kill -9 `sudo lsof -t -i:3000`
 fuser -n tcp -k 3508 
 
-
+db.users.update(
+  {},
+  { $set: {"lastloggedInDate": "2022-1-04T21:18:17.163Z"} },
+  false,
+  true
+)
 
 Free Sandbox Account:
 DB user: GratitudeToday

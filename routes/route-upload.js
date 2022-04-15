@@ -6,6 +6,11 @@ var express = require("express"),
   (Post = require("../models/PostModel")),
   (mongoose = require("mongoose")),
   (bcrypt = require("bcryptjs"));
+
+  const AWS = require('aws-sdk')
+  AWS.config.update({ region: process.env.AWS_REGION })
+  const s3 = new AWS.S3()
+  const URL_EXPIRATION_SECONDS = 300
  /**
   * route where we get multipart form data
   * capture file and upload files to s3
@@ -18,22 +23,47 @@ var express = require("express"),
   router.get("/updateError", function (req, res) {
     res.render("avatarError", { url: "accounts" });
   });
- router.post("/upload", async (req, res) => {
-  var file = req.files.file;
-  const fileContent = fs.readFileSync(fileName)
-  
-  const params = {
-    Bucket: process.env.AWS_BUCKET_NAME,
-    Key: `${filename}.jpg`,
-    Body: fileContent
+ 
+router.post("/upload", async (req, res) => {
+  // Main Lambda entry point
+  exports.handler = async (event) => {
+    return await getUploadURL(event)
   }
-  
-  s3.upload(params, (err, data) => {
-    if (err) {
-      reject(err)
+
+  const getUploadURL = async function(event) {
+    const randomID = parseInt(Math.random() * 10000000)
+    const Key = `${randomID}.jpg`
+
+    // Get signed URL from S3
+    const s3Params = {
+      Bucket: process.env.UploadBucket,
+      Key,
+      Expires: URL_EXPIRATION_SECONDS,
+      ContentType: 'image/jpeg'
     }
-    resolve(data.Location)
-  })
+    const uploadURL = await s3.getSignedUrlPromise('putObject', s3Params)
+    return JSON.stringify({
+      uploadURL: uploadURL,
+      Key
+    })
+  }
+
+//  router.post("/upload", async (req, res) => {
+//   var file = req.files.file;
+//   const fileContent = fs.readFileSync(fileName)
+  
+//   const params = {
+//     Bucket: process.env.AWS_BUCKET_NAME,
+//     Key: `${filename}.jpg`,
+//     Body: fileContent
+//   }
+  
+//   s3.upload(params, (err, data) => {
+//     if (err) {
+//       reject(err)
+//     }
+//     resolve(data.Location)
+//   })
   // var file = req.files.form-control-file;
   // logger.debug("file :"+file);
   // fs.readFile(file.path, function (err, data) {

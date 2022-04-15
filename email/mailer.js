@@ -13,6 +13,7 @@ templates = {
 
 function sendEmail(data) {
   let msg;
+  logger.debug(data);
   logger.debug(data.templateName);
   
   if(data.templateName=="account_confirm"){

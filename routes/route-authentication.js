@@ -121,11 +121,7 @@ router.post('/', async function(req, res) {
                     
                     
                  };
-                 //pass the data object to send the email
-                //  logger.debug("template to: "+data.templateName);
-                //  logger.debug("send email to: "+data.receiver);
-                //  logger.debug("send sender: "+data.sender);
-                //  logger.debug("send sender: "+data.name);
+                
                  mailer.sendEmail(data);
           
                 }
@@ -155,41 +151,70 @@ router.post('/', async function(req, res) {
 ///         SEND PASSWORD RESET EMAIL                  //
 //////////////////////////////////////
 router.post('/sendResetEmail', async function(req, res) {
- 
-  
-    
-    const {email} = req.body;
-    
-      // Replace this URL with the URL where the user will complete sign-in.
-      const actionCodeSettings = {
-        url: 'https://www.gratitudetoday.org/users/auth/',
-        handleCodeInApp: true
-      }
- 
-  // Admin SDK API to generate the password reset link.
+   // Replace this URL with the URL where the user will complete sign-in.
+   const actionCodeSettings = {
+    url: 'https://www.gratitudetoday.org/users/auth/',
+    handleCodeInApp: true
+  }
+  //get email from form
+  var email = req.body.email;
   logger.debug("reset to : "+email);
   await admin.auth()
     .generatePasswordResetLink(email, actionCodeSettings)
     .then((link) => {
-      
-      // Construct password reset email template, embed the link and send
-     logger.debug(link);
-      var data = {
-        templateName: "reset_password",
-        receiver: email,   
-        returnURL:link,
-     };
-  
-    logger.debug("send to update page");
-     res.send(email);
-        
-    })
-    .catch((error) => {
-      // Some error occurred.
-      logger.error("ERROR: "+error)
+       // Construct password reset email template, embed the link and send
+        try{
+            //send confirm email
+            var data = {
+                         templateName: "reset_password",
+                        receiver: email,   
+                        returnURL:link,
+                    
+            };
+            mailer.sendEmail(data);
+          }
+          catch(error){
+              logger.error(error);
+                  //ignore so no big deal
+          }
     });
-  
+      // }).then((data) => {
+      //   //we have data, send the email now.
+      //   logger.debug("send email: "+email);
+      //   mailer.sendEmail(data);
+      //   res.send(email);
+      // }).catch(logger.error("error"));
+      
+
+  // logger.debug("reset to : "+email);
+  // await admin.auth()
+  //   .generatePasswordResetLink(email, actionCodeSettings)
+  //   .then((link) => {
+  //       // Construct password reset email template, embed the link and send
+  //       logger.debug(link);
+  //         var data = {
+  //           templateName: "reset_password",
+  //           receiver: email,   
+  //           returnURL:link,
+  //       };
+  //       // res.send(email);
+        
+  //   }).then((link) => {
+    
+  //   });
+    
+ 
 }); 
+        
+ 
+        
+    
+    //  res.send(email);
+        
+    
+    
+  
+
  
 ///////////////////////////////////////
 ////        ACTIVATE USER            //

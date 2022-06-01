@@ -3,7 +3,7 @@ router = express.Router();
 User = require("../models/UserModel");
 var logger = require('../logger/logger');
 var mailer = require('../email/mailer');
-var nodemailer=require("nodemailer");
+
 
 var auth = require("firebase/auth");
 var admin = require("firebase-admin");
@@ -178,44 +178,9 @@ router.post('/sendResetEmail', async function(req, res) {
                   //ignore so no big deal
           }
     });
-      // }).then((data) => {
-      //   //we have data, send the email now.
-      //   logger.debug("send email: "+email);
-      //   mailer.sendEmail(data);
-      //   res.send(email);
-      // }).catch(logger.error("error"));
-      
-
-  // logger.debug("reset to : "+email);
-  // await admin.auth()
-  //   .generatePasswordResetLink(email, actionCodeSettings)
-  //   .then((link) => {
-  //       // Construct password reset email template, embed the link and send
-  //       logger.debug(link);
-  //         var data = {
-  //           templateName: "reset_password",
-  //           receiver: email,   
-  //           returnURL:link,
-  //       };
-  //       // res.send(email);
-        
-  //   }).then((link) => {
-    
-  //   });
-    
  
 }); 
-        
- 
-        
-    
-    //  res.send(email);
-        
-    
-    
-  
 
- 
 ///////////////////////////////////////
 ////        ACTIVATE USER            //
 ///////////////////////////////////////

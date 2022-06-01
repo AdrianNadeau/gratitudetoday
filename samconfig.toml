@@ -2,9 +2,11 @@ version = 0.1
 [default]
 [default.deploy]
 [default.deploy.parameters]
-stack_name = "GratitudeTodayUploader"
-s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-yttxg1b8ez0d"
-s3_prefix = "GratitudeTodayUploader"
+stack_name = "GratitudeToday"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-18zgny4w82jl5"
+s3_prefix = "GratitudeToday"
 region = "us-east-1"
+confirm_changeset = true
 capabilities = "CAPABILITY_IAM"
+disable_rollback = true
 image_repositories = []

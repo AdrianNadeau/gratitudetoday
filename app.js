@@ -27,13 +27,17 @@ require("firebase/app");
 require("firebase/auth");
 
 const admin = require("firebase-admin");
+// Firebase App (the core Firebase SDK) is always required and
+// must be listed before other Firebase SDKs
+require("firebase/app");
+require("firebase/auth");
+
 const serviceAccount = require("./gratitudetoday-2e630-firebase-adminsdk-sx0pq-b907b6e239.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://gratitudetoday-2e630.firebaseapp.com", //CALLBACK URLS https://gratitudetoday-2e630.firebaseapp.com
 });
-
 const indexRouter = require("./routes/index.js");
 const userAccountRouter = require("./routes/route-user-account.js");
 const postsRouter = require("./routes/posts.js");

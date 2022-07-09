@@ -1,31 +1,46 @@
-const aws = require("aws-sdk");
-const multer = require("multer");
-const multerS3 = require("multer-s3");
-logger = require('../logger/logger')
+const {Storage} = require('@google-cloud/storage');
+const storage = new Storage();
 
-const s3 = new aws.S3();
+var admin = require("firebase-admin");
+const uuid = require('uuid-v4');
 
-const fileFilter = (req, file, cb) => {
-  if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
-    cb(null, true);
-  } else {
-    cb(new Error("Invalid file type, only JPEG and PNG is allowed!"), false);
-  }
-};
+var serviceAccount = require("C:/anadeau/gratiudetoday---dev-firebase-adminsdk-4ltua-05f07d2bf1.json");
 
-const upload = multer({
-  fileFilter,
-  storage: multerS3({
-    acl: "public-read",
-    s3,
-    bucket:"gratitudetoday-uploads",
-    metadata: function (req, file, cb) {
-      cb(null, { fieldName: "TESTING_METADATA" });
-    },
-    key: function (req, file, cb) {
-      cb(null, Date.now().toString());
-    },
-  }),
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    storageBucket: "gs://gratiudetoday---dev.appspot.com"
 });
 
-module.exports = upload;
+//-
+// It's not always that easy. You will likely want to specify the filename
+// used when your new file lands in your bucket.
+//
+// You may also want to set metadata or customize other options.
+//-
+//get unique name for file
+const newFileName = uuid();
+//get file extension
+console.log('filename: ')
+let fileExtension = newFileName.substring(newFileName.length, newFileName.length-4);
+console.log(fileExtension);
+const options = {
+  destination: 'avatar-'+newFileName+".jpg",
+  validation: 'crc32c',
+  metadata: {
+    metadata: {
+      event:"Adrian's Avatar",
+      firebaseStorageDownloadTokens: uuid,
+    }
+  }
+};
+storageBucket = admin.storage().bucket();
+storageBucket.upload('C:/anadeau/profile.jpg', options, function(err, file) {
+  if(!err){
+    //store in DB for profile
+    console.log("https://firebasestorage.googleapis.com/v0/b/" + storageBucket.name + "/o/" + encodeURIComponent(file.name) + "?alt=media");
+    
+    
+  }else{
+    console.log("ERROR: "+err) 
+  }
+});

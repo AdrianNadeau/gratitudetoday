@@ -21,7 +21,7 @@
             <h2>Account</h2>
             
             <a href="/users/upload/updateAvatar">Update Avatar</a> | 
-            <a href="/users/account/changepassword" id="sendreset">Reset Password</a>
+            <a href="#" id="btn_reset">Reset Password</a>
           </form>
           </div>
           <div id = "validationErrors"></div>
@@ -41,7 +41,35 @@
         </div>
         
       </div>
-       
+      <script>
+      $( "#btn_reset" ).click(function() {
+        console.log('reset clicked');
+        const email = $("#email").val();
+        event.preventDefault();
+          $ajax({
+              dataType: "json",
+              type: "POST",
+              data: {
+                email: email,
+              },
+              url: "/users/auth/sendResetEmail",
+                success: function (data) {
+                
+              },
+              error: function (error) {
+                
+                console.log(error.message);
+               
+              }
+            
+            })      
+
+         
+        
+      });
+    </script>
+
+
 
   <% include partials/cookie-msg %>
   

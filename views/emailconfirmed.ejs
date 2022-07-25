@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <% include partials/head %>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <% include partials/header %>
+  <!-- End Header -->
+  <script>
+  // [START auth_sign_out]
+  firebase.auth().signOut().then(() => {
+    // Sign-out successful.
+    
+  }).catch((error) => {
+    // An error happened.
+    logger.error("error")
+  });
+  // [END auth_sign_out]
+  </script>
+  <!-- ======= Hero Section ======= -->
+  <section id="sub-hero">
+         
+    <div class="container">
+     
+      <div class="row">
+        <div class="col-2">&nbsp;</div>
+        <div class="col-8">
+         
+         
+<section class="features">
+ 
+  <div class="container white-form">
+    
+    
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1 id="text1">Email confirmed.</h1>
+        <p>Thank you for confirming your email.</p>
+        
+          <div class="col-2">&nbsp;</div>
+        
+        
+    </div>
+  </form> 
+  </div>
+  <!-- AJAX To logout-->
+  <script>
+    
+  </script>
+  <!-- END AJAX To logout-->
+  
+
+</section><!-- End Features Section -->
+
+
+ 
+
+  <% include partials/cookie-msg %>
+ 
+  <% include partials/scripts %>
+  
+</body>
+
+
+</html>
+
+
+
+
+

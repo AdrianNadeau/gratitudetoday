@@ -4,12 +4,12 @@ const storage = new Storage();
 var admin = require("firebase-admin");
 const uuid = require('uuid-v4');
 
-var serviceAccount = require("C:/anadeau/gratiudetoday---dev-firebase-adminsdk-4ltua-05f07d2bf1.json");
+// var serviceAccount = require("C:/anadeau/gratiudetoday---dev-firebase-adminsdk-4ltua-05f07d2bf1.json");
 
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    storageBucket: "gs://gratiudetoday---dev.appspot.com"
-});
+// admin.initializeApp({
+//     credential: admin.credential.cert(serviceAccount),
+//     storageBucket: "gs://gratiudetoday---dev.appspot.com"
+// });
 
 //-
 // It's not always that easy. You will likely want to specify the filename

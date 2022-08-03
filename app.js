@@ -16,7 +16,8 @@ var firebase = require("firebase/app");
 require("firebase/auth");
 
 var admin = require("firebase-admin");
-var serviceAccount = require('./gratitudetoday-2e630-firebase-adminsdk-sx0pq-b907b6e239.json');
+var serviceAccount = require('./gratiudetoday---dev-firebase-adminsdk-4ltua-c9b0d14e11.json');
+//
 
 // Your web app's Firebase configuration
 // var firebaseConfig = {
@@ -123,8 +124,8 @@ app.use(function (err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-res.status(err.status || 500);
-res.render('error', { 'url': 'home' });
+// res.status(err.status || 500);
+// res.render('error', { 'url': 'home' });
 });
 var port_number = (process.env.PORT || 3000);
 

@@ -27,6 +27,7 @@ require("firebase/app");
 require("firebase/auth");
 
 const admin = require("firebase-admin");
+
 // Firebase App (the core Firebase SDK) is always required and
 // must be listed before other Firebase SDKs
 require("firebase/app");
@@ -128,8 +129,8 @@ app.use(function (err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
 
-  res.status(err.status || 500);
-  res.render("error", { url: "home" });
+  // res.status(err.status || 500);
+  // res.render("error", { url: "home" });
 });
 var port_number = process.env.PORT || 3000;
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <% include partials/head %>
+  <%- include('partials/head'); %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
 <script type="text/javascript">
@@ -83,7 +83,7 @@
 <body>
   
   <!-- ======= Header ======= -->
-  <% include partials/header %>
+  <%- include('partials/header'); %>
  
   <!-- End Header --> 
 
@@ -118,9 +118,9 @@
     </div>
   </form> 
   </div>
-  <% include partials/cookie-msg %>
+  <%- include('partials/cookie-msg'); %>
   
-  <% include partials/scripts %>
+  <%- include('partials/scripts'); %>
   
 </body>
 

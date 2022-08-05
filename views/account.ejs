@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <% include partials/head %> 
+  <%- include('partials/head'); %> 
 
 <body>
 
   <!-- ======= Header ======= -->
-  <% include partials/header %>
+  <%- include('partials/header'); %>
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
@@ -26,8 +26,9 @@
           </div>
           <div id = "validationErrors"></div>
               <div id = "validationSuccess"></div>
-              <% include partials/accountnav %>
-            <% include partials/account-update-form %>
+              <%- include('partials/accountnav'); %>
+              <%- include('partials/account-update-form'); %>
+             
             <input type="submit" id="button-update-account" class="btn btn-success navtoTop" value="Update">
             <input type="button" class="btn btn-secondary" id="btn_dash" value="Dashboard">
             
@@ -71,9 +72,9 @@
 
 
 
-  <% include partials/cookie-msg %>
+  <%- include('partials/cookie-msg'); %>
   
-  <% include partials/scripts %>
+  <%- include('partials/scripts'); %>
   <script>
     $(document).ready(function() {
        getData();

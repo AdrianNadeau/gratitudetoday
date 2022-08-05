@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
  
-  <% include partials/head %>
+  <%- include('partials/head'); %>
   
 <style>
   /* Style for graphs */
@@ -18,7 +18,7 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
 
   <!-- ======= Header ======= -->
-  <% include partials/header %>
+  <%- include('partials/header'); %>
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
@@ -37,7 +37,7 @@
           </div>
           <div id = "validationErrors"></div>
           <div id = "validationSuccess"></div>
-          <% include partials/accountnav %>
+          <%- include('partials/accountnav'); %>
           <div class="white-form">
             <h2><span id="memberlevel"></span> Member.</h2>
             <!-- Registered: September 25, 2021<br/><br/> -->
@@ -109,9 +109,9 @@
         
       </div>
     
-  <% include partials/cookie-msg %>
+  <%- include('partials/cookie-msg'); %>
   
-  <% include partials/scripts %>
+  <%- include('partials/scripts'); %>
   <!-- Post Scripts -->
 <script src="/assets/js/postFunctions.js"></script>
   <script src="/assets/js/jquery-custom.js"></script>

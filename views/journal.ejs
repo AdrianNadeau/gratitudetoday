@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-   <% include partials/head %>
+   <%- include('partials/head'); %>
 </head>
 
 <body>
@@ -537,7 +537,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-        <% include partials/head %>
+        <%- include('partials/head'); %>
     </head>
    <body>
       <section class="pb_cover_v3 cover-bg-opacity text-left pb_gradient_v1">
@@ -599,7 +599,7 @@
          </div>
       </section>
       <% include partials/footer %>
-       <% include partials/scripts %>
+       <%- include('partials/scripts'); %>
       
     </body>
    <script type="text/javascript">

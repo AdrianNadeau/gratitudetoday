@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <% include partials/head %>
+  <%- include('partials/head'); %>
 
 <body>
 
   <!-- ======= Header ======= -->
-  <% include partials/header %>
+  <%- include('partials/header'); %>
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
@@ -24,7 +24,7 @@
           
           <div id = "validationErrors"></div>
             <div id = "validationSuccess"></div>
-            <% include partials/accountnav %>
+            <%- include('partials/accountnav'); %>
             <div class="row">
 
   
@@ -50,9 +50,9 @@
       </div>
        
 
-  <% include partials/cookie-msg %>
+  <%- include('partials/cookie-msg'); %>
   
-  <% include partials/scripts %>
+  <%- include('partials/scripts'); %>
   <!-- Post Scripts -->
 <script src="/assets/js/postFunctions.js"></script>
 <script src="/assets/js/jquery-custom.js"></script>

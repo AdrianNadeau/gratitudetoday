@@ -3,7 +3,7 @@
 
 <head>
   <!-- head.ejs include -->
-  <% include partials/head %>
+  <%- include('partials/head'); %>
 
 </head>
 
@@ -50,9 +50,9 @@
   <!-- Footer -->
   <% include partials/footer %>
 
-  <% include partials/scripts %>
+  <%- include('partials/scripts'); %>
 
-  <% include partials/cookie-msg %>
+  <%- include('partials/cookie-msg'); %>
   
   <script>
     $(document).ready(getData());

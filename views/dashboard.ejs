@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <% include partials/head %>
+  <%- include('partials/head'); %>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
   <!-- Begin emoji-picker Stylesheets -->
   <link href="/assets/emoji/lib/css/emoji.css" rel="stylesheet">
   <!-- End emoji-picker Stylesheets -->
 <body>
   <!-- ======= Header ======= -->
-  <% include partials/header %>
+  <%- include('partials/header'); %>
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
@@ -48,7 +48,8 @@
        
           <div class="white-form">
         
-            <% include partials/submit-post %>
+            
+            <%- include('partials/submit-post'); %>
             <div class="row">
               <div class="col-sm-3">
                 <div>
@@ -219,9 +220,9 @@
         
        
 
-  <% include partials/cookie-msg %>
+  <%- include('partials/cookie-msg'); %>
   
-  <% include partials/scripts %>
+  <%- include('partials/scripts'); %>
    <!-- Begin emoji-picker JavaScript -->
    <script src="/assets/emoji/lib/js/config.js"></script>
    <script src="/assets/emoji/lib/js/util.js"></script>

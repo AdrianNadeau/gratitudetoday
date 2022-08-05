@@ -32,7 +32,7 @@ const admin = require("firebase-admin");
 require("firebase/app");
 require("firebase/auth");
 
-const serviceAccount = require("C:/anadeau/gratiudetoday---dev-firebase-adminsdk-4ltua-05f07d2bf1.json");
+const serviceAccount = require("./gratitudetoday-2e630-firebase-adminsdk-sx0pq-b907b6e239.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -130,8 +130,8 @@ app.use(function (err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
 
-  res.status(err.status || 500);
-  res.render("error", { url: "home" });
+  // res.status(err.status || 500);
+  // res.render("error", { url: "home" });
 });
 var port_number = process.env.PORT || 3000;
 

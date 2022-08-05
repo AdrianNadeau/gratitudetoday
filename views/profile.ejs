@@ -4,7 +4,7 @@
 <head>
 	
 <!-- head.ejs include -->
-<% include partials/head %>
+<%- include('partials/head'); %>
 <link type="text/css" href="/assets/css/photo.css" rel="stylesheet" />
   
 </head>
@@ -76,7 +76,7 @@
   <!-- Footer -->
   <% include partials/footer %>
   
-  <% include partials/scripts %>
+  <%- include('partials/scripts'); %>
   
 	
 	<script>

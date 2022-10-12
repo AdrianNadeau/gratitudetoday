@@ -8,6 +8,7 @@
         <!-- TODO this need to be a post to logout session-->
         <li><a href="/logout/">Logout</a></li></li>
         <li><a href="/coffee/">Coffee</a></li>
+        <li><a href="/shop/">Shop</a></li>
     </ul>
   </nav><!-- .nav-menu -->
 <% } else{ %>  
@@ -19,11 +20,17 @@
     <!-- <li><a href="/users/auth/login/">Login</a></li> -->
     <li><a href="/contact/">Contact</a></li>
     <li><a href="/coffee/">Coffee</a></li>
+    <li><a href="/shop/">Shop</a></li>
     
   </ul>
+  
 </nav><!-- .nav-menu -->
 <% } %>
-
+<div class="ec-cart-widget"></div>
+<div>
+<script data-cfasync="false" type="text/javascript" src="https://app.ecwid.com/script.js?80842757&data_platform=code&data_date=2022-10-11" charset="utf-8"></script>
+<script type="text/javascript">Ecwid.init();</script>
+</div>
 
 
 

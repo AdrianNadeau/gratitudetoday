@@ -41,6 +41,9 @@ router.get('/privacy', function(req, res) {
 router.get('/coffee', function(req, res) {
   res.render('coffee',{'url': 'home'});
 });
+router.get('/shop', function(req, res) {
+  res.render('shop',{'url': 'home'});
+});
 router.get('/resetpassword', function(req, res) {
   res.render('resetpassword',{'url': 'home'});
 });

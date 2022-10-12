@@ -113,10 +113,12 @@ router.get("/sendReminders", async function (req, res) {
               templateName: "daily_reminder",
               
               receiver: user.email,   
+              // receiver: "adrian@adriannadeau.com",   
               name:user.displayName,
               //progress data
               quote:quote.quote,
               author:quote.author,
+              // unsubscribe_url: "https://www.gratitudetoday.org/unsubscribe/"+user._id
            };
            //pass the data object to send the email
           // logger.debug("template to: "+data.templateName);
@@ -124,7 +126,7 @@ router.get("/sendReminders", async function (req, res) {
           // logger.debug("send sender: "+data.sender);
           // logger.debug("send sender: "+data.name);
           // logger.debug("quote: "+quote.quote);
-          // logger.debug("author: "+quote.author);
+          // logger.debug("unsubscribe_url: "+data.unsubscribe_url);
           
             mailer.sendEmail(data);
            
@@ -145,7 +147,104 @@ router.get("/sendReminders", async function (req, res) {
   res.setHeader('Content-Type', 'text/plain');
   res.end('Reminders email Successfully');
 });
-   
+
+router.get("/sendProgress/:id", async function (req, res) {
+ let userPts = 0;
+ let userMedal="https://www.gratitudetoday.org/assets/img/medals/bronze-tier.png"
+
+ let user = await User.findById(req.params.id)
+  if(user!=null){
+      //get data for email
+      try{
+     
+        //return posts in decending order
+        var q = Post.find({user: req.params.id}).populate('user');
+          q.exec(function(err, posts) {
+            if (err){ 
+                logger.error(err.message);
+                res.send(err.message);
+                //next();  
+            }
+            
+            userPts= posts.length * 50 + 100;
+            logger.debug("userPts: "+userPts);
+            if(userPts>299){
+              //bronze
+              userMedal="https://www.gratitudetoday.org/assets/img/medals/bronze-tier.png"
+              
+              
+            }
+            else if(totalPts>999){
+              userMedal="https://www.gratitudetoday.org/assets/img/medals/silver-tier.png"
+            
+            }
+            else if(totalPts>2999){
+              userMedal="https://www.gratitudetoday.org/assets/img/medals/gold-tier.png"
+            
+            }
+          })
+          try{    
+            //send daily email
+            
+            var data = {
+              templateName: "send_progress",
+              
+              // receiver: user.email,   
+              receiver: "adrian@adriannadeau.com",   
+              name:user.displayName,
+              //progress data
+              progress_medal:userMedal,
+              current_pts: userPts
+          };
+        }
+        catch(error){
+          logger.error(error);
+          
+        }
+       
+      }
+      catch(err){
+        //no posts yet, load page anyway
+        logger.error(err.message);
+        res.send(err.message);
+        next();  
+      }
+      
+      
+    }
+    // res.render('index',{'url': 'home'});
+    res.end('Progress email Successfully');
+});           
+  
+          //  };
+           //pass the data object to send the email
+          // logger.debug("template to: "+data.templateName);
+          // logger.debug("send email to: "+data.receiver);
+          // logger.debug("send sender: "+data.sender);
+          // logger.debug("send sender: "+data.name);
+          // logger.debug("quote: "+quote.quote);
+          // logger.debug("unsubscribe_url: "+data.unsubscribe_url);
+          
+  //           mailer.sendEmail(data);
+           
+          
+  //         }
+  //         catch(error){
+  //           logger.error(error);
+            
+  //         }
+      
+          
+  //     });
+         
+  // })
+
+  // });       
+  // res.statusCode = 200;
+  // res.setHeader('Content-Type', 'text/plain');
+  // res.end('Reminders email Successfully');
+
+  
 router.get("/getLastLogins", async function (req, res) {
   
   const today = moment();

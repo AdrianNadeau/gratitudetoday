@@ -7,7 +7,8 @@ templates = {
   account_confirm:  "d-109324885eb14ad7ac2a09a0d24898a1",
   daily_reminder:   "d-b6b62f190a2f4412881c97f1d70f8afa",
   reset_password: "d-8827b3f78bd54a248550e0212eb31f65",
-  last_login: "d-17442af016b444ba96933f0b96df4883"
+  last_login: "d-17442af016b444ba96933f0b96df4883",
+  send_progress: "d-76a220344f1f4b24ba739fa68620b279"
   
 };
 
@@ -54,7 +55,7 @@ function sendEmail(data) {
   }
   else if(data.templateName=="daily_reminder"){
     //////////SEND DAILY EMAIL///////////////
-    
+    logger.debug("SEND EMAIL")
     logger.debug(JSON.stringify(data));
     msg = {
       //extract the email details
@@ -68,7 +69,8 @@ function sendEmail(data) {
         quote:data.quote,
         author:data.author,
         confirm_account_url:  data.confirm_account_url,
-        reset_password_url: data.reset_password_url
+        reset_password_url: data.reset_password_url,
+        // unsubscribe_url: data.unsubscribe_url
       }
     };//
 
@@ -81,6 +83,29 @@ function sendEmail(data) {
     msg = {
       //extract the email details
       to: data.receiver,
+      from: "info@gratitudetoday.org",
+    
+      templateId: templates[data.templateName],
+      //extract the custom fields 
+      dynamic_template_data: {
+        name:data.name,
+        
+        confirm_account_url:  data.confirm_account_url,
+        reset_password_url: data.reset_password_url,
+        last_login: data.last_login
+      }
+    };
+
+
+  }
+  else if(data.templateName=="send_progress"){
+    //////////SEND Weekly Progress EMAIL///////////////
+    
+    logger.debug(JSON.stringify(data));
+    msg = {
+      //extract the email details
+      // to: data.receiver,
+      to: "adrian@adriannadeau.com",
       from: "info@gratitudetoday.org",
     
       templateId: templates[data.templateName],

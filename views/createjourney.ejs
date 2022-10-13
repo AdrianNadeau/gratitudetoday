@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <% include partials/head %>
+  <%- include('partials/head'); %>
   <style>
     #myProgress {
       width: 100%;
@@ -20,7 +20,7 @@
 <body>
  
   <!-- ======= Header ======= -->
-  <% include partials/header %>
+  <%- include('partials/header'); %>
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
@@ -44,9 +44,9 @@
             </div>
 </section><!-- End Features Section -->
 
-<% include partials/cookie-msg %>
+<%- include('partials/cookie-msg'); %>
  
-  <% include partials/scripts %>
+  <%- include('partials/scripts'); %>
 
   
 </body>

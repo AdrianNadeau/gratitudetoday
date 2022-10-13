@@ -1,5 +1,5 @@
-
-<% if(url == 'accounts'){ %>
+<% 
+    if(url == 'accounts'){ %>
   <nav class="nav-menu d-none d-lg-block">
     <ul>
       
@@ -8,6 +8,7 @@
         <!-- TODO this need to be a post to logout session-->
         <li><a href="/logout/">Logout</a></li></li>
         <li><a href="/coffee/">Coffee</a></li>
+        <li><a href="/shop/">Shop</a></li>
     </ul>
   </nav><!-- .nav-menu -->
 <% } else{ %>  
@@ -19,8 +20,10 @@
     <!-- <li><a href="/users/auth/login/">Login</a></li> -->
     <li><a href="/contact/">Contact</a></li>
     <li><a href="/coffee/">Coffee</a></li>
+    <li><a href="/shop/">Shop</a></li>
     
   </ul>
+  
 </nav><!-- .nav-menu -->
 <% } %>
 

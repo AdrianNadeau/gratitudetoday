@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <% include partials/head %>
+  <%- include('partials/head'); %>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
   <!-- Begin emoji-picker Stylesheets -->
   <link href="/assets/emoji/lib/css/emoji.css" rel="stylesheet">
@@ -10,7 +10,7 @@
   <!-- End emoji-picker Stylesheets -->
 <body>
   <!-- ======= Header ======= -->
-  <% include partials/header %>
+  <%- include('partials/header'); %>
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
@@ -68,8 +68,8 @@
               
         </div>
     
-<% include partials/cookie-msg %>
-<% include partials/scripts %>
+<%- include('partials/cookie-msg'); %>
+<%- include('partials/scripts'); %>
 <script src="/assets/js/getParams.js"></script>
 
 <!-- Post Scripts -->

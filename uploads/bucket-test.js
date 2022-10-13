@@ -19,7 +19,7 @@ const storage = new Storage({keyFilename: 'C:/anadeau/gratiudetoday---dev-fireba
  * TODO(developer): Uncomment these variables before running the sample.
  */
 // The ID of your GCS bucket
-const bucketName = 'adriannadeaupics';
+const bucketName = 'gratitudeTodayDevabc123';
 console.log(bucketName)
 
 async function createBucket() {

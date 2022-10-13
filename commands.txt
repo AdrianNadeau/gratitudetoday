@@ -64,4 +64,9 @@ cloudinary
 ==============================================
 585674857763237
 4cUa0oqQeraDyv5mpopL3fGmQlM
-CLOUDINARY_URL=cloudinary://585674857763237:4cUa0oqQeraDyv5mpopL3fGmQlM@adrian-nadeau
+CLOUDINARY_URL=cloudinary://585674857763237:4cUa0oqQeraDyv5mpopL3fGmQlM@adrian-nadeau\
+
+sudo systemctl status mongod
+sudo systemctl start mongod
+sudo systemctl stop mongod
+

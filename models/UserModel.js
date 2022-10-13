@@ -21,7 +21,7 @@ const UserSchema = new mongoose.Schema({
     exp_id: {type:Number,required: true,default:0}, 
     schedule: {type:Number,required: true,default:0}, 
     displayOnBoard:{type:Boolean,required: true,default:true},
-    recieveEmail: {type:Boolean,required: true,default:true},
+    subscribedNews: {type:Boolean,required: true,default:true},
      createDate: {
         type: Date,
         default: Date.now

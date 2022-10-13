@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
  
-  <% include partials/head %>
+  <%- include('partials/head'); %>
 
  
 
@@ -13,7 +13,7 @@
   <!-- End emoji-picker Stylesheets -->
 <body>
   <!-- ======= Header ======= -->
-  <% include partials/header %>
+  <%- include('partials/header'); %>
   <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
@@ -85,8 +85,8 @@
   <!-- Begin emoji-picker Stylesheets -->
   <link href="/assets/emoji/lib/css/emoji.css" rel="stylesheet">
   <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<% include partials/cookie-msg %>
-<% include partials/scripts %>
+<%- include('partials/cookie-msg'); %>
+<%- include('partials/scripts'); %>
 <script src="/assets/js/getParams.js"></script>
 <!-- Begin emoji-picker JavaScript -->
 <script src="/assets/emoji/lib/js/config.js"></script>

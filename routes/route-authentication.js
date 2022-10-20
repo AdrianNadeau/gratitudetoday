@@ -3,6 +3,11 @@ router = express.Router();
 User = require("../models/UserModel");
 var logger = require('../logger/logger');
 var mailer = require('../email/mailer');
+var SibApiV3Sdk = require('sib-api-v3-sdk');
+
+require("custom-env").env();
+const { SENDGRID_API_KEY } =  process.env.SENDGRID_API_KEY;
+const { SENDINBLUE_API_KEY } =  process.env.SENDINBLUE_API_KEY;
 
 
 var auth = require("firebase/auth");
@@ -37,13 +42,13 @@ router.get('/registersuccess', function (req, res) {
 
 });
 
+
 //////////////////////////////////////
 ///         SIGNUP                  //
 //////////////////////////////////////
 router.post('/', async function(req, res) {
   
-  const { SENDGRID_API_KEY } = require('../config.js');
- 
+  
   const {displayName, email, photoURL, accessToken} = req.body;
   console.log("email: "+email);
   
@@ -110,19 +115,110 @@ router.post('/', async function(req, res) {
             }
             else{
                 try{  
+                  
+                  var defaultClient = SibApiV3Sdk.ApiClient.instance;
+                  
+                  // Configure API key authorization: api-key
+                  var apiKey = defaultClient.authentications['api-key'];
+                  apiKey.apiKey = process.env.SENDINBLUE_API_KEY;
 
-                  //send confirm email
-                  var data = {
-                    templateName: "account_confirm",
+                  var partnerKey = defaultClient.authentications['partner-key'];
+                  partnerKey.apiKey = process.env.SENDINBLUE_API_KEY;
+                  
+                  
+                  var contactApiInstance = new SibApiV3Sdk.ContactsApi();
+                  var createContact = new SibApiV3Sdk.CreateContact(); // CreateContact | Values to create a contact
+                  logger.debug("NAME: "+displayName)
+                  var opts = { 
+                    'email': email, 
+                    'listIds': [5],
+                    "FIRSTNAME" : displayName,
                    
-                    receiver: email,   
-                    name:displayName,
+                  };
+                  logger.debug("creat contact");
+
+                  contactApiInstance.createContact(opts).then(function(data) {
+                    console.log('API called successfully. Returned data: ' + data.id);
+
+                    //send email now to confirm
+                    contactApiInstance = new SibApiV3Sdk.ContactsApi();
+
+                    let identifier = email;
+                    var opts = { 
+                      'email': email, 
+                      'templateId': [5],
+                      "name" : displayName,
+                     
+                    };
+                    contactApiInstance.getContactInfo(identifier).then(function(data) {
+                      console.log('API called successfully. Returned data: ' + JSON.stringify(data));
+                      //we have the email, send the transactional email with id of 9 for welcome
+                      let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
+
+                      let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+
+                      sendSmtpEmail.templateId=9;
+                      sendSmtpEmail.subject="Confirm your email to activate account.";
+                      sendSmtpEmail.to = [{"Email":"adrian@adriannadeau.com","name":"Adrian"}];
+                      
+                      // sendSmtpEmail.params = {"parameter":"My param value","subject":"New Subject"};
+
+                      apiInstance.sendTransacEmail(sendSmtpEmail).then(function(data) {
+                        console.log('API called successfully. Returned data: ' + JSON.stringify(data));
+                      }, function(error) {
+                        console.error(error);
+                      });
+
+                    }, function(error) {
+                      console.error("!!!!ERROR: "+error);
+                      res.statusCode = 200;
+                      res.setHeader('Content-Type', 'text/plain');
+                      res.end('User exists');
+                      
+                      
+                    });
+
+                  }, function(error) {
+                    console.error("ERROR2: "+error);
+                  });
+                  
+                  // const SibApiV3Sdk = require('sib-api-v3-sdk');
+                  // let defaultClient = SibApiV3Sdk.ApiClient.instance;
+                  
+                  // let apiKey = defaultClient.authentications['api-key'];
+                  // apiKey.apiKey = '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';
+                  // // Configure API key authorization: partner-key
+                  // var partnerKey = defaultClient.authentications['partner-key'];
+                  // partnerKey.apiKey = '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';
+                  
+                  // var apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
+                  // var opts = { 
+                  //   // 'email': "adrian@adriannadeau.com", // String | Mandatory if templateId and messageId are not passed in query filters. Email address to which transactional email has been sent.
+                  //   'templateId': 9, // Number | Mandatory if email and messageId are not passed in query filters. Id of the template that was used to compose transactional email.
+                  //   'messageId': "messageId_example", // String | Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent.
+                  //   // 'startDate': "startDate_example", // String | Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month.
+                  //   // 'endDate': "endDate_example", // String | Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month.
+                  //   // 'sort': "desc", // String | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed
+                  //   // 'limit': 500, // Number | Number of documents returned per page
+                  //   // 'offset': 0 // Number | Index of the first document in the page
+                  // };
+                  // apiInstance.getTransacEmailsList(opts).then(function(data) {
+                  //   console.log('API called successfully. Returned data: ' + data);
+                  // }, function(error) {
+                  //   console.error(error);
+                  // });
+                  //send confirm email
+                //   var data = {
+                //     templateName: "account_confirm",
+                   
+                //     receiver: email,   
+                //     name:displayName,
                     
                     
                     
-                 };
+                //  };
                 
-                 mailer.sendEmail(data);
+                //  mailer.sendEmail(data);
           
                 }
                 catch(error){

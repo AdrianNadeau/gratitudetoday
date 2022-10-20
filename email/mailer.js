@@ -1,5 +1,6 @@
 logger = require('../logger/logger')
-const { SENDGRID_API_KEY } = require('../config.js');
+require("custom-env").env();
+const { SENDGRID_API_KEY } =  process.env.SENDGRID_API_KEY;
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(SENDGRID_API_KEY);
 
@@ -14,8 +15,8 @@ templates = {
 
 function sendEmail(data) {
   let msg;
-  logger.debug(data);
-  logger.debug(data.templateName);
+ 
+  //logger.debug(data.templateName);
   
   if(data.templateName=="account_confirm"){
     //////////SEND CONFIRM EMAIL///////////////
@@ -55,11 +56,12 @@ function sendEmail(data) {
   }
   else if(data.templateName=="daily_reminder"){
     //////////SEND DAILY EMAIL///////////////
-    logger.debug("SEND EMAIL")
-    logger.debug(JSON.stringify(data));
+    // logger.debug("SEND EMAIL")
+    // logger.debug(JSON.stringify(data));
     msg = {
       //extract the email details
       to: data.receiver,
+      // to: "adrian@adriannadeau.com",
       from: "info@gratitudetoday.org",
     
       templateId: templates[data.templateName],
@@ -100,29 +102,44 @@ function sendEmail(data) {
   }
   else if(data.templateName=="send_progress"){
     //////////SEND Weekly Progress EMAIL///////////////
+        //extract the custom fields 
+    //   {
+    //     "name":"Adrian",
+    //     "progress_medal" : "https://www.gratitudetoday.org/assets/img/medals/bronze-tier.png",
+    //     "progress_level" : "Bronze",
+        
+    //     "current_pts" : "120"
+    // }
+    logger.debug(data.templateName);
+    logger.debug(data.name);
+    logger.debug(data.progress_medal);
+    logger.debug(data.progress_level);
+    logger.debug(data.current_pts);
     
-    logger.debug(JSON.stringify(data));
+
     msg = {
       //extract the email details
-      // to: data.receiver,
-      to: "adrian@adriannadeau.com",
+      to: data.receiver,
+      // to: "adrian@adriannadeau.com",
       from: "info@gratitudetoday.org",
     
       templateId: templates[data.templateName],
-      //extract the custom fields 
+  
       dynamic_template_data: {
         name:data.name,
+        progress_medal:data.progress_medal,
+        progress_level:data.progress_level,
+        current_pts:data.current_pts,
+
         
-        confirm_account_url:  data.confirm_account_url,
-        reset_password_url: data.reset_password_url,
-        last_login: data.last_login
-      }
+      },
+      
     };
 
 
   }
 
-    //send the email
+   
     sgMail.send(msg, (error, result) => {
       if (error) {
           logger.error(error);

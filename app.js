@@ -13,13 +13,14 @@ var cors = require('cors')
 
 const app = express();
 app.use(cors());
+const DATABASE=process.env.DATABASE;
+const SESSION_SEACRET=process.env.SESSION_SEACRET;
 
-const {
  
-  DATABASE,
-  SESSION_SEACRET,
+//   DATABASE,
+//   SESSION_SEACRET,
   
-} = require("./config.js");
+// } = require("./config.js");
 
 // Firebase App (the core Firebase SDK) is always required and
 // must be listed before other Firebase SDKs
@@ -137,11 +138,6 @@ var port_number = process.env.PORT || 3000;
 
 app.listen(port_number);
 console.log("App running on Port:" + port_number);
-// console.log(global.gConfig.mailjet_api_key);
-// app.listen(port, () => {
-//   logger.info(APP_ENV + " Running... on PORT " + port);
-
-// });
 console.log("");
 console.log(
   "====================================END START============================================"

@@ -112,8 +112,8 @@ router.get("/sendReminders", async function (req, res) {
             var data = {
               templateName: "daily_reminder",
               
-              receiver: user.email,   
-              // receiver: "adrian@adriannadeau.com",   
+              // receiver: user.email,   
+              receiver: "adrian@adriannadeau.com",   
               name:user.displayName,
               //progress data
               quote:quote.quote,
@@ -150,6 +150,7 @@ router.get("/sendReminders", async function (req, res) {
 
 router.get("/sendProgress/:id", async function (req, res) {
  let userPts = 0;
+ let userLevel="Bronze";
  let userMedal="https://www.gratitudetoday.org/assets/img/medals/bronze-tier.png"
 
  let user = await User.findById(req.params.id)
@@ -167,24 +168,37 @@ router.get("/sendProgress/:id", async function (req, res) {
             }
             
             userPts= posts.length * 50 + 100;
-            logger.debug("userPts: "+userPts);
+            
             if(userPts>299){
               //bronze
               userMedal="https://www.gratitudetoday.org/assets/img/medals/bronze-tier.png"
+              userLevel="Bronze"
               
               
             }
             else if(totalPts>999){
               userMedal="https://www.gratitudetoday.org/assets/img/medals/silver-tier.png"
+              userLevel="Silver"
             
             }
             else if(totalPts>2999){
               userMedal="https://www.gratitudetoday.org/assets/img/medals/gold-tier.png"
+              userLevel="Gold"
             
             }
+            // logger.debug("userPts: "+userPts);
+            // logger.debug("userLevel: "+userLevel);
           })
           try{    
-            //send daily email
+            //send progress email
+          //   {
+          //     "name":"Adrian",
+          //     "progress_medal" : "https://www.gratitudetoday.org/assets/img/medals/bronze-tier.png",
+          //     "progress_level" : "Bronze",
+              
+          //     "current_pts" : "120"
+          // }
+          
             
             var data = {
               templateName: "send_progress",
@@ -194,8 +208,11 @@ router.get("/sendProgress/:id", async function (req, res) {
               name:user.displayName,
               //progress data
               progress_medal:userMedal,
+              progress_level:userLevel,
               current_pts: userPts
           };
+         
+          mailer.sendEmail(data);
         }
         catch(error){
           logger.error(error);

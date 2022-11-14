@@ -69,7 +69,7 @@ router.post('/', async function(req, res) {
               let errMessage= error.message;
               
               if(errMessage.includes("E11000")){
-                logger.debug("current user.... login")
+               
                 
                 admin.auth().getUserByEmail(email)
                   .then(function(userRecord) {
@@ -89,7 +89,7 @@ router.post('/', async function(req, res) {
                             
                               
                           });
-                          logger.debug("updated last login for : "+email);
+                          
                           sess = req.session;
                           sess.userid = docs[0]._id;
                           res.send(JSON.stringify('LOGIN_USER'));
@@ -182,44 +182,6 @@ router.post('/', async function(req, res) {
                     console.error("ERROR2: "+error);
                   });
                   
-                  // const SibApiV3Sdk = require('sib-api-v3-sdk');
-                  // let defaultClient = SibApiV3Sdk.ApiClient.instance;
-                  
-                  // let apiKey = defaultClient.authentications['api-key'];
-                  // apiKey.apiKey = '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';
-                  // // Configure API key authorization: partner-key
-                  // var partnerKey = defaultClient.authentications['partner-key'];
-                  // partnerKey.apiKey = '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';
-                  
-                  // var apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
-                  // var opts = { 
-                  //   // 'email': "adrian@adriannadeau.com", // String | Mandatory if templateId and messageId are not passed in query filters. Email address to which transactional email has been sent.
-                  //   'templateId': 9, // Number | Mandatory if email and messageId are not passed in query filters. Id of the template that was used to compose transactional email.
-                  //   'messageId': "messageId_example", // String | Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent.
-                  //   // 'startDate': "startDate_example", // String | Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month.
-                  //   // 'endDate': "endDate_example", // String | Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month.
-                  //   // 'sort': "desc", // String | Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed
-                  //   // 'limit': 500, // Number | Number of documents returned per page
-                  //   // 'offset': 0 // Number | Index of the first document in the page
-                  // };
-                  // apiInstance.getTransacEmailsList(opts).then(function(data) {
-                  //   console.log('API called successfully. Returned data: ' + data);
-                  // }, function(error) {
-                  //   console.error(error);
-                  // });
-                  //send confirm email
-                //   var data = {
-                //     templateName: "account_confirm",
-                   
-                //     receiver: email,   
-                //     name:displayName,
-                    
-                    
-                    
-                //  };
-                
-                //  mailer.sendEmail(data);
-          
                 }
                 catch(error){
                   logger.error(error);

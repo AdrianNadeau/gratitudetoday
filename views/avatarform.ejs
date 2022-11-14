@@ -27,15 +27,20 @@
 
         
         <div class="white-form">
-            <div>
-              <img class="rounded-circle" id="profile-avatar" style="border: 2px dotted #fff;height:75PX;width:75px;" src="/assets/img/avatars/gratitudetoday-avatar.png"></div>
-               <br/>
+            <div> 
+              
+              
+                
+                  <img class="rounded-circle" id="profile-avatar" style="border: 2px dotted #fff;height:75PX;width:75px;" src="<%=photoURL%>"></div>
+                  <!-- <img class="rounded-circle" id="profile-avatar" style="border: 2px dotted #fff;height:75PX;width:75px;" src="/data/uploads/gratitudetoday-avatar.png"></div> -->
+
+                  <br/>
           
               <form  action="/users/upload/upload" method="post" enctype="multipart/form-data">
-                <input class="form-control-file" type="file" accept="image/*" name="file">
-                <input type="hidden" id="#id" value="">
-                <p>
+                <input class="form-control-file" type="file" accept="image/*" name="avatar">
                 
+                <p>
+                Max file size = 2MB
                 </p>
                 <input type="submit" class="btn btn-success navtoTop" value="Upload">
                 <input type="button" class="btn btn-secondary" id="btn_dash" value="Dashboard">

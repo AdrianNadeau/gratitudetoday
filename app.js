@@ -33,7 +33,7 @@ const admin = require("firebase-admin");
 require("firebase/app");
 require("firebase/auth");
 
-const serviceAccount = require("./gratitudetoday-2e630-firebase-adminsdk-sx0pq-b907b6e239.json");
+const serviceAccount = require("./gratiudetoday---dev-firebase-adminsdk-4ltua-772bc6cf6b.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -58,7 +58,7 @@ console.log("");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-logger.debug("DB: " + DATABASE);
+// logger.debug("DB: " + DATABASE);
 mongoose
   .connect(DATABASE, {
     useNewUrlParser: true,

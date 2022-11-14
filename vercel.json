@@ -3,6 +3,7 @@
     "name": "node js website",
     "builds": [
        { "src": "./app.js", "use": "@vercel/node" }
+        
     ],
     "routes": [
        { "src": "/(.*)", "dest": "/" }

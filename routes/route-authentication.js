@@ -5,15 +5,8 @@ var logger = require('../logger/logger');
 var mailer = require('../email/mailer');
 
 
+var auth = require("firebase/auth");
 var admin = require("firebase-admin");
-
-//upgraded api
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-
-
 
 User = require("../models/UserModel"),
 mongoose = require('mongoose');
@@ -47,19 +40,6 @@ router.get('/registersuccess', function (req, res) {
 //////////////////////////////////////
 ///         SIGNUP                  //
 //////////////////////////////////////
-
-// const auth = getAuth(firebaseApp);
-// onAuthStateChanged(auth, user => {
-//   // Check for user status
-// });
-// const result = await getRedirectResult(auth);
-// // Provider of the access token could be Facebook, Github, etc.
-// if (result === null || provider.credentialFromResult(result) === null) {
-//   return null;
-// }
-// return result;
-
-
 router.post('/', async function(req, res) {
   
   const { SENDGRID_API_KEY } = require('../config.js');

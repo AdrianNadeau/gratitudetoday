@@ -23,8 +23,8 @@ const {
 
 // Firebase App (the core Firebase SDK) is always required and
 // must be listed before other Firebase SDKs
-// require("firebase/app");
-// require("firebase/auth");
+require("firebase/app");
+require("firebase/auth");
 
 const admin = require("firebase-admin");
 // Firebase App (the core Firebase SDK) is always required and
@@ -36,8 +36,8 @@ const serviceAccount = require("./gratitudetoday-2e630-firebase-adminsdk-sx0pq-b
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  // databaseURL: "https://gratitudetoday-2e630.firebaseapp.com", //CALLBACK URLS https://gratitudetoday-2e630.firebaseapp.com
-  // storageBucket: "gs://gratiudetoday---dev.appspot.com"
+  databaseURL: "https://gratitudetoday-2e630.firebaseapp.com", //CALLBACK URLS https://gratitudetoday-2e630.firebaseapp.com
+  storageBucket: "gs://gratiudetoday---dev.appspot.com"
 
 });
 const indexRouter = require("./routes/index.js");
@@ -56,6 +56,8 @@ console.log("");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+logger.debug("DB: " + DATABASE);
 mongoose
   .connect(DATABASE, {
     useNewUrlParser: true,

@@ -58,7 +58,7 @@ router.post('/', async function(req, res) {
             displayOnBoard: true,
         });
          user.save(function (error, user) {
-          console.log("save: "+email);
+          
             
             if (error) {
               let errMessage= error.message;

@@ -36,8 +36,6 @@ const serviceAccount = require("./gratitudetoday-2e630-firebase-adminsdk-sx0pq-b
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://gratitudetoday-2e630.firebaseapp.com", //CALLBACK URLS https://gratitudetoday-2e630.firebaseapp.com
-  storageBucket: "gs://gratiudetoday---dev.appspot.com"
 
 });
 const indexRouter = require("./routes/index.js");
@@ -59,12 +57,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 logger.debug("DB: " + DATABASE);
 mongoose
-  .connect(DATABASE, {
-    useNewUrlParser: true,
-    connectWithNoPrimary: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  })
+  .connect(DATABASE, { })
   .catch((error) => console.error(error));
 
 app.set("trust proxy", 1); // trust first proxy
@@ -79,7 +72,6 @@ app.use(
 );
 
 logger.info("DB Running server on from port::::::" + "4000");
-mongoose.set("useFindAndModify", false);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

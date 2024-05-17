@@ -55,10 +55,15 @@ console.log("");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-logger.debug("DB: " + DATABASE);
-mongoose
-  .connect(DATABASE, { })
-  .catch((error) => console.error(error));
+mongoose.connect(DATABASE, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true, // Ensure compatibility with createIndexes
+  writeConcern: { w: 'majority' } // Use writeConcern instead of top-level w option
+})
+  .then(() => console.log('Database connected successfully'))
+  .catch((error) => console.error('Database connection error:', error));
+
 
 app.set("trust proxy", 1); // trust first proxy
 app.use(

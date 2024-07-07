@@ -51,9 +51,9 @@ To install and run Gratitude Today locally, follow these steps:
 
 Once the application is up and running, you can access it in your web browser at `http://localhost:3000`. Here are some basic usage instructions:
 
-1. **Create an Entry**: Click on the "Add Entry" button and write down what you are grateful for.
+1. **Create an Entry**: Click the "Add Gratitude Post" button and type what you are grateful for.
 2. **Set Reminders**: Go to settings to set daily reminders for your gratitude practice.
-3. **View Calendar**: Check the calendar view to see all your past entries.
+3. **View Progress**: Accumulate points for registering and posting. Bronze, Silver, and Gold levels can trade in points for merchandise.
 
 ## Contributing
 
